@@ -1,0 +1,372 @@
+{
+  "title": "Lithium for fusion energy: supply chain and human rights risks (class assignment, iteration 1)",
+  "retrieved": "2026-11-09",
+  "tools": [
+    "Tavily search and extract (tvly CLI 0.1.8, keyless): every web source was found with search, and key claims were checked against full page text with extract",
+    "Sayari knowledge graph (claude.ai connector): entity, ownership, and trade data"
+  ],
+  "why_lithium": "Deuterium-tritium fusion needs tritium, which barely exists in nature. Reactors plan to breed it in a blanket where neutrons hit lithium-6. Blankets typically use lithium enriched to 30-90% lithium-6, versus 7.5% in natural lithium.",
+  "stages": [
+    {
+      "id": "extract",
+      "name": "Extract",
+      "summary": "Lithium is pumped as brine from Andean salt flats or mined as hard rock (spodumene) in Australia, Zimbabwe, and elsewhere.",
+      "facts": [
+        {
+          "claim": "Lithium mining in the Salar de Atacama takes place on the ancestral lands of the Lickanantay and Atacameno people.",
+          "source": "iisdChile"
+        },
+        {
+          "claim": "Codelco and SQM plan to raise lithium output in the Atacama by as much as 33% through 2060, and Indigenous groups are demanding more control.",
+          "source": "reutersAtacama"
+        },
+        {
+          "claim": "Jujuy's 2023 constitutional reform was adopted without the consultation owed to Indigenous peoples and aimed to ease extractive projects on community land.",
+          "source": "fidh"
+        },
+        {
+          "claim": "Communities at Salinas Grandes protested for 15 days in 2023 after the reform vote.",
+          "source": "energyMonitor"
+        },
+        {
+          "claim": "The U.S. Department of Labor lists lithium from Zimbabwe as produced with child labor.",
+          "source": "dolList"
+        },
+        {
+          "claim": "Workers and villagers near the Bikita lithium mine accuse the owner, Sinomine, and the government of displacements, spills, labor abuses, and a death, according to Mongabay reporting.",
+          "source": "mongabayBikita",
+          "type": "reported allegation"
+        },
+        {
+          "claim": "Talison said dust from the Greenbushes mine exceeded licence limits at least eight times in 2024 and at least four times in the first quarter of 2025, after a state report found a significant health risk.",
+          "source": "abcGreenbushes"
+        }
+      ]
+    },
+    {
+      "id": "refine",
+      "name": "Refine",
+      "summary": "Ore and brine become lithium carbonate or hydroxide. Most of this happens in China.",
+      "facts": [
+        {
+          "claim": "China refines 70% of global lithium chemicals and 95% of the refining of hard-rock ores.",
+          "source": "ieaGcmo2025"
+        },
+        {
+          "claim": "In August 2025 the U.S. Forced Labor Enforcement Task Force made lithium a high-priority sector for enforcement under the Uyghur Forced Labor Prevention Act.",
+          "source": "ustrUflpa2025"
+        },
+        {
+          "claim": "Sayari trade records since 2024 for lithium hydroxide (HS 282520) show 445 Chinese exporting suppliers, more than any other country.",
+          "source": "sayariTradeFacets"
+        }
+      ]
+    },
+    {
+      "id": "enrich",
+      "name": "Enrich",
+      "summary": "Lithium-6 is separated from lithium-7. This is the step unique to fusion, and the bottleneck.",
+      "facts": [
+        {
+          "claim": "Industrial-scale lithium enrichment has been done only for nuclear weapons. The mercury-based COLEX process is presently used in China, North Korea, and Russia.",
+          "source": "wardArxiv"
+        },
+        {
+          "claim": "A power-plant blanket holds about 100 tonnes of lithium-6 per GWth reactor; DEMO designs hold about 50 tonnes.",
+          "source": "wardArxiv"
+        },
+        {
+          "claim": "Oak Ridge's Y-12 plant used about 11 million kg of mercury for lithium separation from 1950 to 1963.",
+          "source": "ostiY12"
+        },
+        {
+          "claim": "DOE estimated 330 metric tons of mercury were released to the environment, 110 to East Fork Poplar Creek, and could not account for 750 more.",
+          "source": "atsdrY12"
+        },
+        {
+          "claim": "Mercury is still the top cleanup priority at Y-12; the Outfall 200 Mercury Treatment Facility is scheduled for completion in 2027.",
+          "source": "doeY12"
+        },
+        {
+          "claim": "Novosibirsk Chemical Concentrates Plant, part of Rosatom's fuel company TVEL, meets up to 80% of world demand for lithium-7, a by-product of lithium-6 enrichment for weapons.",
+          "source": "wnaLithium"
+        },
+        {
+          "claim": "Sayari shows NCCP on Ukraine's national sanctions list.",
+          "source": "sayariNccp"
+        },
+        {
+          "claim": "Sayari trade relationships show NCCP shipping to China Nuclear Energy Industry Corporation, Isoflex USA, NRG Petten, Albemarle Germany, battery makers, and nuclear power plants. The product in each link is not confirmed, and NCCP also makes nuclear fuel.",
+          "source": "sayariNccpTrade",
+          "type": "trade link, product not confirmed"
+        },
+        {
+          "claim": "Precision Periodic announced a mercury-free chromatography process for lithium-6 and lithium-7 enrichment, backed by a DOE grant, in September 2025.",
+          "source": "precisionPeriodic"
+        },
+        {
+          "claim": "In March 2026, Molten Salt Solutions announced agreements to supply enriched lithium to Type One Energy and Gauss Fusion, using a solvent exchange process.",
+          "source": "moltenSalt",
+          "type": "company statement"
+        },
+        {
+          "claim": "A federal SBIR award summary for Precision Periodic states the U.S. has no domestic supply of lithium-6 or lithium-7 and is completely reliant on Russia and China.",
+          "source": "sbirLi6",
+          "type": "grant summary"
+        },
+        {
+          "claim": "In August 2026, Marathon Fusion announced it had enriched lithium isotopes in a plasma centrifuge, a method that doesn't use mercury, with support from DOE's ARPA-E.",
+          "source": "marathon",
+          "type": "company statement"
+        }
+      ]
+    },
+    {
+      "id": "fabricate",
+      "name": "Fabricate",
+      "summary": "Enriched lithium becomes a breeder material: ceramic pebbles (Li4SiO4, Li2TiO3), lithium-lead, or molten FLiBe salt.",
+      "facts": [
+        {
+          "claim": "China's ITER test blanket module uses lithium orthosilicate pebbles enriched to 60% lithium-6.",
+          "source": "ornlTbm"
+        },
+        {
+          "claim": "Materion will supply beryllium fluoride from Elmore, Ohio, for the FLiBe salt in Commonwealth Fusion Systems' ARC plants. The lithium source for that salt has not been published.",
+          "source": "materionCfs"
+        }
+      ]
+    },
+    {
+      "id": "deploy",
+      "name": "Deploy",
+      "summary": "Breeder blankets go into test reactors now and power plants later.",
+      "facts": [
+        {
+          "claim": "ITER will test four breeding blanket concepts from Europe, Japan, China, and Korea.",
+          "source": "iterTbm"
+        },
+        {
+          "claim": "The ITER test blanket module needed about 200 kg of enriched lithium.",
+          "source": "neiEnriched"
+        },
+        {
+          "claim": "UKAEA's LIBRTI programme (GBP 220 million) aims to demonstrate net tritium production; CFS is its first international partner (July 2026).",
+          "source": "cfsLibrti"
+        }
+      ]
+    },
+    {
+      "id": "after",
+      "name": "After use",
+      "summary": "Spent blankets hold tritium and activated material. Enrichment leaves mercury or depleted lithium behind.",
+      "facts": [
+        {
+          "claim": "Without recycling, blanket replacement could use up to 12 tonnes of lithium-6 per GWe per year; with 90% recycling about 1.2 tonnes.",
+          "source": "neiEnriched",
+          "type": "projection"
+        }
+      ]
+    }
+  ],
+  "unknowns": [
+    "Which mine or brine any fusion company's lithium comes from. No fusion company has published it.",
+    "Current lithium-6 capacity and stockpiles in Russia, China, and the United States.",
+    "The ownership of NCCP in Sayari shows only a regional property department, not TVEL or Rosatom. Ownership comes from the World Nuclear Association instead.",
+    "Which product moves in each Sayari NCCP trade link.",
+    "Where Bikita's exports go after Sinomine's Hainan trading company.",
+    "Whether any fusion developer has a lithium sourcing or human-rights policy. A Tavily search on 2026-11-09 found policies from lithium and battery companies (Arcadium Lithium, LG Energy Solution, Umicore) but none from a fusion developer."
+  ],
+  "sources": {
+    "iisdChile": {
+      "title": "Lithium Mining in Chile",
+      "publisher": "IISD",
+      "date": "2026-09",
+      "url": "https://www.iisd.org/system/files/2026-09/lithium-mining-chile.pdf",
+      "found_with": "Tavily"
+    },
+    "reutersAtacama": {
+      "title": "As Chile revs up lithium plans, Indigenous people demand more control",
+      "publisher": "Reuters",
+      "date": "2025-04-07",
+      "url": "https://www.reuters.com/world/americas/chile-revs-up-lithium-plans-indigenous-people-demand-more-control-2025-04-07",
+      "found_with": "Tavily"
+    },
+    "fidh": {
+      "title": "Lithium and Human Rights in the High Andean Salt Flats of Argentina, Bolivia and Chile",
+      "publisher": "FIDH",
+      "url": "https://www.fidh.org/IMG/pdf/lithium_and_human_rights_in_the_high_andean_salt_flats_of_argentina_bolivia_and_chile.pdf",
+      "found_with": "Tavily"
+    },
+    "energyMonitor": {
+      "title": "Lithium in Argentina: how to make it sustainable",
+      "publisher": "Energy Monitor",
+      "url": "https://www.energymonitor.ai/sectors/extractive-industries/lithium-in-argentina-how-to-make-it-sustainable",
+      "found_with": "Tavily"
+    },
+    "dolList": {
+      "title": "List of Goods Produced by Child Labor or Forced Labor (2024)",
+      "publisher": "U.S. Department of Labor",
+      "url": "https://www.dol.gov/agencies/ilab/reports/child-labor/list-of-goods",
+      "found_with": "Tavily"
+    },
+    "mongabayBikita": {
+      "title": "Locals slam Zimbabwe for turning a blind eye to Chinese miner's violations",
+      "publisher": "Mongabay",
+      "date": "2024-04",
+      "url": "https://news.mongabay.com/2024/04/locals-slam-zimbabwe-for-turning-a-blind-eye-to-chinese-miners-violations",
+      "found_with": "Tavily",
+      "checked_with": "Tavily extract, 2026-11-09"
+    },
+    "ieaGcmo2025": {
+      "title": "Global Critical Minerals Outlook 2025",
+      "publisher": "IEA",
+      "date": "2025",
+      "url": "https://iea.blob.core.windows.net/assets/ef5e9b70-3374-4caa-ba9d-19c72253bfc4/GlobalCriticalMineralsOutlook2025.pdf",
+      "found_with": "Tavily"
+    },
+    "ustrUflpa2025": {
+      "title": "Forced Labor Enforcement Task Force Release of the 2025 Update to the UFLPA Strategy",
+      "publisher": "USTR",
+      "date": "2025-08",
+      "url": "https://ustr.gov/about/policy-offices/press-office/press-releases/2025/august/forced-labor-enforcement-task-force-release-2025-update-uflpa-strategy",
+      "also": "https://www.dhs.gov/2025-updates-strategy-prevent-importation-goods-mined-produced-or-manufactured-forced-labor-peoples",
+      "found_with": "Tavily",
+      "checked_with": "Tavily extract, 2026-11-09"
+    },
+    "wardArxiv": {
+      "title": "Lithium enrichment threatens to curb fusion deployment",
+      "publisher": "Ward, Pearson, Scott, Lopes Cardozo (arXiv:2605.04707)",
+      "date": "2026-05-06",
+      "url": "https://arxiv.org/html/2605.04707v1",
+      "found_with": "Tavily",
+      "checked_with": "Tavily extract, 2026-11-09"
+    },
+    "ostiY12": {
+      "title": "History of mercury use and environmental contamination at the Oak Ridge Y-12 Plant",
+      "publisher": "OSTI / Environmental Pollution",
+      "url": "https://www.osti.gov/biblio/1037053",
+      "found_with": "Tavily"
+    },
+    "atsdrY12": {
+      "title": "Health Consultation: Y-12 Weapons Plant Chemical Releases Into East Fork Poplar Creek",
+      "publisher": "ATSDR (CDC)",
+      "url": "https://archive.cdc.gov/www_atsdr_cdc_gov/hac/PHA/efork1/y12_p1.html",
+      "found_with": "Tavily"
+    },
+    "doeY12": {
+      "title": "Y-12 National Security Complex",
+      "publisher": "DOE Office of Environmental Management",
+      "url": "https://www.energy.gov/orem/y-12-national-security-complex",
+      "found_with": "Tavily"
+    },
+    "wnaLithium": {
+      "title": "Lithium",
+      "publisher": "World Nuclear Association",
+      "url": "https://world-nuclear.org/information-library/current-and-future-generation/lithium",
+      "found_with": "Tavily",
+      "checked_with": "Tavily extract, 2026-11-09"
+    },
+    "precisionPeriodic": {
+      "title": "Scalable Lithium-6 & Lithium-7 Enrichment",
+      "publisher": "Precision Periodic",
+      "date": "2025-09-23",
+      "url": "https://www.precisionperiodic.com/scalable-lithium-6-lithium-7-enrichment",
+      "found_with": "Tavily"
+    },
+    "moltenSalt": {
+      "title": "Molten Salt Solutions Signs Strategic Agreements to Supply Enriched Lithium for Fusion Energy",
+      "publisher": "PR Newswire via Yahoo Finance",
+      "date": "2026-03-24",
+      "url": "https://finance.yahoo.com/sectors/energy/articles/molten-salt-solutions-signs-strategic-160100744.html",
+      "found_with": "Tavily",
+      "checked_with": "Tavily extract, 2026-11-09"
+    },
+    "ornlTbm": {
+      "title": "ITER TBM design basis (HCCB: Li4SiO4 pebble bed, enriched)",
+      "publisher": "OSTI",
+      "url": "https://www.osti.gov/servlets/purl/1165762",
+      "found_with": "Tavily"
+    },
+    "materionCfs": {
+      "title": "Materion Signs Supply Agreement with Commonwealth Fusion Systems to Provide Beryllium Fluoride",
+      "publisher": "Materion",
+      "date": "2025-10-28",
+      "url": "https://www.materion.com/en/about-materion/news/performance-alloys/materion-supply-agreement-with-commonwealth-fusion",
+      "found_with": "Tavily"
+    },
+    "iterTbm": {
+      "title": "Tritium Breeding",
+      "publisher": "ITER Organization",
+      "url": "https://www.iter.org/machine/supporting-systems/tritium-breeding",
+      "found_with": "Tavily"
+    },
+    "neiEnriched": {
+      "title": "Enriched lithium and advanced nuclear",
+      "publisher": "Nuclear Engineering International",
+      "url": "https://www.neimagazine.com/analysis/enriched-lithium-and-advanced-nuclear",
+      "found_with": "Tavily"
+    },
+    "cfsLibrti": {
+      "title": "CFS named first international partner in UKAEA's LIBRTI program",
+      "publisher": "Commonwealth Fusion Systems",
+      "date": "2026-07-01",
+      "url": "https://cfs.energy/news-and-media/cfs-named-first-international-partner-in-ukaeas-librti-program",
+      "found_with": "Tavily"
+    },
+    "sayariTradeFacets": {
+      "title": "Sayari trade facets: lithium hydroxide suppliers, HS 282520, 2024 onward",
+      "publisher": "Sayari",
+      "date": "2026-11-09",
+      "url": "https://graph.sayari.com",
+      "found_with": "Sayari"
+    },
+    "sayariNccp": {
+      "title": "Novosibirsk Chemical Concentrates Plant (entity record)",
+      "publisher": "Sayari",
+      "url": "https://graph.sayari.com/resource/entity/uGeE9Bs2EvxWqf4mTsQFRQ",
+      "found_with": "Sayari"
+    },
+    "sayariNccpTrade": {
+      "title": "NCCP ships_to relationships",
+      "publisher": "Sayari",
+      "url": "https://graph.sayari.com/resource/entity/uGeE9Bs2EvxWqf4mTsQFRQ",
+      "found_with": "Sayari"
+    },
+    "sayariBikita": {
+      "title": "Bikita Minerals (Pvt) Ltd ships_to Sinomine Resource (Hainan) Lithium",
+      "publisher": "Sayari",
+      "url": "https://graph.sayari.com/resource/entity/RwcU9n6KEGr1upZT1NyNEg",
+      "found_with": "Sayari"
+    },
+    "sbirLi6": {
+      "title": "SBIR Award 218860 (Precision Periodic, lithium isotope separation)",
+      "publisher": "SBIR.gov",
+      "url": "https://www.sbir.gov/awards/218860",
+      "found_with": "Tavily",
+      "checked_with": "Tavily extract, 2026-11-09"
+    },
+    "abcGreenbushes": {
+      "title": "Talison 'underestimated' impact of mine expansion on Greenbushes community",
+      "publisher": "ABC News",
+      "date": "2025-04-01",
+      "url": "https://www.abc.net.au/news/2025-04-01/lithium-talison-underestimated-impact-greenbushes-mine-expansion/105117068",
+      "found_with": "Tavily",
+      "checked_with": "Tavily extract, 2026-11-09"
+    },
+    "oecdMinerals": {
+      "title": "Responsible mineral supply chains (OECD Due Diligence Guidance applies to all minerals)",
+      "publisher": "OECD",
+      "url": "https://www.oecd.org/en/topics/sub-issues/due-diligence-guidance-for-responsible-business-conduct/responsible-mineral-supply-chains.html",
+      "found_with": "Tavily"
+    },
+    "marathon": {
+      "title": "Marathon Fusion Demonstrates Lithium and Hydrogen Isotope Enrichment Using Proprietary Plasma Centrifuge Technology",
+      "publisher": "PR Newswire",
+      "date": "2026-08-27",
+      "url": "https://www.prnewswire.com/news-releases/marathon-fusion-demonstrates-lithium-and-hydrogen-isotope-enrichment-using-proprietary-plasma-centrifuge-technology-302861336.html",
+      "found_with": "Tavily",
+      "checked_with": "Tavily extract, 2026-11-09"
+    }
+  },
+  "tavily_limits": "Two searches first hit the keyless rate limit and succeeded on retry. A ScienceDirect article on FLiBe readiness could not be extracted and is not used."
+}

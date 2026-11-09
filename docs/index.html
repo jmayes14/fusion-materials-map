@@ -1,0 +1,576 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Where the lithium for fusion reactors comes from, who could be harmed along the way, and a proposal to fix it. Iteration 1.">
+<meta name="theme-color" content="#f4f2ec">
+<link rel="icon" href="data:,">
+<title>Fusion's Lithium Trail</title>
+<style>
+  :root {
+    color-scheme: light;
+    --page: #f4f2ec; --panel: #ffffff; --raised: #edf3ee; --line: #d6dfd9;
+    --ink: #202b29; --muted: #596a64; --accent: #216653; --accent-ink: #ffffff;
+    --extract: #a34f20; --refine: #7a4b9b; --enrich: #b23a3a; --fabricate: #1f6fa8; --deploy: #216653; --after: #6b6b6b;
+    --sea: #cfe0e6; --land: #f7f8f4; --land-line: #9db4bb;
+    --warn-bg: #fff1e7; --warn-ink: #8d481f;
+    --radius: 1.1rem; --shadow: 0 1.5rem 4rem rgb(34 52 45 / 10%);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      color-scheme: dark;
+      --page: #141a19; --panel: #1c2422; --raised: #23302c; --line: #33433e;
+      --ink: #e7eeeb; --muted: #a3b4ae; --accent: #6cc3a5; --accent-ink: #0e1614;
+      --extract: #e08a5a; --refine: #b896d6; --enrich: #ec7c7c; --fabricate: #6eb2e6; --deploy: #6cc3a5; --after: #b0b0b0;
+      --sea: #1d2c31; --land: #2a3532; --land-line: #46605a;
+      --warn-bg: #3a2a1e; --warn-ink: #f0b48a;
+    }
+  }
+  :root[data-theme="dark"] {
+    color-scheme: dark;
+    --page: #141a19; --panel: #1c2422; --raised: #23302c; --line: #33433e;
+    --ink: #e7eeeb; --muted: #a3b4ae; --accent: #6cc3a5; --accent-ink: #0e1614;
+    --extract: #e08a5a; --refine: #b896d6; --enrich: #ec7c7c; --fabricate: #6eb2e6; --deploy: #6cc3a5; --after: #b0b0b0;
+    --sea: #1d2c31; --land: #2a3532; --land-line: #46605a;
+    --warn-bg: #3a2a1e; --warn-ink: #f0b48a;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; background: var(--page); color: var(--ink); font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; line-height: 1.55; }
+  a { color: var(--accent); text-underline-offset: 0.18em; }
+  button { font: inherit; }
+  button:focus-visible, a:focus-visible { outline: 3px solid #c06a35; outline-offset: 3px; }
+  main { width: min(100% - 2rem, 74rem); margin: 0 auto; padding: 1.5rem 0 4rem; }
+  h1, h2, h3, p { margin-top: 0; }
+  .eyebrow { color: var(--accent); font-size: 0.76rem; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; }
+  .topline { display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; padding-bottom: 2rem; }
+  .topline a { color: var(--muted); font-size: 0.9rem; }
+
+  .hero { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(15rem, 0.6fr); gap: 2.5rem; align-items: end; padding-bottom: 3rem; }
+  h1 { margin: 0.6rem 0 1rem; font-size: clamp(2.6rem, 7vw, 5.6rem); font-weight: 850; letter-spacing: -0.06em; line-height: 0.95; }
+  h1 span { color: var(--accent); }
+  .lede { color: var(--muted); font-size: clamp(1.05rem, 2vw, 1.22rem); max-width: 42rem; margin: 0; }
+  .note { border: 1px solid var(--line); border-radius: var(--radius); background: var(--panel); padding: 1.2rem; }
+  .note strong { display: block; color: var(--warn-ink); font-size: 0.8rem; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.3rem; }
+  .note p { margin: 0; color: var(--muted); font-size: 0.95rem; }
+
+  section { margin-top: 3.5rem; }
+  h2 { font-size: clamp(1.5rem, 3vw, 2.1rem); letter-spacing: -0.04em; margin: 0.3rem 0 0.6rem; }
+  .section-intro { color: var(--muted); max-width: 46rem; }
+
+  .shell { border: 1px solid var(--line); border-radius: 1.4rem; background: var(--panel); padding: clamp(1rem, 3vw, 1.8rem); box-shadow: var(--shadow); }
+
+  /* Systems map */
+  .chain { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 0.7rem; list-style: none; margin: 0; padding: 0; }
+  .chain li { position: relative; min-width: 0; }
+  .chain li:not(:last-child)::after { content: "→"; position: absolute; right: -0.7rem; top: 1.6rem; color: var(--muted); font-weight: 800; z-index: 1; }
+  .stage { width: 100%; min-height: 9.5rem; display: flex; flex-direction: column; align-items: flex-start; gap: 0.35rem; text-align: left; border: 1px solid var(--line); border-radius: 0.9rem; background: var(--raised); color: var(--ink); padding: 0.85rem; cursor: pointer; transition: transform 150ms ease, border-color 150ms ease; }
+  .stage:hover { transform: translateY(-2px); border-color: var(--c); }
+  .stage[aria-pressed="true"] { border-color: var(--c); box-shadow: inset 0 0 0 2px var(--c); background: var(--panel); }
+  .stage .num { display: inline-grid; place-items: center; width: 1.7rem; height: 1.7rem; border-radius: 50%; background: var(--c); color: #fff; font-weight: 800; font-size: 0.85rem; }
+  .stage .name { font-weight: 800; font-size: 1.02rem; }
+  .stage .what { color: var(--muted); font-size: 0.82rem; line-height: 1.35; }
+  .stage .flag { margin-top: auto; font-size: 0.72rem; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; color: var(--c); }
+
+  .lenses { display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 1.3rem 0 1rem; align-items: center; }
+  .lenses span { color: var(--muted); font-size: 0.85rem; margin-right: 0.3rem; }
+  .lens { border: 1px solid var(--line); border-radius: 999px; background: transparent; color: var(--muted); padding: 0.45rem 0.85rem; cursor: pointer; font-size: 0.88rem; }
+  .lens[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); font-weight: 700; }
+
+  .detail { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, 0.7fr); gap: 1.4rem; margin-top: 1.2rem; }
+  .detail h3 { font-size: 1.3rem; margin-bottom: 0.3rem; }
+  .detail .summary { color: var(--muted); }
+  .facts { list-style: none; padding: 0; margin: 0; display: grid; gap: 0.6rem; }
+  .facts li { border-left: 3px solid var(--line); padding: 0.15rem 0 0.15rem 0.8rem; }
+  .facts li.is-risk { border-left-color: var(--warn-ink); }
+  .facts li.is-dim { opacity: 0.35; }
+  .facts .tags { display: flex; flex-wrap: wrap; gap: 0.3rem; margin-top: 0.25rem; }
+  .tag { font-size: 0.7rem; font-weight: 700; border-radius: 999px; padding: 0.1rem 0.5rem; background: var(--raised); color: var(--muted); }
+  .tag.kind { background: var(--warn-bg); color: var(--warn-ink); }
+  .src { font-size: 0.8rem; color: var(--muted); }
+  .via { display: inline-block; font-size: 0.68rem; font-weight: 700; border: 1px solid var(--line); border-radius: 999px; padding: 0 0.4rem; color: var(--muted); }
+  .unknown { align-self: start; background: var(--warn-bg); border-radius: 0.9rem; padding: 1rem; }
+  .unknown h4 { margin: 0 0 0.4rem; color: var(--warn-ink); font-size: 0.8rem; letter-spacing: 0.1em; text-transform: uppercase; }
+  .unknown ul { margin: 0; padding-left: 1.1rem; color: var(--ink); font-size: 0.92rem; }
+
+  /* Globe */
+  .globe-wrap { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 0.75fr); gap: 1.4rem; align-items: start; }
+  #globe { width: 100%; aspect-ratio: 1; max-height: 38rem; display: block; touch-action: none; cursor: grab; }
+  #globe:active { cursor: grabbing; }
+  #globe .sphere { fill: var(--sea); }
+  #globe .land { fill: var(--land); stroke: var(--land-line); stroke-width: 0.5; }
+  #globe .grat { fill: none; stroke: var(--land-line); stroke-opacity: 0.25; stroke-width: 0.4; }
+  #globe .flow { fill: none; stroke-width: 1.8; }
+  #globe .flow.sayari { stroke-dasharray: 5 4; }
+  #globe .site { cursor: pointer; stroke: var(--panel); stroke-width: 1.5; }
+  #globe .site.is-dim { opacity: 0.18; }
+  #globe .site.is-active { stroke: var(--ink); stroke-width: 2.5; }
+  #globe .label { font-size: 11px; fill: var(--ink); paint-order: stroke; stroke: var(--page); stroke-width: 3px; pointer-events: none; }
+  .globe-tools { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.6rem; }
+  .globe-tools button { border: 1px solid var(--line); background: var(--raised); color: var(--ink); border-radius: 999px; padding: 0.35rem 0.8rem; cursor: pointer; font-size: 0.85rem; }
+  .legend { display: grid; gap: 0.35rem; font-size: 0.85rem; color: var(--muted); margin-top: 1rem; }
+  .legend i { display: inline-block; width: 0.8rem; height: 0.8rem; border-radius: 50%; margin-right: 0.4rem; vertical-align: -0.1rem; }
+  .legend .ln { display: inline-block; width: 1.8rem; margin-right: 0.4rem; border-top: 2px solid var(--muted); vertical-align: 0.25rem; }
+  .legend .ln.dash { border-top-style: dashed; }
+  #site-card { border: 1px solid var(--line); border-radius: var(--radius); padding: 1.1rem; background: var(--raised); min-height: 12rem; }
+  #site-card h3 { margin-bottom: 0.2rem; }
+  #site-card .where { color: var(--muted); font-size: 0.88rem; margin-bottom: 0.6rem; }
+  .map-error { color: var(--warn-ink); }
+
+  /* Risk table */
+  .table-scroll { overflow-x: auto; }
+  table { width: 100%; border-collapse: collapse; font-size: 0.92rem; min-width: 40rem; }
+  th, td { text-align: left; padding: 0.7rem; border-bottom: 1px solid var(--line); vertical-align: top; }
+  th { font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+  .lvl { font-weight: 700; white-space: nowrap; }
+  .lvl.gov { color: var(--enrich); }
+  .lvl.ngo { color: var(--extract); }
+  .lvl.struct { color: var(--refine); }
+
+  /* Brief */
+  .brief { max-width: 48rem; }
+  .brief h3 { margin-top: 1.8rem; font-size: 1.15rem; }
+  .brief .ask { border-left: 4px solid var(--accent); padding: 0.4rem 0 0.4rem 1rem; margin: 1rem 0; font-size: 1.08rem; }
+  .rec { border: 1px solid var(--line); border-radius: var(--radius); padding: 1rem 1.1rem; margin-bottom: 0.8rem; background: var(--panel); }
+  .rec h4 { margin: 0 0 0.3rem; font-size: 1rem; }
+  .rec p { margin: 0 0 0.4rem; }
+  .rec .who { font-size: 0.85rem; color: var(--muted); margin: 0; }
+  .passport { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 0.5rem; margin: 1rem 0; }
+  .passport div { border: 1px solid var(--line); border-radius: 0.7rem; padding: 0.6rem; font-size: 0.82rem; background: var(--raised); }
+  .passport b { display: block; font-size: 0.86rem; }
+
+  .method { columns: 2 22rem; column-gap: 2rem; }
+  .method p, .method ul { break-inside: avoid; }
+  ol.sources { font-size: 0.85rem; color: var(--muted); padding-left: 1.3rem; }
+  ol.sources li { margin-bottom: 0.3rem; }
+  footer { margin-top: 3rem; color: var(--muted); font-size: 0.85rem; }
+
+  @media (max-width: 62rem) {
+    .chain { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .chain li:nth-child(3)::after { display: none; }
+    .detail, .globe-wrap, .hero { grid-template-columns: 1fr; }
+    .passport { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  }
+  @media (max-width: 34rem) {
+    .chain { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .chain li::after { display: none; }
+    .stage { min-height: 8rem; }
+  }
+  @media (prefers-reduced-motion: reduce) { * { transition: none !important; } html { scroll-behavior: auto; } }
+</style>
+</head>
+<body>
+<main>
+  <div class="topline">
+    <span class="eyebrow">Human cost of fusion materials · Iteration 1 · November 2026</span>
+    <a href="#brief">Jump to the policy brief</a>
+  </div>
+
+  <header class="hero">
+    <div>
+      <span class="eyebrow">Material: lithium</span>
+      <h1>Fusion runs on <span>lithium</span> nobody can trace yet.</h1>
+      <p class="lede">A fusion power plant burns tritium, which barely exists in nature. So reactors have to make their own, by hitting lithium-6 with neutrons in a "breeder blanket." This page follows that lithium from salt flats and hard-rock mines, through refineries and isotope plants, into the reactor, and shows who could be harmed along the way.</p>
+    </div>
+    <aside class="note">
+      <strong>How to read this</strong>
+      <p>Every claim links to its source. Reported allegations are labeled as such. A trade link from Sayari shows that two organizations traded, not what was in the box. Gaps are marked, and a gap is not evidence that a chain is clean or harmful.</p>
+    </aside>
+  </header>
+
+  <section id="map" aria-labelledby="map-h">
+    <span class="eyebrow">Deliverable 1</span>
+    <h2 id="map-h">Systems map: six steps from salt flat to reactor</h2>
+    <p class="section-intro">Click a step to see who does it, where, the documented risks, and what is still unknown. The risk filters highlight one kind of harm across the whole chain.</p>
+    <div class="shell">
+      <ol class="chain" id="chain"></ol>
+      <div class="lenses" role="group" aria-label="Risk filter">
+        <span>Show risk:</span>
+        <button class="lens" data-lens="all" aria-pressed="true">All</button>
+        <button class="lens" data-lens="land">Land, water, consent</button>
+        <button class="lens" data-lens="labor">Child labor</button>
+        <button class="lens" data-lens="forced">Forced labor</button>
+        <button class="lens" data-lens="toxic">Toxic legacy</button>
+        <button class="lens" data-lens="weapons">Sanctions and weapons</button>
+      </div>
+      <div class="detail" id="detail" aria-live="polite"></div>
+    </div>
+  </section>
+
+  <section id="globe-section" aria-labelledby="globe-h">
+    <span class="eyebrow">Where it happens</span>
+    <h2 id="globe-h">The chain on a globe</h2>
+    <p class="section-intro">Drag to turn the globe. Click a dot for its story. Colors match the six steps above, and choosing a step above highlights its places here.</p>
+    <div class="shell globe-wrap">
+      <div>
+        <svg id="globe" viewBox="0 0 600 600" role="img" aria-label="Globe showing lithium sites for fusion"></svg>
+        <div class="globe-tools" id="globe-tools"></div>
+      </div>
+      <div>
+        <div id="site-card"><h3>Pick a place</h3><p class="where">Click any dot on the globe.</p><p>The big picture: lithium is dug up mostly in South America, Australia, and Africa; refined mostly in China; and enriched at scale today only inside weapons programs.</p></div>
+        <div class="legend" id="legend"></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="risks" aria-labelledby="risk-h">
+    <span class="eyebrow">Human rights risks</span>
+    <h2 id="risk-h">Who could be harmed, step by step</h2>
+    <p class="section-intro">The evidence level says who documented the problem: a government, independent reporting, or a structural risk that follows from how the step works. None of these are findings about a specific shipment of fusion lithium, because no fusion company has published where its lithium comes from.</p>
+    <div class="shell table-scroll">
+      <table>
+        <thead><tr><th>Step</th><th>Who is at risk</th><th>Harm</th><th>Evidence level</th></tr></thead>
+        <tbody>
+          <tr><td>Extract (Chile, Argentina)</td><td>Indigenous communities, including the Lickanantay and Atacameño</td><td>Water loss from brine pumping; projects approved without free, prior and informed consent; 2023 protests in Jujuy</td><td class="lvl ngo">Independent reporting</td></tr>
+          <tr><td>Extract (Zimbabwe)</td><td>Children, mine workers, nearby villages</td><td>Child labor in lithium; reported displacements, spills, and unsafe work near Bikita</td><td class="lvl gov">U.S. government list</td></tr>
+          <tr><td>Extract (Australia)</td><td>Residents of Greenbushes, Western Australia</td><td>Mine dust exceeding licence limits; a state report found a significant health risk</td><td class="lvl gov">State government report</td></tr>
+          <tr><td>Refine (China)</td><td>Uyghurs and other minorities in Xinjiang</td><td>State labor transfer programs; lithium is a high-priority sector for U.S. forced-labor enforcement</td><td class="lvl gov">U.S. government strategy</td></tr>
+          <tr><td>Enrich (past: U.S.)</td><td>Residents and workers around Oak Ridge, Tennessee</td><td>Hundreds of tonnes of mercury released; cleanup still running in 2027</td><td class="lvl gov">U.S. government records</td></tr>
+          <tr><td>Enrich (now: Russia, China)</td><td>Workers and neighbors of closed weapons sites; the public, through proliferation</td><td>Mercury process with no public oversight; buying supports state weapons complexes</td><td class="lvl struct">Structural risk</td></tr>
+          <tr><td>Fabricate, deploy, after use</td><td>Plant workers</td><td>Tritium and beryllium exposure; waste from spent blankets</td><td class="lvl struct">Structural risk</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section id="brief" aria-labelledby="brief-h">
+    <span class="eyebrow">Deliverable 3 · Policy brief and tech proposal</span>
+    <h2 id="brief-h">Build fusion's lithium chain clean before it scales</h2>
+    <div class="brief">
+      <p class="ask"><strong>The ask:</strong> make public fusion money conditional on knowing where the lithium came from, and fund a lithium-6 supply that does not use mercury or weapons plants.</p>
+
+      <h3>The problem</h3>
+      <p>Fusion needs little lithium by battery standards, but it needs a special kind. One power-plant blanket holds about 100 tonnes of lithium-6, and almost all of today's enrichment capacity sits inside nuclear-weapons programs in Russia and China that use a mercury process. The last time the United States did it at scale, Oak Ridge lost hundreds of tonnes of mercury into the land and a creek, and the cleanup is still going. Upstream, the same lithium passes through salt flats where Indigenous communities say they were not consulted, Zimbabwean mines on the U.S. child-labor list, and Chinese refining that the U.S. now treats as a forced-labor priority.</p>
+
+      <h3>Why now</h3>
+      <p>Commercial fusion is roughly a decade from needing tonnes of lithium-6. Supply chains are cheapest to shape before contracts and plants lock them in. Pilot plants in the U.S., U.K., and Europe are already signing material deals, and much of the money is public.</p>
+
+      <h3>Three recommendations</h3>
+      <div class="rec">
+        <h4>1. Put conditions on public fusion funding</h4>
+        <p>Any DOE, UKAEA, or ITER-funded project that buys lithium or breeder material should report the mine or brine of origin, the refiner, and the enrichment plant, and show due diligence that follows the <a href="https://www.oecd.org/en/topics/sub-issues/due-diligence-guidance-for-responsible-business-conduct/responsible-mineral-supply-chains.html" target="_blank" rel="noopener">OECD guidance for minerals</a>, which applies to all minerals, not only conflict minerals. Brine sources should show evidence of free, prior and informed consent.</p>
+        <p class="who">Who acts: DOE Office of Science and fusion milestone programs; UKAEA (LIBRTI); ITER Organization procurement.</p>
+      </div>
+      <div class="rec">
+        <h4>2. Fund mercury-free lithium-6, and keep public money away from mercury and weapons plants</h4>
+        <p>Use the DOE Isotope Program and grants to scale cleaner methods such as chromatography, crown-ether exchange, and electrochemical separation, which companies like Precision Periodic and Molten Salt Solutions are developing. Do not buy enriched lithium made by COLEX or by plants inside weapons complexes, in line with the Minamata Convention on mercury.</p>
+        <p class="who">Who acts: DOE Isotope Program; Congress (appropriations); U.K. Department for Energy Security and Net Zero.</p>
+      </div>
+      <div class="rec">
+        <h4>3. Close the isotope gap in trade rules</h4>
+        <p>Make clear that UFLPA lithium enforcement covers enriched lithium and lithium compounds, and add an origin declaration for lithium isotopes at import. This blocks a route where Xinjiang-linked or Russian lithium reaches fusion labs through isotope distributors.</p>
+        <p class="who">Who acts: Forced Labor Enforcement Task Force (DHS); U.S. Customs and Border Protection; Commerce (export controls).</p>
+      </div>
+
+      <h3>The tech piece: a Fusion Lithium Passport</h3>
+      <p>A shared record that travels with each batch of lithium, from mine to blanket. Each step adds who handled it and what they checked. Before a contract is signed, the buyer runs the companies through ownership and trade checks in a tool like Sayari, which is exactly what this page does by hand.</p>
+      <div class="passport" aria-label="Passport fields">
+        <div><b>Mine or brine</b>Location, owner, consent evidence, labor audit</div>
+        <div><b>Refiner</b>Plant, owner, Xinjiang screening</div>
+        <div><b>Enrichment</b>Method (no mercury), plant, owner</div>
+        <div><b>Breeder maker</b>Material, enrichment level, batch</div>
+        <div><b>Reactor</b>Project, public funder, recycle plan</div>
+      </div>
+      <p>It should also include a complaint channel, so affected communities can attach evidence to a batch record, not just companies.</p>
+
+      <h3>Limits and trade-offs</h3>
+      <ul>
+        <li>Conditions add cost and could slow early experiments. A phase-in for research quantities, under about 1 kg, would limit that.</li>
+        <li>A passport only works if refiners and enrichers take part. Public funding is the lever, because most fusion buyers today are publicly funded.</li>
+        <li>Tracing tools see ownership and trade, not working conditions. Audits and community voice are still needed.</li>
+        <li>Lithium-6 enrichment is export-controlled because of weapons, so some records will need restricted access.</li>
+      </ul>
+
+      <h3>How we would know it worked</h3>
+      <ul>
+        <li>Share of publicly funded fusion lithium with a known mine of origin.</li>
+        <li>Tonnes of lithium-6 made without mercury outside weapons programs.</li>
+        <li>Complaints filed by communities and how they were resolved.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="method" aria-labelledby="method-h">
+    <span class="eyebrow">Explainability</span>
+    <h2 id="method-h">How this page was made</h2>
+    <div class="method">
+      <p><strong>Research tools.</strong> Every web source was found with Tavily search, and the key claims were checked against the full page text with Tavily extract. That covers government, NGO, academic, news, and company sources. Company and trade evidence came from Sayari's knowledge graph, using entity records and trade relationships rather than shipment name searches, which often return unrelated records. Each source is tagged "via Tavily" or "via Sayari."</p>
+      <p><strong>Tavily queries used.</strong> Lithium-6 enrichment for fusion; ITER breeder blankets; CFS and FLiBe; Y-12 mercury; DOE lithium-6 programs; Atacama Indigenous water rights; Jujuy protests; Zimbabwe lithium labor; the DOL goods list; UFLPA and lithium; China's refining share; UKAEA LIBRTI; CFS lithium suppliers; Greenbushes community impacts; Isoflex; the scope of the OECD minerals guidance.</p>
+      <p><strong>Sayari findings used here.</strong> NCCP's trade relationships, its listing on Ukraine's sanctions list, Bikita's trade link to Sinomine's Hainan lithium company, and a count of lithium hydroxide exporters by country. Sayari's own risk scores are not shown.</p>
+      <p><strong>Evidence rules.</strong> No company is rated ethical or unethical. Allegations are attributed to whoever reported them. Trade links are labeled "product not confirmed." Projections are labeled as projections.</p>
+      <p><strong>AI use.</strong> The page was coded and drafted with Claude (Anthropic) in Claude Code. Each fact traces to a source listed below. The student author reviewed the sources and owns the conclusions.</p>
+      <p><strong>Still unknown.</strong></p>
+      <ul id="unknowns"></ul>
+      <p>The records behind this page are in <a href="https://github.com/jmayes14/fusion-materials-map/blob/main/research/fusion-lithium-2026-11.json" target="_blank" rel="noopener"><code>research/fusion-lithium-2026-11.json</code></a>.</p>
+    </div>
+    <h3>Sources</h3>
+    <ol class="sources" id="sources"></ol>
+  </section>
+
+  <footer>Iteration 1 for "Mapping the Human Cost of Fusion Energy Materials." Research snapshot from 9 November 2026. This page will change.</footer>
+</main>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/topojson-client@3.1.0/dist/topojson-client.min.js"></script>
+<script>
+const SOURCES = {
+  iisdChile: ["IISD, Lithium Mining in Chile (Sept 2026)", "https://www.iisd.org/system/files/2026-09/lithium-mining-chile.pdf"],
+  reutersAtacama: ["Reuters, As Chile revs up lithium plans, Indigenous people demand more control (7 Apr 2025)", "https://www.reuters.com/world/americas/chile-revs-up-lithium-plans-indigenous-people-demand-more-control-2025-04-07"],
+  fidh: ["FIDH, Lithium and Human Rights in the High Andean Salt Flats", "https://www.fidh.org/IMG/pdf/lithium_and_human_rights_in_the_high_andean_salt_flats_of_argentina_bolivia_and_chile.pdf"],
+  energyMonitor: ["Energy Monitor, Lithium in Argentina: how to make it sustainable", "https://www.energymonitor.ai/sectors/extractive-industries/lithium-in-argentina-how-to-make-it-sustainable"],
+  dolList: ["U.S. Department of Labor, List of Goods Produced by Child Labor or Forced Labor (2024)", "https://www.dol.gov/agencies/ilab/reports/child-labor/list-of-goods"],
+  mongabayBikita: ["Mongabay, Locals slam Zimbabwe for turning a blind eye to Chinese miner's violations (Apr 2024)", "https://news.mongabay.com/2024/04/locals-slam-zimbabwe-for-turning-a-blind-eye-to-chinese-miners-violations"],
+  ieaGcmo2025: ["IEA, Global Critical Minerals Outlook 2025", "https://iea.blob.core.windows.net/assets/ef5e9b70-3374-4caa-ba9d-19c72253bfc4/GlobalCriticalMineralsOutlook2025.pdf"],
+  ustrUflpa2025: ["USTR, FLETF release of the 2025 update to the UFLPA Strategy (Aug 2025)", "https://ustr.gov/about/policy-offices/press-office/press-releases/2025/august/forced-labor-enforcement-task-force-release-2025-update-uflpa-strategy"],
+  wardArxiv: ["Ward, Pearson, Scott and Lopes Cardozo, Lithium enrichment threatens to curb fusion deployment, arXiv:2605.04707 (May 2026)", "https://arxiv.org/html/2605.04707v1"],
+  ostiY12: ["OSTI, History of mercury use and environmental contamination at the Oak Ridge Y-12 Plant", "https://www.osti.gov/biblio/1037053"],
+  atsdrY12: ["ATSDR (CDC), Y-12 Weapons Plant chemical releases into East Fork Poplar Creek", "https://archive.cdc.gov/www_atsdr_cdc_gov/hac/PHA/efork1/y12_p1.html"],
+  doeY12: ["DOE Office of Environmental Management, Y-12 National Security Complex", "https://www.energy.gov/orem/y-12-national-security-complex"],
+  wnaLithium: ["World Nuclear Association, Lithium", "https://world-nuclear.org/information-library/current-and-future-generation/lithium"],
+  precisionPeriodic: ["Precision Periodic, Scalable Lithium-6 and Lithium-7 Enrichment (23 Sept 2025)", "https://www.precisionperiodic.com/scalable-lithium-6-lithium-7-enrichment"],
+  moltenSalt: ["Molten Salt Solutions, Strategic agreements to supply enriched lithium for fusion (PR Newswire, 24 Mar 2026)", "https://finance.yahoo.com/sectors/energy/articles/molten-salt-solutions-signs-strategic-160100744.html"],
+  marathon: ["Marathon Fusion, Demonstrates lithium and hydrogen isotope enrichment using plasma centrifuge (PR Newswire, 27 Aug 2026)", "https://www.prnewswire.com/news-releases/marathon-fusion-demonstrates-lithium-and-hydrogen-isotope-enrichment-using-proprietary-plasma-centrifuge-technology-302861336.html"],
+  sbirLi6: ["SBIR.gov, Award 218860: Precision Periodic lithium-6 and lithium-7 separation", "https://www.sbir.gov/awards/218860"],
+  abcGreenbushes: ["ABC News, Talison 'underestimated' impact of mine expansion on Greenbushes community (1 Apr 2025)", "https://www.abc.net.au/news/2025-04-01/lithium-talison-underestimated-impact-greenbushes-mine-expansion/105117068"],
+  oecdMinerals: ["OECD, Responsible mineral supply chains (Due Diligence Guidance)", "https://www.oecd.org/en/topics/sub-issues/due-diligence-guidance-for-responsible-business-conduct/responsible-mineral-supply-chains.html"],
+  ornlTbm: ["OSTI, ITER test blanket module design basis", "https://www.osti.gov/servlets/purl/1165762"],
+  materionCfs: ["Materion, Supply agreement with Commonwealth Fusion Systems (28 Oct 2025)", "https://www.materion.com/en/about-materion/news/performance-alloys/materion-supply-agreement-with-commonwealth-fusion"],
+  iterTbm: ["ITER Organization, Tritium Breeding", "https://www.iter.org/machine/supporting-systems/tritium-breeding"],
+  neiEnriched: ["Nuclear Engineering International, Enriched lithium and advanced nuclear", "https://www.neimagazine.com/analysis/enriched-lithium-and-advanced-nuclear"],
+  cfsLibrti: ["Commonwealth Fusion Systems, CFS named first international partner in UKAEA's LIBRTI program (1 July 2026)", "https://cfs.energy/news-and-media/cfs-named-first-international-partner-in-ukaeas-librti-program"],
+  sayariTrade: ["Sayari, lithium hydroxide (HS 282520) supplier facets, 2024 onward (retrieved 9 Nov 2026)", "https://graph.sayari.com"],
+  sayariNccp: ["Sayari, Novosibirsk Chemical Concentrates Plant entity record and trade relationships", "https://graph.sayari.com/resource/entity/uGeE9Bs2EvxWqf4mTsQFRQ"],
+  sayariBikita: ["Sayari, Bikita Minerals (Pvt) Ltd trade relationships", "https://graph.sayari.com/resource/entity/RwcU9n6KEGr1upZT1NyNEg"]
+};
+
+const STAGES = [
+  { id: "extract", n: 1, name: "Extract", what: "Brine from salt flats, or hard-rock spodumene", flag: "Consent, water, child labor",
+    summary: "Lithium is pumped as brine from salt flats in Chile and Argentina, or mined as hard rock in Australia, Zimbabwe, and elsewhere. No fusion company has said which mine its lithium comes from.",
+    facts: [
+      { t: "Lithium mining in the Salar de Atacama takes place on the ancestral lands of the Lickanantay and Atacameño people.", s: "iisdChile", l: ["land"] },
+      { t: "Codelco and SQM plan to raise Atacama lithium output by up to 33% through 2060, and Indigenous groups are demanding more control.", s: "reutersAtacama", l: ["land"] },
+      { t: "Jujuy, Argentina, reformed its constitution in 2023 without the consultation owed to Indigenous peoples, easing extraction on community land.", s: "fidh", l: ["land"] },
+      { t: "Communities of Salinas Grandes protested for 15 days in 2023 after the reform vote.", s: "energyMonitor", l: ["land"] },
+      { t: "The U.S. Department of Labor lists lithium from Zimbabwe as produced with child labor.", s: "dolList", l: ["labor"], k: "U.S. government list" },
+      { t: "Workers and villagers near the Bikita lithium mine accuse the owner, Sinomine, and the government of displacements, spills, labor abuses, and a death.", s: "mongabayBikita", l: ["labor", "land"], k: "Reported allegation" },
+      { t: "At Greenbushes in Western Australia, the world's largest hard-rock lithium mine, operator Talison said dust exceeded licence limits at least eight times in 2024 and said it had underestimated its impact on the town.", s: "abcGreenbushes", l: ["land"] },
+      { t: "Sayari trade relationships show Bikita Minerals shipping to Sinomine's lithium company in Hainan, China.", s: "sayariBikita", l: [], k: "Trade link, product not confirmed" }
+    ],
+    unknown: ["Which mine or brine any fusion lithium comes from.", "Where Bikita's lithium goes after Sinomine's Hainan company."] },
+  { id: "refine", n: 2, name: "Refine", what: "Ore and brine become lithium carbonate or hydroxide", flag: "Forced labor",
+    summary: "Concentrate and brine are turned into battery-grade and nuclear-grade lithium chemicals. China dominates this step.",
+    facts: [
+      { t: "China refines 70% of the world's lithium chemicals and 95% of hard-rock ore refining.", s: "ieaGcmo2025", l: ["forced"] },
+      { t: "In August 2025 the U.S. Forced Labor Enforcement Task Force named lithium a high-priority sector for enforcement under the Uyghur Forced Labor Prevention Act.", s: "ustrUflpa2025", l: ["forced"], k: "U.S. government strategy" },
+      { t: "Sayari trade records since 2024 show 445 Chinese exporters of lithium hydroxide, more than any other country; the U.S. has 247 and South Korea 214.", s: "sayariTrade", l: [] }
+    ],
+    unknown: ["Whether any lithium chemical bought for fusion research passed through Xinjiang."] },
+  { id: "enrich", n: 3, name: "Enrich", what: "Separate lithium-6 from lithium-7", flag: "Mercury, weapons, sanctions",
+    summary: "Natural lithium is 7.5% lithium-6, and blankets need 30 to 90%. This step is unique to fusion and is the bottleneck. At industrial scale it has only ever been done for nuclear weapons.",
+    facts: [
+      { t: "Industrial-scale enrichment has been done only for nuclear weapons. The mercury-based COLEX process is used today in China, North Korea, and Russia.", s: "wardArxiv", l: ["weapons", "toxic"] },
+      { t: "A power-plant blanket holds about 100 tonnes of lithium-6 per gigawatt (thermal), and the authors call today's global enrichment capacity near negligible.", s: "wardArxiv", l: [], k: "Projection" },
+      { t: "Oak Ridge's Y-12 plant used about 11 million kg of mercury for lithium separation from 1950 to 1963.", s: "ostiY12", l: ["toxic"] },
+      { t: "The U.S. Department of Energy estimated 330 tonnes of mercury were released, 110 into East Fork Poplar Creek, and could not account for 750 more.", s: "atsdrY12", l: ["toxic"], k: "U.S. government record" },
+      { t: "Mercury is still Y-12's top cleanup priority. A treatment plant is due in 2027.", s: "doeY12", l: ["toxic"] },
+      { t: "Russia's Novosibirsk Chemical Concentrates Plant (NCCP), part of Rosatom's fuel company TVEL, meets up to 80% of world demand for lithium-7, a by-product of lithium-6 enrichment for weapons.", s: "wnaLithium", l: ["weapons"] },
+      { t: "NCCP appears on Ukraine's national sanctions list.", s: "sayariNccp", l: ["weapons"], k: "Government list via Sayari" },
+      { t: "Sayari shows NCCP shipping to China's state nuclear trader CNEIC, to Isoflex USA (an isotope distributor), to the Petten research reactor in the Netherlands, to Albemarle Germany, and to battery makers and nuclear plants. NCCP also makes reactor fuel, so the product in each link is not known.", s: "sayariNccp", l: ["weapons"], k: "Trade link, product not confirmed" },
+      { t: "Mercury-free methods are in development. Precision Periodic announced a chromatography process backed by a DOE grant in September 2025.", s: "precisionPeriodic", l: [] },
+      { t: "In March 2026, Molten Salt Solutions announced agreements to supply enriched lithium to Type One Energy and Gauss Fusion, using a solvent exchange process.", s: "moltenSalt", l: [], k: "Company statement" },
+      { t: "In August 2026, Marathon Fusion announced it had enriched lithium isotopes in a plasma centrifuge, a method that doesn't use mercury, with support from DOE's ARPA-E.", s: "marathon", l: [], k: "Company statement" },
+      { t: "A federal SBIR award summary for Precision Periodic says the U.S. has no domestic supply of lithium-6 or lithium-7 and is completely reliant on Russia and China.", s: "sbirLi6", l: ["weapons"], k: "Grant summary" }
+    ],
+    unknown: ["Current lithium-6 capacity and stockpiles in Russia, China, and the U.S.", "Sayari's ownership record for NCCP shows only a regional property office, not TVEL or Rosatom."] },
+  { id: "fabricate", n: 4, name: "Fabricate", what: "Make breeder pebbles, lithium-lead, or FLiBe salt", flag: "Beryllium, worker exposure",
+    summary: "Enriched lithium becomes a breeder material: ceramic pebbles such as lithium orthosilicate, liquid lithium-lead, or molten FLiBe salt (lithium and beryllium fluoride).",
+    facts: [
+      { t: "China's ITER test blanket module uses lithium orthosilicate pebbles enriched to 60% lithium-6.", s: "ornlTbm", l: [] },
+      { t: "Materion will supply beryllium fluoride from Elmore, Ohio, for the FLiBe salt in Commonwealth Fusion Systems' ARC plants. The lithium source for that salt is not published.", s: "materionCfs", l: [] }
+    ],
+    unknown: ["Who will make breeder materials at commercial scale, and from whose lithium."] },
+  { id: "deploy", n: 5, name: "Deploy", what: "Breeder blankets go into reactors", flag: "Tritium handling",
+    summary: "Blankets surround the plasma, absorb neutrons, breed tritium, and carry heat away. Test programs are running now, and power plants are planned for the 2030s.",
+    facts: [
+      { t: "ITER will test four blanket concepts from Europe, Japan, China, and Korea.", s: "iterTbm", l: [] },
+      { t: "ITER's test blanket module needed about 200 kg of enriched lithium.", s: "neiEnriched", l: [] },
+      { t: "UKAEA's £220 million LIBRTI programme aims to show net tritium production. Commonwealth Fusion Systems became its first international partner in July 2026.", s: "cfsLibrti", l: [] }
+    ],
+    unknown: ["Whether any fusion developer has a lithium sourcing or human-rights policy. A Tavily search found such policies from lithium and battery companies but none from a fusion developer."] },
+  { id: "after", n: 6, name: "After use", what: "Spent blankets, recycling, waste", flag: "Waste, recycling",
+    summary: "Spent blankets contain tritium and activated material. Recycling them would cut how much new enriched lithium is needed.",
+    facts: [
+      { t: "Without recycling, replacing blankets could use up to 12 tonnes of lithium-6 per gigawatt (electric) each year. With 90% recycling it would be about 1.2 tonnes.", s: "neiEnriched", l: ["toxic"], k: "Projection" }
+    ],
+    unknown: ["Where spent blankets would be processed, and who would carry that risk."] }
+];
+
+// Sites. Coordinates are approximate. "region" means a country or regional marker, not a plant.
+const SITES = [
+  { id: "atacama", stage: "extract", name: "Salar de Atacama", where: "Antofagasta, Chile", at: [-68.25, -23.5], text: "Brine operations run by SQM (with Codelco) and Albemarle on Lickanantay and Atacameño land.", s: ["iisdChile", "reutersAtacama"] },
+  { id: "jujuy", stage: "extract", name: "Jujuy salt flats", where: "Jujuy, Argentina", at: [-66.4, -23.5], text: "Includes Cauchari-Olaroz and Salinas Grandes, where communities protested the 2023 constitutional reform.", s: ["fidh", "energyMonitor"] },
+  { id: "greenbushes", stage: "extract", name: "Greenbushes", where: "Western Australia", at: [116.06, -33.86], text: "A large hard-rock lithium mine run by Talison. A state report found dust posed a health risk, and Talison said dust exceeded licence limits at least eight times in 2024.", s: ["abcGreenbushes"] },
+  { id: "bikita", stage: "extract", name: "Bikita", where: "Masvingo, Zimbabwe", at: [31.3, -20.08], text: "Owned by Sinomine since 2022. Zimbabwe's lithium is on the U.S. child-labor list, and residents have reported abuses near this mine.", s: ["dolList", "mongabayBikita", "sayariBikita"] },
+  { id: "china", stage: "refine", name: "China (country)", where: "Country-level marker", at: [112, 31], region: true, text: "Refines 70% of the world's lithium chemicals.", s: ["ieaGcmo2025"] },
+  { id: "hainan", stage: "refine", name: "Sinomine (Hainan) Lithium", where: "Yangpu, Hainan, China", at: [109.2, 19.7], text: "Receives shipments from Bikita, according to Sayari trade records.", s: ["sayariBikita"] },
+  { id: "xinjiang", stage: "refine", name: "Xinjiang (region)", where: "Region-level marker", at: [87.6, 43.8], region: true, text: "Region-wide UFLPA presumption of forced labor. Lithium has been a high-priority enforcement sector since August 2025.", s: ["ustrUflpa2025"] },
+  { id: "nccp", stage: "enrich", name: "NCCP", where: "Novosibirsk, Russia", at: [82.93, 55.03], text: "Rosatom-group plant and the main world supplier of lithium-7, a by-product of lithium-6 enrichment. On Ukraine's sanctions list.", s: ["wnaLithium", "sayariNccp"] },
+  { id: "y12", stage: "enrich", name: "Y-12, Oak Ridge", where: "Tennessee, United States", at: [-84.25, 35.99], text: "Made about 442 tonnes of lithium-6 hydroxide from 1953 to 1963 using mercury. Mercury cleanup continues.", s: ["wardArxiv", "atsdrY12", "doeY12"] },
+  { id: "pp", stage: "enrich", name: "Precision Periodic", where: "Orlando, Florida", at: [-81.38, 28.54], text: "Developing mercury-free lithium-6 enrichment with a DOE grant.", s: ["precisionPeriodic"] },
+  { id: "swip", stage: "fabricate", name: "SWIP", where: "Chengdu, China", at: [104.07, 30.67], text: "Southwestern Institute of Physics, developer of China's ITER test blanket with 60% enriched lithium pebbles.", s: ["ornlTbm"] },
+  { id: "materion", stage: "fabricate", name: "Materion", where: "Elmore, Ohio", at: [-83.3, 41.48], text: "Supplies beryllium fluoride for CFS's FLiBe salt. Shown because FLiBe salt combines lithium fluoride with beryllium fluoride; Materion is not a lithium supplier.", s: ["materionCfs"] },
+  { id: "iter", stage: "deploy", name: "ITER", where: "Saint-Paul-lès-Durance, France", at: [5.76, 43.7], text: "Will test four tritium-breeding blanket designs.", s: ["iterTbm", "neiEnriched"] },
+  { id: "cfs", stage: "deploy", name: "Commonwealth Fusion Systems", where: "Devens, Massachusetts", at: [-71.61, 42.54], text: "Plans FLiBe blankets for ARC power plants. Its lithium source is not published.", s: ["materionCfs", "cfsLibrti"] },
+  { id: "ukaea", stage: "deploy", name: "UKAEA LIBRTI", where: "Culham, United Kingdom", at: [-1.23, 51.66], text: "£220 million programme to demonstrate tritium breeding.", s: ["cfsLibrti"] },
+  { id: "petten", stage: "deploy", name: "NRG Petten", where: "Petten, Netherlands", at: [4.66, 52.79], text: "Nuclear research reactor that tests materials. Sayari shows it as a trade partner of NCCP; the product is not confirmed.", s: ["sayariNccp"] },
+  { id: "cneic", stage: "refine", name: "CNEIC", where: "Beijing, China", at: [116.4, 39.9], text: "China Nuclear Energy Industry Corporation, a state nuclear trader. Sayari shows it as a trade partner of NCCP; the product is not confirmed.", s: ["sayariNccp"] }
+];
+
+// Links. "source" = a published agreement; "sayari" = a trade relationship, product not confirmed.
+const FLOWS = [
+  { from: "bikita", to: "hainan", kind: "sayari" },
+  { from: "nccp", to: "cneic", kind: "sayari" },
+  { from: "nccp", to: "petten", kind: "sayari" },
+  { from: "materion", to: "cfs", kind: "source" },
+  { from: "cfs", to: "ukaea", kind: "source" }
+];
+
+const color = id => getComputedStyle(document.documentElement).getPropertyValue("--" + id).trim();
+// Every web source was found and read with Tavily (search and extract); entity and trade data came from Sayari.
+const via = k => k.startsWith("sayari") ? "Sayari" : "Tavily";
+const srcLink = k => SOURCES[k] ? `<a href="${SOURCES[k][1]}" target="_blank" rel="noopener">${SOURCES[k][0].split(",")[0]}</a> <span class="via">via ${via(k)}</span>` : "";
+let activeStage = "enrich";
+let activeLens = "all";
+
+// ---- Systems map ----
+const chainEl = document.getElementById("chain");
+chainEl.innerHTML = STAGES.map(s => `<li><button class="stage" data-stage="${s.id}" style="--c: var(--${s.id})" aria-pressed="false">
+  <span class="num">${s.n}</span><span class="name">${s.name}</span><span class="what">${s.what}</span><span class="flag">${s.flag}</span></button></li>`).join("");
+
+function renderDetail() {
+  const s = STAGES.find(x => x.id === activeStage);
+  document.querySelectorAll(".stage").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.stage === activeStage)));
+  const facts = s.facts.map(f => {
+    const risk = f.l.length > 0;
+    const dim = activeLens !== "all" && !f.l.includes(activeLens);
+    const tags = (f.k ? `<span class="tag kind">${f.k}</span>` : "") ;
+    return `<li class="${risk ? "is-risk" : ""} ${dim ? "is-dim" : ""}">${f.t}<div class="tags">${tags}<span class="src">Source: ${srcLink(f.s)}</span></div></li>`;
+  }).join("");
+  document.getElementById("detail").innerHTML = `<div><span class="eyebrow">Step ${s.n} of 6</span><h3>${s.name}</h3><p class="summary">${s.summary}</p><ul class="facts">${facts}</ul></div>
+    <div class="unknown"><h4>Still unknown</h4><ul>${s.unknown.map(u => `<li>${u}</li>`).join("")}</ul></div>`;
+  highlightGlobe();
+}
+chainEl.addEventListener("click", e => {
+  const b = e.target.closest(".stage"); if (!b) return;
+  activeStage = b.dataset.stage; renderDetail(); spinTo(SITES.filter(x => x.stage === activeStage));
+});
+document.querySelectorAll(".lens").forEach(b => b.addEventListener("click", () => {
+  activeLens = b.dataset.lens;
+  document.querySelectorAll(".lens").forEach(x => x.setAttribute("aria-pressed", String(x === b)));
+  // Jump to the first stage that has this risk, if the current one has none.
+  const cur = STAGES.find(x => x.id === activeStage);
+  if (activeLens !== "all" && !cur.facts.some(f => f.l.includes(activeLens))) {
+    const first = STAGES.find(x => x.facts.some(f => f.l.includes(activeLens)));
+    if (first) activeStage = first.id;
+  }
+  renderDetail();
+}));
+
+// ---- Globe ----
+const svg = d3.select("#globe");
+const W = 600, H = 600;
+const projection = d3.geoOrthographic().translate([W / 2, H / 2]).scale(285).clipAngle(90).rotate([40, -15]);
+const path = d3.geoPath(projection);
+const gSphere = svg.append("path").datum({ type: "Sphere" }).attr("class", "sphere");
+const gGrat = svg.append("path").datum(d3.geoGraticule10()).attr("class", "grat");
+const gLand = svg.append("path").attr("class", "land");
+const gFlows = svg.append("g");
+const gSites = svg.append("g");
+const gLabels = svg.append("g");
+let land = null;
+const byId = Object.fromEntries(SITES.map(s => [s.id, s]));
+
+function visible(lonlat) {
+  const r = projection.rotate();
+  return d3.geoDistance(lonlat, [-r[0], -r[1]]) < Math.PI / 2 - 0.02;
+}
+function draw() {
+  gSphere.attr("d", path); gGrat.attr("d", path);
+  if (land) gLand.attr("d", path(land));
+  gFlows.selectAll("path").data(FLOWS).join("path")
+    .attr("class", d => "flow " + d.kind)
+    .attr("stroke", d => color(byId[d.from].stage))
+    .attr("d", d => path({ type: "LineString", coordinates: [byId[d.from].at, byId[d.to].at] }));
+  gSites.selectAll("circle").data(SITES, d => d.id).join("circle")
+    .attr("class", "site")
+    .attr("r", d => d.region ? 9 : 6.5)
+    .attr("fill", d => color(d.stage))
+    .attr("fill-opacity", d => d.region ? 0.45 : 1)
+    .attr("display", d => visible(d.at) ? null : "none")
+    .attr("cx", d => projection(d.at)[0]).attr("cy", d => projection(d.at)[1])
+    .on("click", (e, d) => showSite(d));
+  gLabels.selectAll("text").data(SITES, d => d.id).join("text")
+    .attr("class", "label")
+    .attr("display", d => visible(d.at) && d.stage === activeStage ? null : "none")
+    .attr("x", d => projection(d.at)[0] + 9).attr("y", d => projection(d.at)[1] + 4)
+    .text(d => d.name);
+  highlightGlobe();
+}
+function highlightGlobe() {
+  gSites.selectAll("circle").classed("is-dim", d => d.stage !== activeStage);
+  gLabels.selectAll("text").attr("display", d => visible(d.at) && d.stage === activeStage ? null : "none");
+}
+function showSite(d) {
+  gSites.selectAll("circle").classed("is-active", x => x.id === d.id);
+  const st = STAGES.find(s => s.id === d.stage);
+  document.getElementById("site-card").innerHTML = `<span class="eyebrow" style="color: var(--${d.stage})">Step ${st.n}: ${st.name}</span>
+    <h3>${d.name}</h3><p class="where">${d.where}${d.region ? " · not a single plant" : ""}</p><p>${d.text}</p>
+    <p class="src">${d.s.length ? "Sources: " + d.s.map(srcLink).join(", ") : "No source reviewed yet for this site."}</p>`;
+}
+const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+function spinTo(sites) {
+  if (!sites.length) return;
+  const c = d3.geoCentroid({ type: "MultiPoint", coordinates: sites.map(s => s.at) });
+  const target = [-c[0], -Math.max(-50, Math.min(50, c[1]))];
+  const interp = d3.interpolate(projection.rotate(), target);
+  if (reduceMotion) { projection.rotate(target); draw(); return; }
+  d3.transition().duration(1400).ease(d3.easeCubicInOut).tween("spin", () => t => { projection.rotate(interp(t)); draw(); });
+}
+svg.call(d3.drag().on("drag", e => {
+  const r = projection.rotate(), k = 0.25;
+  projection.rotate([r[0] + e.dx * k, Math.max(-80, Math.min(80, r[1] - e.dy * k))]); draw();
+}));
+document.getElementById("globe-tools").innerHTML = [["South America", [68, 25]], ["Africa", [-25, 15]], ["China and Russia", [-100, -40]], ["Europe and U.S.", [40, -40]]]
+  .map(([n, r]) => `<button data-r="${r}">${n}</button>`).join("");
+document.getElementById("globe-tools").addEventListener("click", e => {
+  const b = e.target.closest("button"); if (!b) return;
+  const target = b.dataset.r.split(",").map(Number);
+  const interp = d3.interpolate(projection.rotate(), target);
+  if (reduceMotion) { projection.rotate(target); draw(); return; }
+  d3.transition().duration(1200).tween("spin", () => t => { projection.rotate(interp(t)); draw(); });
+});
+document.getElementById("legend").innerHTML = STAGES.map(s => `<span><i style="background: var(--${s.id})"></i>${s.n}. ${s.name}</span>`).join("") +
+  `<span><span class="ln"></span>Published agreement or partnership</span><span><span class="ln dash"></span>Sayari trade link, product not confirmed</span><span>Faded large dots are country or region markers, not plants.</span>`;
+
+fetch("https://cdn.jsdelivr.net/npm/world-atlas@2.0.2/land-110m.json")
+  .then(r => r.json())
+  .then(world => { land = topojson.feature(world, world.objects.land); draw(); })
+  .catch(() => { draw(); document.getElementById("site-card").insertAdjacentHTML("beforeend", `<p class="map-error">The coastline file did not load. The dots still work.</p>`); });
+
+// ---- Sources and unknowns ----
+document.getElementById("sources").innerHTML = Object.entries(SOURCES).map(([k, [t, u]]) => `<li><a href="${u}" target="_blank" rel="noopener">${t}</a> <span class="via">via ${via(k)}</span></li>`).join("");
+document.getElementById("unknowns").innerHTML = [
+  "Which mine or brine any fusion company's lithium comes from. None has published it.",
+  "Current lithium-6 capacity and stockpiles in Russia, China, and the U.S.",
+  "Which product moves in each Sayari trade link shown here.",
+  "Whether any fusion developer has a human-rights policy for lithium."
+].map(u => `<li>${u}</li>`).join("");
+
+renderDetail();
+draw();
+spinTo(SITES.filter(x => x.stage === activeStage));
+window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", draw);
+</script>
+</body>
+</html>
