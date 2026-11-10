@@ -22,6 +22,14 @@ Live site: <https://jmayes14.github.io/fusion-materials-map/>
   enforcement, and proposes a "Fusion Lithium Passport."
 - **Method and sources:** each source is tagged "via Tavily" or "via Sayari."
 
+## Methodology
+
+The full methodology is on the site at
+[docs/methodology.html](./docs/methodology.html). It covers the question and
+scope, the six-step chain model, how sources were searched and verified with
+Tavily, how company and trade links were traced with Sayari, evidence labels,
+risk assessment, AI use, and limits.
+
 ## Research
 
 - Web sources were found with Tavily search, and key claims were checked
