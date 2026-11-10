@@ -101,11 +101,11 @@
   #globe .sphere { fill: var(--sea); }
   #globe .land { fill: var(--land); stroke: var(--land-line); stroke-width: 0.5; }
   #globe .grat { fill: none; stroke: var(--land-line); stroke-opacity: 0.25; stroke-width: 0.4; }
-  #globe .flow { fill: none; stroke-width: 1.8; }
+  #globe .flow { fill: none; stroke-width: 2; stroke-opacity: 0.9; }
   #globe .flow.sayari { stroke-dasharray: 5 4; }
-  #globe .site { cursor: pointer; stroke: var(--panel); stroke-width: 1.5; }
-  #globe .site.is-dim { opacity: 0.18; }
-  #globe .site.is-active { stroke: var(--ink); stroke-width: 2.5; }
+  #globe .site { cursor: pointer; stroke: #ffffff; stroke-width: 2; filter: drop-shadow(0 0 3px rgb(255 255 255 / 55%)) saturate(1.35) brightness(1.15); }
+  #globe .site.is-dim { opacity: 0.5; }
+  #globe .site.is-active { stroke: var(--ink); stroke-width: 3; }
   #globe .label { font-size: 11px; fill: var(--ink); paint-order: stroke; stroke: var(--page); stroke-width: 3px; pointer-events: none; }
   .globe-tools { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.6rem; }
   .globe-tools button { border: 1px solid var(--line); background: var(--raised); color: var(--ink); border-radius: 999px; padding: 0.35rem 0.8rem; cursor: pointer; font-size: 0.85rem; }
@@ -214,6 +214,27 @@
     </div>
   </section>
 
+  <section id="sayari" aria-labelledby="sayari-h">
+    <span class="eyebrow">Company and trade evidence</span>
+    <h2 id="sayari-h">What Sayari shows</h2>
+    <p class="section-intro">Sayari is a knowledge graph built from corporate registries, customs and trade records, procurement data, and sanctions lists. It answers the question the web can't: which named companies actually trade with each other. Each row links to the record in Sayari. A trade link proves the two companies traded, not that a given shipment went to fusion.</p>
+    <div class="shell table-scroll">
+      <table>
+        <thead><tr><th>Link found</th><th>Kind of evidence</th><th>What it means</th><th>Record</th></tr></thead>
+        <tbody>
+          <tr><td>Five suppliers in Russia's state nuclear complex → <strong>Isoflex USA</strong>: NCCP, the Electrochemical Plant (Zelenogorsk), the Siberian Chemical Combine, Elektrokhimpribor, and Isotope JSC</td><td>Trade records, filtered to isotope and lithium-chemical product codes</td><td>A U.S. isotope distributor imports isotopes or lithium chemicals from Russia's weapons-era nuclear complex. This is the clearest route by which Russian enriched lithium could reach U.S. labs.</td><td><a href="https://graph.sayari.com/resource/entity/AEGsjKeoKLf8DAjnFUikgw" target="_blank" rel="noopener">Isoflex USA</a></td></tr>
+          <tr><td><strong>NCCP</strong> → China's state nuclear trader CNEIC, the Petten research reactor, Albemarle Germany, battery makers, and nuclear plants</td><td>Trade records, product not confirmed</td><td>The world's main lithium-7 plant sells into Western research, battery, and lithium supply chains.</td><td><a href="https://graph.sayari.com/resource/entity/uGeE9Bs2EvxWqf4mTsQFRQ" target="_blank" rel="noopener">NCCP</a></td></tr>
+          <tr><td>Kurchatov Institute and Mining and Chemical Combine → <strong>NCCP</strong></td><td>Russian procurement records</td><td>NCCP works under contract for central institutions of Russia's nuclear complex, including a former plutonium-production site.</td><td><a href="https://graph.sayari.com/resource/entity/uGeE9Bs2EvxWqf4mTsQFRQ" target="_blank" rel="noopener">NCCP</a></td></tr>
+          <tr><td><strong>Xinjiang Nonferrous Metals</strong> → Nonferrous Lithium Salt Plant</td><td>Corporate ownership records</td><td>A group on the U.S. forced-labor entity list has a lithium chemicals unit.</td><td><a href="https://graph.sayari.com/resource/entity/3CswEP9tXc2H8ReYWPr9cQ" target="_blank" rel="noopener">Xinjiang Nonferrous</a></td></tr>
+          <tr><td><strong>Bikita</strong> (Zimbabwe) → Sinomine (Hainan) Lithium → Sinomine sites in Namibia and Tanzania</td><td>Trade records, product not confirmed</td><td>Zimbabwean lithium enters a Chinese group trading hub, and the trail goes cold there.</td><td><a href="https://graph.sayari.com/resource/entity/RwcU9n6KEGr1upZT1NyNEg" target="_blank" rel="noopener">Bikita</a> · <a href="https://graph.sayari.com/resource/entity/NU2nnTaUlY9iKHBogeoPtQ" target="_blank" rel="noopener">Sinomine Hainan</a></td></tr>
+          <tr><td>KME, Linde Kryotechnik, Luvata, and others → <strong>Commonwealth Fusion Systems</strong></td><td>Trade records</td><td>The largest fusion company's visible imports are hardware. No lithium supplier shows up yet, so the chain can't be traced to a fusion buyer today.</td><td><a href="https://graph.sayari.com/resource/entity/pvo3Wv7gZb9K0hiji7-Nag" target="_blank" rel="noopener">CFS</a></td></tr>
+          <tr><td>Lithium hydroxide exporters by country, 2024 on</td><td>Trade records, aggregate counts</td><td>China 445, U.S. 247, South Korea 214: refining concentration shows up in customs data.</td><td><a href="https://graph.sayari.com" target="_blank" rel="noopener">Sayari</a></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="section-intro" style="margin-top:1rem"><strong>What Sayari could not show:</strong> NCCP's owner (the registry lists only a regional property office), the exact product in each Isoflex shipment, and which SQM buyers take lithium rather than fertilizer. Sayari's own risk scores are not used on this page; only government lists and records are.</p>
+  </section>
+
   <section id="risks" aria-labelledby="risk-h">
     <span class="eyebrow">Human rights risks</span>
     <h2 id="risk-h">Who could be harmed, step by step</h2>
@@ -227,7 +248,7 @@
           <tr><td>Extract (Australia)</td><td>Residents of Greenbushes, Western Australia</td><td>Mine dust exceeding licence limits; a state report found a significant health risk</td><td class="lvl gov">State government report</td></tr>
           <tr><td>Refine (China)</td><td>Uyghurs and other minorities in Xinjiang</td><td>State labor transfer programs; lithium is a high-priority sector for U.S. forced-labor enforcement</td><td class="lvl gov">U.S. government strategy</td></tr>
           <tr><td>Enrich (past: U.S.)</td><td>Residents and workers around Oak Ridge, Tennessee</td><td>Hundreds of tonnes of mercury released; cleanup still running in 2027</td><td class="lvl gov">U.S. government records</td></tr>
-          <tr><td>Enrich (now: Russia, China)</td><td>Workers and neighbors of closed weapons sites; the public, through proliferation</td><td>Mercury process with no public oversight; buying supports state weapons complexes</td><td class="lvl struct">Structural risk</td></tr>
+          <tr><td>Enrich (now: Russia, China)</td><td>Workers and neighbors of closed weapons sites; the public, through proliferation</td><td>Mercury process with no public oversight; buying supports state weapons complexes, which already trade with a U.S. isotope distributor</td><td class="lvl gov">Trade records (Sayari)</td></tr>
           <tr><td>Fabricate, deploy, after use</td><td>Plant workers</td><td>Tritium and beryllium exposure; waste from spent blankets</td><td class="lvl struct">Structural risk</td></tr>
         </tbody>
       </table>
@@ -259,7 +280,7 @@
       </div>
       <div class="rec">
         <h4>3. Close the isotope gap in trade rules</h4>
-        <p>Make clear that UFLPA lithium enforcement covers enriched lithium and lithium compounds, and add an origin declaration for lithium isotopes at import. This blocks a route where Xinjiang-linked or Russian lithium reaches fusion labs through isotope distributors.</p>
+        <p>Make clear that UFLPA lithium enforcement covers enriched lithium and lithium compounds, and add an origin declaration for lithium isotopes at import. Sayari's trade records show why: a U.S. isotope distributor imports isotopes or lithium chemicals from five plants in Russia's state nuclear complex, and a Xinjiang group on the forced-labor entity list runs a lithium salt plant. Isotope distributors sell to research labs, so an origin rule at import would reach material that buyers never see the source of.</p>
         <p class="who">Who acts: Forced Labor Enforcement Task Force (DHS); U.S. Customs and Border Protection; Commerce (export controls).</p>
       </div>
 
@@ -297,7 +318,7 @@
     <div class="method">
       <p><strong>Research tools.</strong> Every web source was found with Tavily search, and the key claims were checked against the full page text with Tavily extract. That covers government, NGO, academic, news, and company sources. Company and trade evidence came from Sayari's knowledge graph, using entity records and trade relationships rather than shipment name searches, which often return unrelated records. Each source is tagged "via Tavily" or "via Sayari."</p>
       <p><strong>Tavily queries used.</strong> Lithium-6 enrichment for fusion; ITER breeder blankets; CFS and FLiBe; Y-12 mercury; DOE lithium-6 programs; Atacama Indigenous water rights; Jujuy protests; Zimbabwe lithium labor; the DOL goods list; UFLPA and lithium; China's refining share; UKAEA LIBRTI; CFS lithium suppliers; Greenbushes community impacts; Isoflex; the scope of the OECD minerals guidance.</p>
-      <p><strong>Sayari findings used here.</strong> NCCP's trade relationships, its listing on Ukraine's sanctions list, Bikita's trade link to Sinomine's Hainan lithium company, and a count of lithium hydroxide exporters by country. Sayari's own risk scores are not shown.</p>
+      <p><strong>Sayari methods used.</strong> Entity search and profiles to confirm each company's identity by registry number; upstream supply-chain traces filtered by HS product code (Isoflex USA, Commonwealth Fusion Systems); trade relationships (NCCP, Bikita, Sinomine Hainan, SQM); procurement records (NCCP's contractors); ownership trees (Xinjiang Nonferrous); and trade aggregates (lithium hydroxide exporters). Shipment searches by company name returned unrelated records, so they were not used. Sayari's own risk scores are not shown. See the "What Sayari shows" table for every link.</p>
       <p><strong>Evidence rules.</strong> No company is rated ethical or unethical. Allegations are attributed to whoever reported them. Trade links are labeled "product not confirmed." Projections are labeled as projections.</p>
       <p><strong>AI use.</strong> The page was coded and drafted with Claude (Anthropic) in Claude Code. Each fact traces to a source listed below. The student author reviewed the sources and owns the conclusions.</p>
       <p><strong>Still unknown.</strong></p>
@@ -341,7 +362,15 @@ const SOURCES = {
   cfsLibrti: ["Commonwealth Fusion Systems, CFS named first international partner in UKAEA's LIBRTI program (1 July 2026)", "https://cfs.energy/news-and-media/cfs-named-first-international-partner-in-ukaeas-librti-program"],
   sayariTrade: ["Sayari, lithium hydroxide (HS 282520) supplier facets, 2024 onward (retrieved 9 Nov 2026)", "https://graph.sayari.com"],
   sayariNccp: ["Sayari, Novosibirsk Chemical Concentrates Plant entity record and trade relationships", "https://graph.sayari.com/resource/entity/uGeE9Bs2EvxWqf4mTsQFRQ"],
-  sayariBikita: ["Sayari, Bikita Minerals (Pvt) Ltd trade relationships", "https://graph.sayari.com/resource/entity/RwcU9n6KEGr1upZT1NyNEg"]
+  sayariBikita: ["Sayari, Bikita Minerals (Pvt) Ltd trade relationships", "https://graph.sayari.com/resource/entity/RwcU9n6KEGr1upZT1NyNEg"],
+  sayariIsoflex: ["Sayari, Isoflex USA upstream supply chain (filtered to isotope and lithium-chemical HS codes 2845, 282520, 283691, 280519)", "https://graph.sayari.com/resource/entity/AEGsjKeoKLf8DAjnFUikgw"],
+  sayariCfs: ["Sayari, Commonwealth Fusion Systems LLC upstream supply chain", "https://graph.sayari.com/resource/entity/pvo3Wv7gZb9K0hiji7-Nag"],
+  sayariHainan: ["Sayari, Sinomine Resource (Hainan) Lithium trade relationships", "https://graph.sayari.com/resource/entity/NU2nnTaUlY9iKHBogeoPtQ"],
+  sayariXnm: ["Sayari, Xinjiang Nonferrous Metals Industry (Group) corporate tree", "https://graph.sayari.com/resource/entity/3CswEP9tXc2H8ReYWPr9cQ"],
+  sayariSqm: ["Sayari, SQM (Sociedad Química y Minera de Chile) trade relationships", "https://graph.sayari.com/resource/entity/V2N3UCmWJXP8xf0fPBNUbQ"],
+  millerUflpa: ["Miller & Chevalier, FLETF announces single largest expansion of UFLPA Entity List", "https://www.millerchevalier.com/publication/trade-compliance-flash-fletf-announces-single-largest-expansion-uflpa-entity-list"],
+  isotopRu: ["Isotope JSC, Company news (subsidiary of Rosatom)", "http://www.isotop.ru/en/news/page5.html"],
+  atommediaEcp: ["Atom Media (Rosatom), Electrochemical Plant in Zelenogorsk produces stable and radioactive isotopes", "https://atommedia.online/en/press-releases/v-rosatome-zapustili-vtoruyu-v-rossii-ustanovku-po-pererabotke-obednennogo-urana"]
 };
 
 const STAGES = [
@@ -355,15 +384,18 @@ const STAGES = [
       { t: "The U.S. Department of Labor lists lithium from Zimbabwe as produced with child labor.", s: "dolList", l: ["labor"], k: "U.S. government list" },
       { t: "Workers and villagers near the Bikita lithium mine accuse the owner, Sinomine, and the government of displacements, spills, labor abuses, and a death.", s: "mongabayBikita", l: ["labor", "land"], k: "Reported allegation" },
       { t: "At Greenbushes in Western Australia, the world's largest hard-rock lithium mine, operator Talison said dust exceeded licence limits at least eight times in 2024 and said it had underestimated its impact on the town.", s: "abcGreenbushes", l: ["land"] },
-      { t: "Sayari trade relationships show Bikita Minerals shipping to Sinomine's lithium company in Hainan, China.", s: "sayariBikita", l: [], k: "Trade link, product not confirmed" }
+      { t: "Sayari trade relationships show Bikita Minerals shipping to Sinomine's lithium company in Hainan, China.", s: "sayariBikita", l: [], k: "Trade link, product not confirmed" },
+      { t: "That Hainan company in turn ships to other Sinomine operations, including a smelter in Namibia and a mine in Tanzania. It works as a group trading hub, so Sayari does not show where Bikita's lithium finally goes.", s: "sayariHainan", l: [], k: "Trade link, product not confirmed" }
     ],
-    unknown: ["Which mine or brine any fusion lithium comes from.", "Where Bikita's lithium goes after Sinomine's Hainan company."] },
+    unknown: ["Which mine or brine any fusion lithium comes from.", "Where Bikita's lithium goes after Sinomine's Hainan company.", "SQM's buyers in Sayari are mostly fertilizer companies, because SQM also sells fertilizer, so its lithium buyers can't be separated out."] },
   { id: "refine", n: 2, name: "Refine", what: "Ore and brine become lithium carbonate or hydroxide", flag: "Forced labor",
     summary: "Concentrate and brine are turned into battery-grade and nuclear-grade lithium chemicals. China dominates this step.",
     facts: [
       { t: "China refines 70% of the world's lithium chemicals and 95% of hard-rock ore refining.", s: "ieaGcmo2025", l: ["forced"] },
       { t: "In August 2025 the U.S. Forced Labor Enforcement Task Force named lithium a high-priority sector for enforcement under the Uyghur Forced Labor Prevention Act.", s: "ustrUflpa2025", l: ["forced"], k: "U.S. government strategy" },
-      { t: "Sayari trade records since 2024 show 445 Chinese exporters of lithium hydroxide, more than any other country; the U.S. has 247 and South Korea 214.", s: "sayariTrade", l: [] }
+      { t: "Sayari trade records since 2024 show 445 Chinese exporters of lithium hydroxide, more than any other country; the U.S. has 247 and South Korea 214.", s: "sayariTrade", l: [] },
+      { t: "The state-owned Xinjiang Nonferrous Metals Industry Group is on the UFLPA Entity List. Letters cited in the same source allege that battery makers CATL and Gotion source raw materials from it.", s: "millerUflpa", l: ["forced"], k: "U.S. government list" },
+      { t: "Sayari's corporate records show a \"Nonferrous Lithium Salt Plant\" (有色锂盐厂) inside that group, along with a rare-metals subsidiary.", s: "sayariXnm", l: ["forced"], k: "Company records" }
     ],
     unknown: ["Whether any lithium chemical bought for fusion research passed through Xinjiang."] },
   { id: "enrich", n: 3, name: "Enrich", what: "Separate lithium-6 from lithium-7", flag: "Mercury, weapons, sanctions",
@@ -376,13 +408,16 @@ const STAGES = [
       { t: "Mercury is still Y-12's top cleanup priority. A treatment plant is due in 2027.", s: "doeY12", l: ["toxic"] },
       { t: "Russia's Novosibirsk Chemical Concentrates Plant (NCCP), part of Rosatom's fuel company TVEL, meets up to 80% of world demand for lithium-7, a by-product of lithium-6 enrichment for weapons.", s: "wnaLithium", l: ["weapons"] },
       { t: "NCCP appears on Ukraine's national sanctions list.", s: "sayariNccp", l: ["weapons"], k: "Government list via Sayari" },
+      { t: "Russian procurement records in Sayari show NCCP working under contract for Rosatom-system bodies, including the Kurchatov Institute and the Mining and Chemical Combine at Zheleznogorsk, a former plutonium-production site.", s: "sayariNccp", l: ["weapons"], k: "Procurement records" },
+      { t: "Isoflex USA, a California-registered isotope distributor, has six suppliers in Sayari's trade records when filtered to isotope and lithium-chemical product codes. Five are in Russia's state nuclear complex: NCCP, the Electrochemical Plant in Zelenogorsk, the Siberian Chemical Combine, Elektrokhimpribor, and Rosatom's isotope exporter Isotope JSC.", s: "sayariIsoflex", l: ["weapons"], k: "Trade link, product narrowed" },
+      { t: "The Zelenogorsk Electrochemical Plant, one of those suppliers, makes low-enriched uranium and stable and radioactive isotopes inside a closed nuclear city.", s: "atommediaEcp", l: ["weapons"] },
       { t: "Sayari shows NCCP shipping to China's state nuclear trader CNEIC, to Isoflex USA (an isotope distributor), to the Petten research reactor in the Netherlands, to Albemarle Germany, and to battery makers and nuclear plants. NCCP also makes reactor fuel, so the product in each link is not known.", s: "sayariNccp", l: ["weapons"], k: "Trade link, product not confirmed" },
       { t: "Mercury-free methods are in development. Precision Periodic announced a chromatography process backed by a DOE grant in September 2025.", s: "precisionPeriodic", l: [] },
       { t: "In March 2026, Molten Salt Solutions announced agreements to supply enriched lithium to Type One Energy and Gauss Fusion, using a solvent exchange process.", s: "moltenSalt", l: [], k: "Company statement" },
       { t: "In August 2026, Marathon Fusion announced it had enriched lithium isotopes in a plasma centrifuge, a method that doesn't use mercury, with support from DOE's ARPA-E.", s: "marathon", l: [], k: "Company statement" },
       { t: "A federal SBIR award summary for Precision Periodic says the U.S. has no domestic supply of lithium-6 or lithium-7 and is completely reliant on Russia and China.", s: "sbirLi6", l: ["weapons"], k: "Grant summary" }
     ],
-    unknown: ["Current lithium-6 capacity and stockpiles in Russia, China, and the U.S.", "Sayari's ownership record for NCCP shows only a regional property office, not TVEL or Rosatom."] },
+    unknown: ["Current lithium-6 capacity and stockpiles in Russia, China, and the U.S.", "Sayari's ownership record for NCCP shows only a regional property office, not TVEL or Rosatom.", "Which exact product (lithium-6, lithium-7, another isotope, or lithium hydroxide) moved in each shipment to Isoflex USA. Sayari's product-code filter narrowed it to those groups, but splitting by code failed.", "Whether any of Isoflex USA's Russian-origin material reached a fusion lab."] },
   { id: "fabricate", n: 4, name: "Fabricate", what: "Make breeder pebbles, lithium-lead, or FLiBe salt", flag: "Beryllium, worker exposure",
     summary: "Enriched lithium becomes a breeder material: ceramic pebbles such as lithium orthosilicate, liquid lithium-lead, or molten FLiBe salt (lithium and beryllium fluoride).",
     facts: [
@@ -395,7 +430,8 @@ const STAGES = [
     facts: [
       { t: "ITER will test four blanket concepts from Europe, Japan, China, and Korea.", s: "iterTbm", l: [] },
       { t: "ITER's test blanket module needed about 200 kg of enriched lithium.", s: "neiEnriched", l: [] },
-      { t: "UKAEA's £220 million LIBRTI programme aims to show net tritium production. Commonwealth Fusion Systems became its first international partner in July 2026.", s: "cfsLibrti", l: [] }
+      { t: "UKAEA's £220 million LIBRTI programme aims to show net tritium production. Commonwealth Fusion Systems became its first international partner in July 2026.", s: "cfsLibrti", l: [] },
+      { t: "In Sayari's trade records, Commonwealth Fusion Systems' visible suppliers make copper, steel, cryogenic, and cable products, including KME, Linde Kryotechnik, and Luvata. No lithium supplier appears yet, which fits a company that has not started buying breeder material at scale.", s: "sayariCfs", l: [] }
     ],
     unknown: ["Whether any fusion developer has a lithium sourcing or human-rights policy. A Tavily search found such policies from lithium and battery companies but none from a fusion developer."] },
   { id: "after", n: 6, name: "After use", what: "Spent blankets, recycling, waste", flag: "Waste, recycling",
@@ -414,8 +450,14 @@ const SITES = [
   { id: "bikita", stage: "extract", name: "Bikita", where: "Masvingo, Zimbabwe", at: [31.3, -20.08], text: "Owned by Sinomine since 2022. Zimbabwe's lithium is on the U.S. child-labor list, and residents have reported abuses near this mine.", s: ["dolList", "mongabayBikita", "sayariBikita"] },
   { id: "china", stage: "refine", name: "China (country)", where: "Country-level marker", at: [112, 31], region: true, text: "Refines 70% of the world's lithium chemicals.", s: ["ieaGcmo2025"] },
   { id: "hainan", stage: "refine", name: "Sinomine (Hainan) Lithium", where: "Yangpu, Hainan, China", at: [109.2, 19.7], text: "Receives shipments from Bikita, according to Sayari trade records.", s: ["sayariBikita"] },
-  { id: "xinjiang", stage: "refine", name: "Xinjiang (region)", where: "Region-level marker", at: [87.6, 43.8], region: true, text: "Region-wide UFLPA presumption of forced labor. Lithium has been a high-priority enforcement sector since August 2025.", s: ["ustrUflpa2025"] },
-  { id: "nccp", stage: "enrich", name: "NCCP", where: "Novosibirsk, Russia", at: [82.93, 55.03], text: "Rosatom-group plant and the main world supplier of lithium-7, a by-product of lithium-6 enrichment. On Ukraine's sanctions list.", s: ["wnaLithium", "sayariNccp"] },
+  { id: "xnm", stage: "refine", name: "Xinjiang Nonferrous Metals", where: "Ürümqi, Xinjiang, China", at: [87.6, 43.8], text: "State-owned metals group on the UFLPA Entity List. Sayari shows a lithium salt plant inside the group.", s: ["millerUflpa", "sayariXnm"] },
+  { id: "isoflex", stage: "enrich", name: "Isoflex USA", where: "California, United States", at: [-122.42, 37.77], text: "Isotope distributor. Sayari trade records, filtered to isotope and lithium-chemical codes, show five suppliers in Russia's state nuclear complex. Map position is the state, not a confirmed address.", s: ["sayariIsoflex"] },
+  { id: "ecp", stage: "enrich", name: "Electrochemical Plant", where: "Zelenogorsk, Russia", at: [94.6, 56.1], text: "Rosatom plant in a closed nuclear city making enriched uranium and stable isotopes. A supplier to Isoflex USA in Sayari.", s: ["atommediaEcp", "sayariIsoflex"] },
+  { id: "shk", stage: "enrich", name: "Siberian Chemical Combine", where: "Seversk, Russia", at: [84.9, 56.6], ly: -8, text: "Rosatom-system plant. A supplier to Isoflex USA in Sayari's filtered trade records.", s: ["sayariIsoflex"] },
+  { id: "ekhp", stage: "enrich", name: "Elektrokhimpribor", where: "Lesnoy, Russia", at: [59.8, 58.6], text: "State enterprise in a closed nuclear city. A supplier to Isoflex USA in Sayari's filtered trade records.", s: ["sayariIsoflex"] },
+  { id: "isotop", stage: "enrich", name: "Isotope JSC", where: "Moscow, Russia", at: [37.6, 55.75], text: "Rosatom's isotope exporter. A supplier to Isoflex USA in Sayari's filtered trade records.", s: ["isotopRu", "sayariIsoflex"] },
+  { id: "xinjiang", stage: "refine", name: "Xinjiang (region)", where: "Region-level marker", at: [85, 41.5], region: true, text: "Region-wide UFLPA presumption of forced labor. Lithium has been a high-priority enforcement sector since August 2025.", s: ["ustrUflpa2025"] },
+  { id: "nccp", stage: "enrich", name: "NCCP", where: "Novosibirsk, Russia", at: [82.93, 55.03], ly: 10, text: "Rosatom-group plant and the main world supplier of lithium-7, a by-product of lithium-6 enrichment. On Ukraine's sanctions list. Sayari shows it supplying Isoflex USA and working under contract for Rosatom institutes.", s: ["wnaLithium", "sayariNccp", "sayariIsoflex"] },
   { id: "y12", stage: "enrich", name: "Y-12, Oak Ridge", where: "Tennessee, United States", at: [-84.25, 35.99], text: "Made about 442 tonnes of lithium-6 hydroxide from 1953 to 1963 using mercury. Mercury cleanup continues.", s: ["wardArxiv", "atsdrY12", "doeY12"] },
   { id: "pp", stage: "enrich", name: "Precision Periodic", where: "Orlando, Florida", at: [-81.38, 28.54], text: "Developing mercury-free lithium-6 enrichment with a DOE grant.", s: ["precisionPeriodic"] },
   { id: "swip", stage: "fabricate", name: "SWIP", where: "Chengdu, China", at: [104.07, 30.67], text: "Southwestern Institute of Physics, developer of China's ITER test blanket with 60% enriched lithium pebbles.", s: ["ornlTbm"] },
@@ -432,6 +474,11 @@ const FLOWS = [
   { from: "bikita", to: "hainan", kind: "sayari" },
   { from: "nccp", to: "cneic", kind: "sayari" },
   { from: "nccp", to: "petten", kind: "sayari" },
+  { from: "nccp", to: "isoflex", kind: "sayari" },
+  { from: "ecp", to: "isoflex", kind: "sayari" },
+  { from: "shk", to: "isoflex", kind: "sayari" },
+  { from: "ekhp", to: "isoflex", kind: "sayari" },
+  { from: "isotop", to: "isoflex", kind: "sayari" },
   { from: "materion", to: "cfs", kind: "source" },
   { from: "cfs", to: "ukaea", kind: "source" }
 ];
@@ -504,16 +551,16 @@ function draw() {
     .attr("d", d => path({ type: "LineString", coordinates: [byId[d.from].at, byId[d.to].at] }));
   gSites.selectAll("circle").data(SITES, d => d.id).join("circle")
     .attr("class", "site")
-    .attr("r", d => d.region ? 9 : 6.5)
+    .attr("r", d => d.region ? 10 : 8)
     .attr("fill", d => color(d.stage))
-    .attr("fill-opacity", d => d.region ? 0.45 : 1)
+    .attr("fill-opacity", d => d.region ? 0.7 : 1)
     .attr("display", d => visible(d.at) ? null : "none")
     .attr("cx", d => projection(d.at)[0]).attr("cy", d => projection(d.at)[1])
     .on("click", (e, d) => showSite(d));
   gLabels.selectAll("text").data(SITES, d => d.id).join("text")
     .attr("class", "label")
     .attr("display", d => visible(d.at) && d.stage === activeStage ? null : "none")
-    .attr("x", d => projection(d.at)[0] + 9).attr("y", d => projection(d.at)[1] + 4)
+    .attr("x", d => projection(d.at)[0] + 10).attr("y", d => projection(d.at)[1] + 4 + (d.ly || 0))
     .text(d => d.name);
   highlightGlobe();
 }
@@ -551,7 +598,7 @@ document.getElementById("globe-tools").addEventListener("click", e => {
   d3.transition().duration(1200).tween("spin", () => t => { projection.rotate(interp(t)); draw(); });
 });
 document.getElementById("legend").innerHTML = STAGES.map(s => `<span><i style="background: var(--${s.id})"></i>${s.n}. ${s.name}</span>`).join("") +
-  `<span><span class="ln"></span>Published agreement or partnership</span><span><span class="ln dash"></span>Sayari trade link, product not confirmed</span><span>Faded large dots are country or region markers, not plants.</span>`;
+  `<span><span class="ln"></span>Published agreement or partnership</span><span><span class="ln dash"></span>Sayari trade link, product not confirmed</span><span>Larger, lighter dots are country or region markers, not plants.</span>`;
 
 fetch("https://cdn.jsdelivr.net/npm/world-atlas@2.0.2/land-110m.json")
   .then(r => r.json())

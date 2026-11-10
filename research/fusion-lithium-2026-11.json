@@ -366,7 +366,157 @@
       "url": "https://www.prnewswire.com/news-releases/marathon-fusion-demonstrates-lithium-and-hydrogen-isotope-enrichment-using-proprietary-plasma-centrifuge-technology-302861336.html",
       "found_with": "Tavily",
       "checked_with": "Tavily extract, 2026-11-09"
+    },
+    "sayariIsoflex": {
+      "title": "Isoflex USA upstream supply chain",
+      "publisher": "Sayari",
+      "url": "https://graph.sayari.com/resource/entity/AEGsjKeoKLf8DAjnFUikgw",
+      "found_with": "Sayari"
+    },
+    "sayariCfs": {
+      "title": "Commonwealth Fusion Systems upstream supply chain",
+      "publisher": "Sayari",
+      "url": "https://graph.sayari.com/resource/entity/pvo3Wv7gZb9K0hiji7-Nag",
+      "found_with": "Sayari"
+    },
+    "sayariHainan": {
+      "title": "Sinomine (Hainan) Lithium trade relationships",
+      "publisher": "Sayari",
+      "url": "https://graph.sayari.com/resource/entity/NU2nnTaUlY9iKHBogeoPtQ",
+      "found_with": "Sayari"
+    },
+    "sayariXnm": {
+      "title": "Xinjiang Nonferrous Metals corporate tree",
+      "publisher": "Sayari",
+      "url": "https://graph.sayari.com/resource/entity/3CswEP9tXc2H8ReYWPr9cQ",
+      "found_with": "Sayari"
+    },
+    "sayariSqm": {
+      "title": "SQM trade relationships",
+      "publisher": "Sayari",
+      "url": "https://graph.sayari.com/resource/entity/V2N3UCmWJXP8xf0fPBNUbQ",
+      "found_with": "Sayari"
+    },
+    "millerUflpa": {
+      "title": "FLETF announces single largest expansion of UFLPA Entity List",
+      "publisher": "Miller & Chevalier",
+      "url": "https://www.millerchevalier.com/publication/trade-compliance-flash-fletf-announces-single-largest-expansion-uflpa-entity-list",
+      "found_with": "Tavily",
+      "checked_with": "Tavily extract, 2026-11-09"
+    },
+    "atommediaEcp": {
+      "title": "Rosatom launches Russia's second depleted uranium facility (ECP description)",
+      "publisher": "Atom Media (Rosatom)",
+      "url": "https://atommedia.online/en/press-releases/v-rosatome-zapustili-vtoruyu-v-rossii-ustanovku-po-pererabotke-obednennogo-urana",
+      "found_with": "Tavily"
+    },
+    "isotopRu": {
+      "title": "Company news",
+      "publisher": "Isotope JSC",
+      "url": "http://www.isotop.ru/en/news/page5.html",
+      "found_with": "Tavily"
     }
   },
-  "tavily_limits": "Two searches first hit the keyless rate limit and succeeded on retry. A ScienceDirect article on FLiBe readiness could not be extracted and is not used."
+  "tavily_limits": "Two searches first hit the keyless rate limit and succeeded on retry. A ScienceDirect article on FLiBe readiness could not be extracted and is not used.",
+  "sayari_findings": {
+    "retrieved": "2026-11-09",
+    "method_notes": [
+      "Entities confirmed by registry identifiers (e.g., NCCP INN 5410114184; Isoflex USA CAGE 44EP7; CFS SEC CIK 0001744079).",
+      "Upstream supply-chain traces at depth 1, filtered by HS code where possible. Six-digit HS splits (284530, 282520, 284590) returned errors, so product is narrowed to the filter group, not to one code.",
+      "Shipment searches by company name return unrelated records and were not used.",
+      "Sayari risk scores are not published; only government lists and records are cited."
+    ],
+    "links": [
+      {
+        "from": [
+          "NCCP",
+          "Electrochemical Plant (Zelenogorsk)",
+          "Siberian Chemical Combine",
+          "Elektrokhimpribor",
+          "Isotope JSC (V/O Isotop)"
+        ],
+        "to": "Isoflex USA",
+        "evidence": "upstream supply chain filtered to HS 2845, 282520, 283691, 280519",
+        "product": "isotopes or lithium chemicals (not split by code)",
+        "record": "https://graph.sayari.com/resource/entity/AEGsjKeoKLf8DAjnFUikgw",
+        "ids": {
+          "NCCP": "uGeE9Bs2EvxWqf4mTsQFRQ",
+          "ECP": "XJi9bXqGeYsikDOyJBow2A",
+          "SCC": "3d1vXBPD1GKOARvSb0OzGA",
+          "EKhP": "YsmpdjvFhvo37IxPiWr4oQ",
+          "Isotop": "U9WF4d9lntMeDTTgJ4cQcA"
+        }
+      },
+      {
+        "from": "NCCP",
+        "to": [
+          "CNEIC",
+          "NRG Petten",
+          "Albemarle Germany",
+          "Saft",
+          "Tadiran",
+          "Blue Solutions",
+          "Kozloduy NPP",
+          "Kudankulam NPP",
+          "Ringhals",
+          "Akkuyu"
+        ],
+        "evidence": "ships_to relationships",
+        "product": "not confirmed",
+        "record": "https://graph.sayari.com/resource/entity/uGeE9Bs2EvxWqf4mTsQFRQ"
+      },
+      {
+        "from": [
+          "Kurchatov Institute",
+          "Mining and Chemical Combine (Zheleznogorsk)",
+          "Rosatom security service"
+        ],
+        "to": "NCCP",
+        "evidence": "contracted_by relationships (Russian procurement data)",
+        "record": "https://graph.sayari.com/resource/entity/uGeE9Bs2EvxWqf4mTsQFRQ"
+      },
+      {
+        "from": "Xinjiang Nonferrous Metals Industry (Group)",
+        "to": "Nonferrous Lithium Salt Plant (有色锂盐厂)",
+        "evidence": "ownership tree, depth 2",
+        "record": "https://graph.sayari.com/resource/entity/3CswEP9tXc2H8ReYWPr9cQ",
+        "lithium_unit": "https://graph.sayari.com/resource/entity/AGNyFxGDPaheNuki-3ky8Q"
+      },
+      {
+        "from": "Bikita Minerals",
+        "to": "Sinomine Resource (Hainan) Lithium",
+        "evidence": "ships_to",
+        "record": "https://graph.sayari.com/resource/entity/RwcU9n6KEGr1upZT1NyNEg"
+      },
+      {
+        "from": "Sinomine Resource (Hainan) Lithium",
+        "to": [
+          "Sinomine Tsumeb Smelter (Namibia)",
+          "Sinomine Kitumba Minerals (Tanzania)"
+        ],
+        "evidence": "ships_to",
+        "record": "https://graph.sayari.com/resource/entity/NU2nnTaUlY9iKHBogeoPtQ"
+      },
+      {
+        "from": [
+          "KME Mansfeld",
+          "Linde Kryotechnik",
+          "Luvata Pori",
+          "Skeleton Technologies",
+          "others"
+        ],
+        "to": "Commonwealth Fusion Systems LLC",
+        "evidence": "upstream supply chain depth 1",
+        "product": "hardware; no lithium supplier visible",
+        "record": "https://graph.sayari.com/resource/entity/pvo3Wv7gZb9K0hiji7-Nag"
+      },
+      {
+        "from": "SQM",
+        "to": "mostly Brazilian fertilizer buyers",
+        "evidence": "ships_to",
+        "note": "cannot separate lithium buyers",
+        "record": "https://graph.sayari.com/resource/entity/V2N3UCmWJXP8xf0fPBNUbQ"
+      }
+    ]
+  }
 }
