@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="A globe showing the places in fusion's lithium supply chain.">
+<meta name="theme-color" content="#f4f2ec">
+<link rel="icon" href="data:,">
+<title>Lithium Trail Map</title>
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+<main>
+  <nav class="site-nav" aria-label="Site">
+    <a class="brand" href="index.html">Fusion's <span>Lithium</span> Trail</a>
+    <ul><li><a class="navlink" href="index.html">Home</a></li><li><a class="navlink" href="steps.html">The six steps</a></li><li><a class="navlink" href="globe.html" aria-current="page">Map</a></li><li><a class="navlink" href="companies.html">Company records</a></li><li><a class="navlink" href="harm.html">Who gets hurt</a></li><li><a class="navlink" href="solutions.html">What should change</a></li><li><a class="navlink" href="methodology.html">How we did this</a></li><li><a class="navlink" href="sources.html">Sources</a></li></ul>
+  </nav>
+  <section id="globe-section" aria-labelledby="globe-h">
+    <span class="eyebrow">Where it happens</span>
+    <h2 id="globe-h">The supply chain on a globe</h2>
+    <p class="section-intro">Drag the globe to spin it. Click a dot to read about that place. The dot colors match <a href="steps.html">the six steps</a>. Use the buttons to highlight one step.</p>
+    <div class="step-chips" id="step-chips"></div>
+    <div class="shell globe-wrap">
+      <div>
+        <svg id="globe" viewBox="0 0 600 600" role="img" aria-label="Globe showing places in fusion's lithium supply chain"></svg>
+        <div class="globe-tools" id="globe-tools"></div>
+      </div>
+      <div>
+        <div id="site-card"><h3>Pick a place</h3><p class="where">Click any dot on the globe.</p><p>The big picture: most lithium is dug up in South America, Australia, and Africa. Most of it is processed in China. And the special sorting step fusion needs has only been done on a large scale inside nuclear weapons programs.</p></div>
+        <div class="legend" id="legend"></div>
+      </div>
+    </div>
+  </section>
+  <nav class="pager" aria-label="Page by page"><a href="steps.html"><small>Previous</small>← The six steps</a><a class="next" href="companies.html"><small>Next</small>Company records →</a></nav>
+  <footer>First draft for the class project "Mapping the Human Cost of Fusion Energy Materials." Research done 9 November 2026. This page will be updated.</footer>
+</main>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/topojson-client@3.1.0/dist/topojson-client.min.js"></script>
+<script src="assets/data.js"></script>
+<script src="assets/globe.js"></script>
+</body>
+</html>

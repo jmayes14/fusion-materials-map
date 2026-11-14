@@ -53,7 +53,23 @@ risk assessment, AI use, and limits.
 
 ## Files
 
-The site is one file, [docs/index.html](./docs/index.html), with no build step.
-It is published with GitHub Pages from `docs/` on `main`. It loads D3 and
-topojson-client from public CDNs, and coastlines from the `world-atlas`
-package on jsDelivr.
+The site has one page per section, with a menu on every page:
+
+| Page | What it shows |
+|---|---|
+| `docs/index.html` | Home: the main idea, words to know, three findings |
+| `docs/steps.html` | The six steps, with harm filters |
+| `docs/globe.html` | The globe; `?step=` highlights one step |
+| `docs/companies.html` | Company and shipping records from Sayari |
+| `docs/harm.html` | Who could get hurt at each step |
+| `docs/solutions.html` | The policy plan and the Lithium Passport |
+| `docs/methodology.html` | How the research was done |
+| `docs/sources.html` | Every source and what is still unknown |
+
+Shared files are in `docs/assets/`: `site.css` (styles), `data.js` (facts,
+places, links, and sources), `steps.js`, and `globe.js`. To change a fact or add
+a place, edit `data.js` once and every page picks it up.
+
+There is no build step. It is published with GitHub Pages from `docs/` on
+`main`. Pages load D3 and topojson-client from public CDNs, and coastlines from
+the `world-atlas` package on jsDelivr.

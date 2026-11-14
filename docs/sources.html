@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Every source used on this site, and what we still don't know.">
+<meta name="theme-color" content="#f4f2ec">
+<link rel="icon" href="data:,">
+<title>Sources</title>
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+<main>
+  <nav class="site-nav" aria-label="Site">
+    <a class="brand" href="index.html">Fusion's <span>Lithium</span> Trail</a>
+    <ul><li><a class="navlink" href="index.html">Home</a></li><li><a class="navlink" href="steps.html">The six steps</a></li><li><a class="navlink" href="globe.html">Map</a></li><li><a class="navlink" href="companies.html">Company records</a></li><li><a class="navlink" href="harm.html">Who gets hurt</a></li><li><a class="navlink" href="solutions.html">What should change</a></li><li><a class="navlink" href="methodology.html">How we did this</a></li><li><a class="navlink" href="sources.html" aria-current="page">Sources</a></li></ul>
+  </nav>
+  <section id="method" aria-labelledby="method-h">
+    <span class="eyebrow">Showing our work</span>
+    <h2 id="method-h">How we made this page</h2>
+    <p class="section-intro">This is the short version. The <a href="methodology.html">full explanation</a> covers every step in detail.</p>
+    <div class="method">
+      <p><strong>Finding facts.</strong> We used Tavily, an AI search tool, to find government reports, research papers, news stories, and company announcements. For important facts, we pulled up the full original page and checked the exact wording. Each source on this page is marked "via Tavily."</p>
+      <p><strong>Following companies.</strong> We used Sayari to look up companies by their official registration numbers, see who they ship to and buy from, and see who owns them. We didn't trust searches by company name alone, because they mixed up different companies. Each source from there is marked "via Sayari."</p>
+      <p><strong>Our rules.</strong> We don't call any company "good" or "bad." When someone makes an accusation, we say who made it. When a shipping record doesn't show what was shipped, we say so. Guesses about the future are labeled as estimates.</p>
+      <p><strong>Use of AI.</strong> This page was built and written with help from Claude, an AI assistant. Every fact links to a real source.</p>
+      <p><strong>What we still don't know.</strong></p>
+      <ul id="unknowns"></ul>
+      <p>All of our notes and sources are in one file you can download: <a href="https://github.com/jmayes14/fusion-materials-map/blob/main/research/fusion-lithium-2026-11.json" target="_blank" rel="noopener">research notes</a>.</p>
+    </div>
+    <h3>Sources</h3>
+    <ol class="sources" id="sources"></ol>
+  </section>
+  <nav class="pager" aria-label="Page by page"><a href="methodology.html"><small>Previous</small>← How we did this</a></nav>
+  <footer>First draft for the class project "Mapping the Human Cost of Fusion Energy Materials." Research done 9 November 2026. This page will be updated.</footer>
+</main>
+<script src="assets/data.js"></script>
+<script>
+document.getElementById("sources").innerHTML = Object.entries(SOURCES).map(([k, [t, u]]) => `<li><a href="${u}" target="_blank" rel="noopener">${t}</a> <span class="via">via ${via(k)}</span></li>`).join("");
+document.getElementById("unknowns").innerHTML = UNKNOWNS.map(u => `<li>${u}</li>`).join("");
+</script>
+</body>
+</html>

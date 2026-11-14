@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="The six steps lithium takes from the ground to a fusion power plant.">
+<meta name="theme-color" content="#f4f2ec">
+<link rel="icon" href="data:,">
+<title>The Six Steps</title>
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+<main>
+  <nav class="site-nav" aria-label="Site">
+    <a class="brand" href="index.html">Fusion's <span>Lithium</span> Trail</a>
+    <ul><li><a class="navlink" href="index.html">Home</a></li><li><a class="navlink" href="steps.html" aria-current="page">The six steps</a></li><li><a class="navlink" href="globe.html">Map</a></li><li><a class="navlink" href="companies.html">Company records</a></li><li><a class="navlink" href="harm.html">Who gets hurt</a></li><li><a class="navlink" href="solutions.html">What should change</a></li><li><a class="navlink" href="methodology.html">How we did this</a></li><li><a class="navlink" href="sources.html">Sources</a></li></ul>
+  </nav>
+  <section id="map" aria-labelledby="map-h">
+    <span class="eyebrow">Part 1 · The supply chain</span>
+    <h2 id="map-h">Six steps from the ground to the power plant</h2>
+    <p class="section-intro">Click a step to see who does it, where, what can go wrong, and what we still don't know. Use the buttons under the steps to show one kind of harm at a time.</p>
+    <div class="shell">
+      <ol class="chain" id="chain"></ol>
+      <div class="lenses" role="group" aria-label="Show one kind of harm">
+        <span>Show harm:</span>
+        <button class="lens" data-lens="all" aria-pressed="true">All</button>
+        <button class="lens" data-lens="land">Land and water</button>
+        <button class="lens" data-lens="labor">Child labor</button>
+        <button class="lens" data-lens="forced">Forced labor</button>
+        <button class="lens" data-lens="toxic">Pollution</button>
+        <button class="lens" data-lens="weapons">Weapons and sanctions</button>
+      </div>
+      <div class="detail" id="detail" aria-live="polite"></div>
+      <a class="to-map" id="to-map" href="globe.html">See these places on the map →</a>
+    </div>
+  </section>
+  <nav class="pager" aria-label="Page by page"><a href="index.html"><small>Previous</small>← Home</a><a class="next" href="globe.html"><small>Next</small>Map →</a></nav>
+  <footer>First draft for the class project "Mapping the Human Cost of Fusion Energy Materials." Research done 9 November 2026. This page will be updated.</footer>
+</main>
+<script src="assets/data.js"></script>
+<script src="assets/steps.js"></script>
+</body>
+</html>

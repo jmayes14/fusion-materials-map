@@ -58,14 +58,26 @@
   .steps li { counter-increment: s; position: relative; padding-left: 2.4rem; margin-bottom: 0.7rem; }
   .steps li::before { content: counter(s); position: absolute; left: 0; top: 0.05rem; width: 1.6rem; height: 1.6rem; border-radius: 50%; background: var(--accent); color: var(--page); font-weight: 800; font-size: 0.82rem; display: grid; place-items: center; }
   footer { margin-top: 3rem; color: var(--muted); font-size: 0.85rem; }
+
+  .site-nav { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0.6rem 1.2rem; padding: 0.4rem 0 2.2rem; }
+  .brand { font-weight: 850; letter-spacing: -0.02em; color: var(--ink); text-decoration: none; font-size: 1.05rem; }
+  .brand span { color: var(--accent); }
+  .site-nav ul { list-style: none; display: flex; flex-wrap: wrap; gap: 0.3rem; margin: 0; padding: 0; }
+  .site-nav a.navlink { display: inline-block; padding: 0.35rem 0.75rem; border-radius: 999px; text-decoration: none; color: var(--muted); font-size: 0.9rem; border: 1px solid transparent; }
+  .site-nav a.navlink:hover { border-color: var(--line); color: var(--ink); }
+  .site-nav a.navlink[aria-current="page"] { background: var(--accent); color: var(--accent-ink, var(--page)); font-weight: 700; }
+  .pager { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 1rem; margin-top: 3rem; padding-top: 1.2rem; border-top: 1px solid var(--line); }
+  .pager a { text-decoration: none; font-weight: 700; }
+  .pager small { display: block; color: var(--muted); font-weight: 400; font-size: 0.8rem; }
+  .pager .next { margin-left: auto; text-align: right; }
 </style>
 </head>
 <body>
 <main>
-  <div class="topline">
-    <span class="eyebrow">Fusion needs lithium · How we did this</span>
-    <a href="./">Back to the main page</a>
-  </div>
+  <nav class="site-nav" aria-label="Site">
+    <a class="brand" href="index.html">Fusion's <span>Lithium</span> Trail</a>
+    <ul><li><a class="navlink" href="index.html">Home</a></li><li><a class="navlink" href="steps.html">The six steps</a></li><li><a class="navlink" href="globe.html">Map</a></li><li><a class="navlink" href="companies.html">Company records</a></li><li><a class="navlink" href="harm.html">Who gets hurt</a></li><li><a class="navlink" href="solutions.html">What should change</a></li><li><a class="navlink" href="methodology.html" aria-current="page">How we did this</a></li><li><a class="navlink" href="sources.html">Sources</a></li></ul>
+  </nav>
 
   <h1>How we did this research</h1>
   <p class="lede">This page explains what we wanted to find out, where our facts came from, how we checked them, how we used AI, and what we still couldn't figure out. The research was done on 9 November 2026.</p>
@@ -190,6 +202,7 @@
     <li>The website's code is public on <a href="https://github.com/jmayes14/fusion-materials-map">GitHub</a>, including every change we made.</li>
   </ul>
 
+  <nav class="pager" aria-label="Page by page"><a href="solutions.html"><small>Previous</small>← What should change</a><a class="next" href="sources.html"><small>Next</small>Sources →</a></nav>
   <footer>How we did the first draft of "Mapping the Human Cost of Fusion Energy Materials." Research done 9 November 2026. This page will be updated.</footer>
 </main>
 </body>
