@@ -20,8 +20,9 @@ they appear.
 
 - **Systems map:** six clickable steps. Each shows sourced facts, open gaps,
   and filters for five kinds of harm.
-- **Globe:** 23 places colored by step. Solid lines are published agreements;
-  dashed lines are Sayari trade links where the product is not confirmed.
+- **Map:** 23 places, shown as a flat world map or a globe. Each dot shows its
+  step number. Arrows point from seller to buyer: solid for public deals,
+  dashed for Sayari shipping records.
 - **Risk table:** who is at risk at each step, and the evidence level.
 - **Policy brief:** puts conditions on public fusion funding, funds lithium-6
   enrichment that doesn't use mercury, closes the isotope gap in UFLPA
@@ -59,7 +60,7 @@ The site has one page per section, with a menu on every page:
 |---|---|
 | `docs/index.html` | Home: the main idea, words to know, three findings |
 | `docs/steps.html` | The six steps, with harm filters |
-| `docs/globe.html` | The globe; `?step=` highlights one step |
+| `docs/globe.html` | The map: a flat world map or a globe, one step at a time, with a place list, captions, and a step-by-step tour. `?step=` picks a step and `?view=flat` or `?view=globe` picks the style |
 | `docs/companies.html` | Company and shipping records from Sayari |
 | `docs/harm.html` | Who could get hurt at each step |
 | `docs/solutions.html` | The policy plan and the Lithium Passport |

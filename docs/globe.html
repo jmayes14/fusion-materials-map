@@ -17,18 +17,32 @@
   </nav>
   <section id="globe-section" aria-labelledby="globe-h">
     <span class="eyebrow">Where it happens</span>
-    <h2 id="globe-h">The supply chain on a globe</h2>
-    <p class="section-intro">Drag the globe to spin it. Click a dot to read about that place. The dot colors match <a href="steps.html">the six steps</a>. Use the buttons to highlight one step.</p>
-    <div class="step-chips" id="step-chips"></div>
-    <div class="shell globe-wrap">
-      <div>
-        <svg id="globe" viewBox="0 0 600 600" role="img" aria-label="Globe showing places in fusion's lithium supply chain"></svg>
-        <div class="globe-tools" id="globe-tools"></div>
+    <h2 id="globe-h">The supply chain on a map</h2>
+    <p class="section-intro">Pick a step to see where it happens. Click a place in the list or on the map to read about it. Or press <b>Start the tour</b> to go through all six steps in order.</p>
+    <div class="map-controls">
+      <div class="step-chips" id="step-chips" role="group" aria-label="Pick a step"></div>
+      <div class="view-toggle" id="view-toggle" role="group" aria-label="Map style">
+        <button data-mode="flat">Flat map</button><button data-mode="globe">Globe</button>
       </div>
-      <div>
-        <div id="site-card"><h3>Pick a place</h3><p class="where">Click any dot on the globe.</p><p>The big picture: most lithium is dug up in South America, Australia, and Africa. Most of it is processed in China. And the special sorting step fusion needs has only been done on a large scale inside nuclear weapons programs.</p></div>
-        <div class="legend" id="legend"></div>
+    </div>
+    <div class="shell map-layout">
+      <div class="map-col">
+        <div class="caption" id="step-caption" aria-live="polite"></div>
+        <div class="tour">
+          <button id="tour-start">▶ Start the tour</button>
+          <button id="tour-back">◀ Back</button>
+          <span class="count" id="tour-count"></span>
+          <button id="tour-next">Next ▶</button>
+        </div>
+        <svg id="map" role="group" aria-label="Map of places in fusion's lithium supply chain"></svg>
+        <div class="map-tools" id="map-tools"></div>
+        <div class="legend2" id="legend"></div>
       </div>
+      <aside class="places" aria-labelledby="places-h">
+        <h3 id="places-h">Places in this step</h3>
+        <ul class="place-list" id="place-list"></ul>
+        <div id="site-card"></div>
+      </aside>
     </div>
   </section>
   <nav class="pager" aria-label="Page by page"><a href="steps.html"><small>Previous</small>← The six steps</a><a class="next" href="companies.html"><small>Next</small>Company records →</a></nav>
