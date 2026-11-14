@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Where the lithium for fusion reactors comes from, who could be harmed along the way, and a proposal to fix it. Iteration 1.">
+<meta name="description" content="Where the lithium for fusion power plants comes from, who could get hurt along the way, and how to fix it.">
 <meta name="theme-color" content="#f4f2ec">
 <link rel="icon" href="data:,">
 <title>Fusion's Lithium Trail</title>
@@ -56,6 +56,13 @@
   .note p { margin: 0; color: var(--muted); font-size: 0.95rem; }
 
   section { margin-top: 3.5rem; }
+  .glossary { margin-top: 0; border: 1px solid var(--line); border-radius: var(--radius); background: var(--panel); padding: 1.2rem 1.4rem; }
+  .glossary h2 { font-size: 1.15rem; margin: 0 0 0.8rem; letter-spacing: -0.02em; }
+  .glossary dl { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.9rem 1.4rem; margin: 0; }
+  .glossary dt { font-weight: 800; color: var(--accent); }
+  .glossary dd { margin: 0.15rem 0 0; color: var(--muted); font-size: 0.92rem; }
+  @media (max-width: 62rem) { .glossary dl { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @media (max-width: 34rem) { .glossary dl { grid-template-columns: 1fr; } }
   h2 { font-size: clamp(1.5rem, 3vw, 2.1rem); letter-spacing: -0.04em; margin: 0.3rem 0 0.6rem; }
   .section-intro { color: var(--muted); max-width: 46rem; }
 
@@ -163,36 +170,48 @@
 <body>
 <main>
   <div class="topline">
-    <span class="eyebrow">Human cost of fusion materials · Iteration 1 · November 2026</span>
-    <span><a href="#brief">Policy brief</a> · <a href="methodology.html">Methodology</a></span>
+    <span class="eyebrow">Class project · Fusion energy materials · November 2026</span>
+    <span><a href="#brief">What should change</a> · <a href="methodology.html">How we did this</a></span>
   </div>
 
   <header class="hero">
     <div>
       <span class="eyebrow">Material: lithium</span>
-      <h1>Fusion runs on <span>lithium</span> nobody can trace yet.</h1>
-      <p class="lede">A fusion power plant burns tritium, which barely exists in nature. So reactors have to make their own, by hitting lithium-6 with neutrons in a "breeder blanket." This page follows that lithium from salt flats and hard-rock mines, through refineries and isotope plants, into the reactor, and shows who could be harmed along the way.</p>
+      <h1>Fusion needs <span>lithium</span>. Nobody can trace it yet.</h1>
+      <p class="lede">Fusion power plants run on a fuel called tritium, which is almost impossible to find in nature. So the plants will have to make their own, using a special kind of lithium. This page follows that lithium from the ground to the power plant, and shows who could get hurt along the way.</p>
     </div>
     <aside class="note">
-      <strong>How to read this</strong>
-      <p>Every claim links to its source. Reported allegations are labeled as such. A trade link from Sayari shows that two organizations traded, not what was in the box. Gaps are marked, and a gap is not evidence that a chain is clean or harmful.</p>
+      <strong>How to read this page</strong>
+      <p>Every fact links to where it came from. When people accuse a company of something, we say who made the claim. A trade record shows two companies did business, but not what was in the box. When we don't know something, we say so. Not knowing doesn't mean a company is clean or guilty.</p>
     </aside>
   </header>
 
+  <section class="glossary" aria-labelledby="words-h">
+    <h2 id="words-h">Words to know</h2>
+    <dl>
+      <div><dt>Lithium-6</dt><dd>A rare type of lithium. Only about 7 out of every 100 lithium atoms are this kind. Fusion plants need much more of it than that.</dd></div>
+      <div><dt>Tritium</dt><dd>The fuel fusion plants burn. Plants make it by hitting lithium-6 with tiny particles called neutrons.</dd></div>
+      <div><dt>Enrichment</dt><dd>Sorting lithium to collect more of the lithium-6 kind. Until now this has mostly been done to build nuclear weapons.</dd></div>
+      <div><dt>Isotope</dt><dd>A version of an element. Lithium-6 and lithium-7 are two isotopes of lithium.</dd></div>
+      <div><dt>Sanctions list</dt><dd>A government list of companies people in that country are not allowed to do business with.</dd></div>
+      <div><dt>UFLPA</dt><dd>A U.S. law that blocks imports made with forced labor in Xinjiang, a region of China.</dd></div>
+    </dl>
+  </section>
+
   <section id="map" aria-labelledby="map-h">
-    <span class="eyebrow">Deliverable 1</span>
-    <h2 id="map-h">Systems map: six steps from salt flat to reactor</h2>
-    <p class="section-intro">Click a step to see who does it, where, the documented risks, and what is still unknown. The risk filters highlight one kind of harm across the whole chain.</p>
+    <span class="eyebrow">Part 1 · The supply chain</span>
+    <h2 id="map-h">Six steps from the ground to the power plant</h2>
+    <p class="section-intro">Click a step to see who does it, where, what can go wrong, and what we still don't know. Use the buttons under the steps to show one kind of harm at a time.</p>
     <div class="shell">
       <ol class="chain" id="chain"></ol>
-      <div class="lenses" role="group" aria-label="Risk filter">
-        <span>Show risk:</span>
+      <div class="lenses" role="group" aria-label="Show one kind of harm">
+        <span>Show harm:</span>
         <button class="lens" data-lens="all" aria-pressed="true">All</button>
-        <button class="lens" data-lens="land">Land, water, consent</button>
+        <button class="lens" data-lens="land">Land and water</button>
         <button class="lens" data-lens="labor">Child labor</button>
         <button class="lens" data-lens="forced">Forced labor</button>
-        <button class="lens" data-lens="toxic">Toxic legacy</button>
-        <button class="lens" data-lens="weapons">Sanctions and weapons</button>
+        <button class="lens" data-lens="toxic">Pollution</button>
+        <button class="lens" data-lens="weapons">Weapons and sanctions</button>
       </div>
       <div class="detail" id="detail" aria-live="polite"></div>
     </div>
@@ -200,137 +219,137 @@
 
   <section id="globe-section" aria-labelledby="globe-h">
     <span class="eyebrow">Where it happens</span>
-    <h2 id="globe-h">The chain on a globe</h2>
-    <p class="section-intro">Drag to turn the globe. Click a dot for its story. Colors match the six steps above, and choosing a step above highlights its places here.</p>
+    <h2 id="globe-h">The supply chain on a globe</h2>
+    <p class="section-intro">Drag the globe to spin it. Click a dot to read about that place. The dot colors match the six steps above.</p>
     <div class="shell globe-wrap">
       <div>
-        <svg id="globe" viewBox="0 0 600 600" role="img" aria-label="Globe showing lithium sites for fusion"></svg>
+        <svg id="globe" viewBox="0 0 600 600" role="img" aria-label="Globe showing places in fusion's lithium supply chain"></svg>
         <div class="globe-tools" id="globe-tools"></div>
       </div>
       <div>
-        <div id="site-card"><h3>Pick a place</h3><p class="where">Click any dot on the globe.</p><p>The big picture: lithium is dug up mostly in South America, Australia, and Africa; refined mostly in China; and enriched at scale today only inside weapons programs.</p></div>
+        <div id="site-card"><h3>Pick a place</h3><p class="where">Click any dot on the globe.</p><p>The big picture: most lithium is dug up in South America, Australia, and Africa. Most of it is processed in China. And the special sorting step fusion needs has only been done on a large scale inside nuclear weapons programs.</p></div>
         <div class="legend" id="legend"></div>
       </div>
     </div>
   </section>
 
   <section id="sayari" aria-labelledby="sayari-h">
-    <span class="eyebrow">Company and trade evidence</span>
-    <h2 id="sayari-h">What Sayari shows</h2>
-    <p class="section-intro">Sayari is a knowledge graph built from corporate registries, customs and trade records, procurement data, and sanctions lists. It answers the question the web can't: which named companies actually trade with each other. Each row links to the record in Sayari. A trade link proves the two companies traded, not that a given shipment went to fusion.</p>
+    <span class="eyebrow">Following the companies</span>
+    <h2 id="sayari-h">What company records show</h2>
+    <p class="section-intro">We used Sayari, a database of company registrations, shipping records, government contracts, and sanctions lists. It shows which real companies do business with each other. A trade record proves two companies traded, but not that anything ended up in a fusion plant. Sayari links need a Sayari account to open.</p>
     <div class="shell table-scroll">
       <table>
-        <thead><tr><th>Link found</th><th>Kind of evidence</th><th>What it means</th><th>Record</th></tr></thead>
+        <thead><tr><th>What we found</th><th>Type of record</th><th>Why it matters</th><th>Record</th></tr></thead>
         <tbody>
-          <tr><td>Five suppliers in Russia's state nuclear complex → <strong>Isoflex USA</strong>: NCCP, the Electrochemical Plant (Zelenogorsk), the Siberian Chemical Combine, Elektrokhimpribor, and Isotope JSC</td><td>Trade records, filtered to isotope and lithium-chemical product codes</td><td>A U.S. isotope distributor imports isotopes or lithium chemicals from Russia's weapons-era nuclear complex. This is the clearest route by which Russian enriched lithium could reach U.S. labs.</td><td><a href="https://graph.sayari.com/resource/entity/AEGsjKeoKLf8DAjnFUikgw" target="_blank" rel="noopener">Isoflex USA</a></td></tr>
-          <tr><td><strong>NCCP</strong> → China's state nuclear trader CNEIC, the Petten research reactor, Albemarle Germany, battery makers, and nuclear plants</td><td>Trade records, product not confirmed</td><td>The world's main lithium-7 plant sells into Western research, battery, and lithium supply chains.</td><td><a href="https://graph.sayari.com/resource/entity/uGeE9Bs2EvxWqf4mTsQFRQ" target="_blank" rel="noopener">NCCP</a></td></tr>
-          <tr><td>Kurchatov Institute and Mining and Chemical Combine → <strong>NCCP</strong></td><td>Russian procurement records</td><td>NCCP works under contract for central institutions of Russia's nuclear complex, including a former plutonium-production site.</td><td><a href="https://graph.sayari.com/resource/entity/uGeE9Bs2EvxWqf4mTsQFRQ" target="_blank" rel="noopener">NCCP</a></td></tr>
-          <tr><td><strong>Xinjiang Nonferrous Metals</strong> → Nonferrous Lithium Salt Plant</td><td>Corporate ownership records</td><td>A group on the U.S. forced-labor entity list has a lithium chemicals unit.</td><td><a href="https://graph.sayari.com/resource/entity/3CswEP9tXc2H8ReYWPr9cQ" target="_blank" rel="noopener">Xinjiang Nonferrous</a></td></tr>
-          <tr><td><strong>Bikita</strong> (Zimbabwe) → Sinomine (Hainan) Lithium → Sinomine sites in Namibia and Tanzania</td><td>Trade records, product not confirmed</td><td>Zimbabwean lithium enters a Chinese group trading hub, and the trail goes cold there.</td><td><a href="https://graph.sayari.com/resource/entity/RwcU9n6KEGr1upZT1NyNEg" target="_blank" rel="noopener">Bikita</a> · <a href="https://graph.sayari.com/resource/entity/NU2nnTaUlY9iKHBogeoPtQ" target="_blank" rel="noopener">Sinomine Hainan</a></td></tr>
-          <tr><td>KME, Linde Kryotechnik, Luvata, and others → <strong>Commonwealth Fusion Systems</strong></td><td>Trade records</td><td>The largest fusion company's visible imports are hardware. No lithium supplier shows up yet, so the chain can't be traced to a fusion buyer today.</td><td><a href="https://graph.sayari.com/resource/entity/pvo3Wv7gZb9K0hiji7-Nag" target="_blank" rel="noopener">CFS</a></td></tr>
-          <tr><td>Lithium hydroxide exporters by country, 2024 on</td><td>Trade records, aggregate counts</td><td>China 445, U.S. 247, South Korea 214: refining concentration shows up in customs data.</td><td><a href="https://graph.sayari.com" target="_blank" rel="noopener">Sayari</a></td></tr>
+          <tr><td>A U.S. company, <strong>Isoflex USA</strong>, buys from five suppliers run by Russia's state nuclear agency, including NCCP, the plant that makes most of the world's lithium-7.</td><td>Shipping records, narrowed to isotopes and lithium chemicals</td><td>This is the clearest path for Russian nuclear-weapons-era lithium to reach U.S. labs.</td><td><a href="https://graph.sayari.com/resource/entity/AEGsjKeoKLf8DAjnFUikgw" target="_blank" rel="noopener">Isoflex USA</a></td></tr>
+          <tr><td><strong>NCCP</strong> (Russia) ships to China's state nuclear company, a Dutch research reactor, a German lithium company, battery makers, and nuclear power plants.</td><td>Shipping records, contents unknown</td><td>The Russian plant sells into Western research, battery, and lithium businesses.</td><td><a href="https://graph.sayari.com/resource/entity/uGeE9Bs2EvxWqf4mTsQFRQ" target="_blank" rel="noopener">NCCP</a></td></tr>
+          <tr><td>Russia's top nuclear institutes, including a former plutonium site, hire <strong>NCCP</strong>.</td><td>Government contract records</td><td>NCCP is tied into the heart of Russia's nuclear system.</td><td><a href="https://graph.sayari.com/resource/entity/uGeE9Bs2EvxWqf4mTsQFRQ" target="_blank" rel="noopener">NCCP</a></td></tr>
+          <tr><td>A Chinese state company, <strong>Xinjiang Nonferrous Metals</strong>, owns a lithium chemical plant.</td><td>Company ownership records</td><td>The U.S. has listed this company as using forced labor.</td><td><a href="https://graph.sayari.com/resource/entity/3CswEP9tXc2H8ReYWPr9cQ" target="_blank" rel="noopener">Xinjiang Nonferrous</a></td></tr>
+          <tr><td>Lithium from the <strong>Bikita</strong> mine in Zimbabwe goes to a Chinese trading company in Hainan, which ships on to its sister companies in Namibia and Tanzania.</td><td>Shipping records, contents unknown</td><td>The trail goes cold in China. We can't see where the lithium ends up.</td><td><a href="https://graph.sayari.com/resource/entity/RwcU9n6KEGr1upZT1NyNEg" target="_blank" rel="noopener">Bikita</a> · <a href="https://graph.sayari.com/resource/entity/NU2nnTaUlY9iKHBogeoPtQ" target="_blank" rel="noopener">Hainan company</a></td></tr>
+          <tr><td>The biggest fusion company, <strong>Commonwealth Fusion Systems</strong>, buys copper, cooling, and cable parts.</td><td>Shipping records</td><td>No lithium supplier shows up yet, so we can't connect the chain to a fusion company today.</td><td><a href="https://graph.sayari.com/resource/entity/pvo3Wv7gZb9K0hiji7-Nag" target="_blank" rel="noopener">CFS</a></td></tr>
+          <tr><td>Companies exporting processed lithium since 2024: China 445, U.S. 247, South Korea 214.</td><td>Shipping records, totals</td><td>Shipping data shows how much China dominates lithium processing.</td><td><a href="https://graph.sayari.com" target="_blank" rel="noopener">Sayari</a></td></tr>
         </tbody>
       </table>
     </div>
-    <p class="section-intro" style="margin-top:1rem"><strong>What Sayari could not show:</strong> NCCP's owner (the registry lists only a regional property office), the exact product in each Isoflex shipment, and which SQM buyers take lithium rather than fertilizer. Sayari's own risk scores are not used on this page; only government lists and records are.</p>
+    <p class="section-intro" style="margin-top:1rem"><strong>What the records couldn't show:</strong> who owns NCCP, exactly what was in each shipment to Isoflex USA, and which buyers of Chilean company SQM take lithium rather than fertilizer. We don't use Sayari's own risk scores. We only report government lists and official records.</p>
   </section>
 
   <section id="risks" aria-labelledby="risk-h">
-    <span class="eyebrow">Human rights risks</span>
-    <h2 id="risk-h">Who could be harmed, step by step</h2>
-    <p class="section-intro">The evidence level says who documented the problem: a government, independent reporting, or a structural risk that follows from how the step works. None of these are findings about a specific shipment of fusion lithium, because no fusion company has published where its lithium comes from.</p>
+    <span class="eyebrow">Human rights</span>
+    <h2 id="risk-h">Who could get hurt, step by step</h2>
+    <p class="section-intro">The last column says who reported the problem: a government, journalists or advocacy groups, or a risk that comes with the work itself. None of this is about a specific shipment of fusion lithium, because no fusion company has said where its lithium comes from.</p>
     <div class="shell table-scroll">
       <table>
-        <thead><tr><th>Step</th><th>Who is at risk</th><th>Harm</th><th>Evidence level</th></tr></thead>
+        <thead><tr><th>Step</th><th>Who is at risk</th><th>What can happen</th><th>Who reported it</th></tr></thead>
         <tbody>
-          <tr><td>Extract (Chile, Argentina)</td><td>Indigenous communities, including the Lickanantay and Atacameño</td><td>Water loss from brine pumping; projects approved without free, prior and informed consent; 2023 protests in Jujuy</td><td class="lvl ngo">Independent reporting</td></tr>
-          <tr><td>Extract (Zimbabwe)</td><td>Children, mine workers, nearby villages</td><td>Child labor in lithium; reported displacements, spills, and unsafe work near Bikita</td><td class="lvl gov">U.S. government list</td></tr>
-          <tr><td>Extract (Australia)</td><td>Residents of Greenbushes, Western Australia</td><td>Mine dust exceeding licence limits; a state report found a significant health risk</td><td class="lvl gov">State government report</td></tr>
-          <tr><td>Refine (China)</td><td>Uyghurs and other minorities in Xinjiang</td><td>State labor transfer programs; lithium is a high-priority sector for U.S. forced-labor enforcement</td><td class="lvl gov">U.S. government strategy</td></tr>
-          <tr><td>Enrich (past: U.S.)</td><td>Residents and workers around Oak Ridge, Tennessee</td><td>Hundreds of tonnes of mercury released; cleanup still running in 2027</td><td class="lvl gov">U.S. government records</td></tr>
-          <tr><td>Enrich (now: Russia, China)</td><td>Workers and neighbors of closed weapons sites; the public, through proliferation</td><td>Mercury process with no public oversight; buying supports state weapons complexes, which already trade with a U.S. isotope distributor</td><td class="lvl gov">Trade records (Sayari)</td></tr>
-          <tr><td>Fabricate, deploy, after use</td><td>Plant workers</td><td>Tritium and beryllium exposure; waste from spent blankets</td><td class="lvl struct">Structural risk</td></tr>
+          <tr><td>Digging (Chile, Argentina)</td><td>Indigenous communities</td><td>Water drying up; mining approved without asking communities first; protests in 2023</td><td class="lvl ngo">Journalists and advocacy groups</td></tr>
+          <tr><td>Digging (Zimbabwe)</td><td>Children, mine workers, nearby villages</td><td>Child labor; families moved off their land; spills; unsafe work</td><td class="lvl gov">U.S. government</td></tr>
+          <tr><td>Digging (Australia)</td><td>People living in the town of Greenbushes</td><td>Mine dust above legal limits, which a state report called a health risk</td><td class="lvl gov">State government</td></tr>
+          <tr><td>Processing (China)</td><td>Uyghurs and other minority groups in Xinjiang</td><td>Forced labor through government work programs</td><td class="lvl gov">U.S. government</td></tr>
+          <tr><td>Sorting (past, U.S.)</td><td>People living and working near Oak Ridge, Tennessee</td><td>Hundreds of tonnes of toxic mercury leaked; cleanup still isn't finished</td><td class="lvl gov">U.S. government</td></tr>
+          <tr><td>Sorting (now, Russia and China)</td><td>Workers and neighbors of secret nuclear sites; everyone, if it helps build weapons</td><td>Mercury pollution with no public oversight; money flowing to weapons programs</td><td class="lvl gov">Shipping records</td></tr>
+          <tr><td>Making parts, running plants, cleanup</td><td>Plant workers</td><td>Contact with tritium and toxic beryllium; nuclear waste</td><td class="lvl struct">Comes with the work</td></tr>
         </tbody>
       </table>
     </div>
   </section>
 
   <section id="brief" aria-labelledby="brief-h">
-    <span class="eyebrow">Deliverable 3 · Policy brief and tech proposal</span>
-    <h2 id="brief-h">Build fusion's lithium chain clean before it scales</h2>
+    <span class="eyebrow">Part 2 · What should change</span>
+    <h2 id="brief-h">Clean up fusion's lithium before the industry grows</h2>
     <div class="brief">
-      <p class="ask"><strong>The ask:</strong> make public fusion money conditional on knowing where the lithium came from, and fund a lithium-6 supply that does not use mercury or weapons plants.</p>
+      <p class="ask"><strong>Our main idea:</strong> if taxpayer money pays for fusion, the companies should have to show where their lithium came from. Governments should also pay for cleaner ways to make lithium-6, so nobody has to buy it from weapons programs.</p>
 
       <h3>The problem</h3>
-      <p>Fusion needs little lithium by battery standards, but it needs a special kind. One power-plant blanket holds about 100 tonnes of lithium-6, and almost all of today's enrichment capacity sits inside nuclear-weapons programs in Russia and China that use a mercury process. The last time the United States did it at scale, Oak Ridge lost hundreds of tonnes of mercury into the land and a creek, and the cleanup is still going. Upstream, the same lithium passes through salt flats where Indigenous communities say they were not consulted, Zimbabwean mines on the U.S. child-labor list, and Chinese refining that the U.S. now treats as a forced-labor priority.</p>
+      <p>Fusion needs much less lithium than batteries do, but it needs the rare lithium-6 kind. One power plant needs about 100 tonnes of it. Right now, almost all the factories that can make lithium-6 belong to nuclear weapons programs in Russia and China, and they use toxic mercury to do it.</p>
+      <p>The last time the U.S. did this, at Oak Ridge, Tennessee, hundreds of tonnes of mercury leaked into the ground and a creek. They are still cleaning it up. And before lithium even gets to that step, it can pass through Indigenous land in South America, mines in Zimbabwe that use child labor, and factories in China linked to forced labor.</p>
 
       <h3>Why now</h3>
-      <p>Commercial fusion is roughly a decade from needing tonnes of lithium-6. Supply chains are cheapest to shape before contracts and plants lock them in. Pilot plants in the U.S., U.K., and Europe are already signing material deals, and much of the money is public.</p>
+      <p>Fusion power plants are about 10 years away from needing large amounts of lithium-6. It's much easier to set fair rules now, before companies sign long contracts and build factories. Much of the money in fusion today comes from governments, so governments have a say.</p>
 
       <h3>Three recommendations</h3>
       <div class="rec">
-        <h4>1. Put conditions on public fusion funding</h4>
-        <p>Any DOE, UKAEA, or ITER-funded project that buys lithium or breeder material should report the mine or brine of origin, the refiner, and the enrichment plant, and show due diligence that follows the <a href="https://www.oecd.org/en/topics/sub-issues/due-diligence-guidance-for-responsible-business-conduct/responsible-mineral-supply-chains.html" target="_blank" rel="noopener">OECD guidance for minerals</a>, which applies to all minerals, not only conflict minerals. Brine sources should show evidence of free, prior and informed consent.</p>
-        <p class="who">Who acts: DOE Office of Science and fusion milestone programs; UKAEA (LIBRTI); ITER Organization procurement.</p>
+        <h4>1. Attach rules to government fusion money</h4>
+        <p>Any fusion project paid for by the U.S. Department of Energy, the U.K. fusion agency, or the international ITER project should report where its lithium was mined, processed, and sorted. It should follow the <a href="https://www.oecd.org/en/topics/sub-issues/due-diligence-guidance-for-responsible-business-conduct/responsible-mineral-supply-chains.html" target="_blank" rel="noopener">international guidelines for responsible mining</a>. And mines on Indigenous land should show that local communities agreed.</p>
+        <p class="who">Who would do it: the U.S. Department of Energy, the U.K. Atomic Energy Authority, and ITER.</p>
       </div>
       <div class="rec">
-        <h4>2. Fund mercury-free lithium-6, and keep public money away from mercury and weapons plants</h4>
-        <p>Use the DOE Isotope Program and grants to scale cleaner methods such as chromatography, crown-ether exchange, and electrochemical separation, which companies like Precision Periodic and Molten Salt Solutions are developing. Do not buy enriched lithium made by COLEX or by plants inside weapons complexes, in line with the Minamata Convention on mercury.</p>
-        <p class="who">Who acts: DOE Isotope Program; Congress (appropriations); U.K. Department for Energy Security and Net Zero.</p>
+        <h4>2. Pay for clean lithium-6, and stop buying from weapons programs</h4>
+        <p>Fund new ways to make lithium-6 without mercury. Companies like Precision Periodic, Molten Salt Solutions, and Marathon Fusion are already working on this. Government-funded projects should not buy lithium-6 made with mercury or made inside weapons programs. That also matches a global treaty on mercury.</p>
+        <p class="who">Who would do it: the U.S. Department of Energy, Congress, and the U.K. energy department.</p>
       </div>
       <div class="rec">
-        <h4>3. Close the isotope gap in trade rules</h4>
-        <p>Make clear that UFLPA lithium enforcement covers enriched lithium and lithium compounds, and add an origin declaration for lithium isotopes at import. Sayari's trade records show why: a U.S. isotope distributor imports isotopes or lithium chemicals from five plants in Russia's state nuclear complex, and a Xinjiang group on the forced-labor entity list runs a lithium salt plant. Isotope distributors sell to research labs, so an origin rule at import would reach material that buyers never see the source of.</p>
-        <p class="who">Who acts: Forced Labor Enforcement Task Force (DHS); U.S. Customs and Border Protection; Commerce (export controls).</p>
+        <h4>3. Close a gap in import rules</h4>
+        <p>Make clear that the U.S. forced-labor import law covers lithium-6 and other special forms of lithium, and require importers to say where it came from. Shipping records show why this matters: a U.S. company buys from five Russian nuclear plants, and a Chinese company on the forced-labor list owns a lithium plant. Labs that buy from middlemen may never see where their lithium started.</p>
+        <p class="who">Who would do it: U.S. Customs and Border Protection, the Department of Homeland Security, and the Department of Commerce.</p>
       </div>
 
-      <h3>The tech piece: a Fusion Lithium Passport</h3>
-      <p>A shared record that travels with each batch of lithium, from mine to blanket. Each step adds who handled it and what they checked. Before a contract is signed, the buyer runs the companies through ownership and trade checks in a tool like Sayari, which is exactly what this page does by hand.</p>
-      <div class="passport" aria-label="Passport fields">
-        <div><b>Mine or brine</b>Location, owner, consent evidence, labor audit</div>
-        <div><b>Refiner</b>Plant, owner, Xinjiang screening</div>
-        <div><b>Enrichment</b>Method (no mercury), plant, owner</div>
-        <div><b>Breeder maker</b>Material, enrichment level, batch</div>
-        <div><b>Reactor</b>Project, public funder, recycle plan</div>
+      <h3>The tech idea: a "Lithium Passport"</h3>
+      <p>Think of it like a passport for each batch of lithium. Every time the lithium changes hands, from the mine to the power plant, that step gets recorded, along with what was checked. Before buying, a fusion company would look up every company in the chain using tools like Sayari, the same way this project did by hand.</p>
+      <div class="passport" aria-label="What the passport records">
+        <div><b>Mine</b>Where, who owns it, whether locals agreed, labor checks</div>
+        <div><b>Processing</b>Factory, owner, forced-labor check</div>
+        <div><b>Sorting</b>Method (no mercury), factory, owner</div>
+        <div><b>Parts maker</b>What was made, how much lithium-6</div>
+        <div><b>Power plant</b>Project, who paid, recycling plan</div>
       </div>
-      <p>It should also include a complaint channel, so affected communities can attach evidence to a batch record, not just companies.</p>
+      <p>The passport should also let affected communities file complaints, so it's not only companies telling the story.</p>
 
-      <h3>Limits and trade-offs</h3>
+      <h3>Downsides to be honest about</h3>
       <ul>
-        <li>Conditions add cost and could slow early experiments. A phase-in for research quantities, under about 1 kg, would limit that.</li>
-        <li>A passport only works if refiners and enrichers take part. Public funding is the lever, because most fusion buyers today are publicly funded.</li>
-        <li>Tracing tools see ownership and trade, not working conditions. Audits and community voice are still needed.</li>
-        <li>Lithium-6 enrichment is export-controlled because of weapons, so some records will need restricted access.</li>
+        <li>Rules cost money and could slow down early experiments. Small research amounts, under about 1 kilogram, could get a pass at first.</li>
+        <li>The passport only works if the factories take part. Government money is what gets them to.</li>
+        <li>Records show who traded with whom, not how workers are treated. Inspections and community voices are still needed.</li>
+        <li>Lithium-6 can be used in weapons, so some records would have to stay private.</li>
       </ul>
 
-      <h3>How we would know it worked</h3>
+      <h3>How we'd know it's working</h3>
       <ul>
-        <li>Share of publicly funded fusion lithium with a known mine of origin.</li>
-        <li>Tonnes of lithium-6 made without mercury outside weapons programs.</li>
-        <li>Complaints filed by communities and how they were resolved.</li>
+        <li>More government-funded fusion lithium comes with a known mine.</li>
+        <li>More lithium-6 is made without mercury and outside weapons programs.</li>
+        <li>Communities file complaints and they get resolved.</li>
       </ul>
     </div>
   </section>
 
   <section id="method" aria-labelledby="method-h">
-    <span class="eyebrow">Explainability</span>
-    <h2 id="method-h">How this page was made</h2>
-    <p class="section-intro">A short summary is below. The <a href="methodology.html">full methodology</a> covers scope, the chain model, search and verification steps, evidence labels, risk assessment, AI use, and limits.</p>
+    <span class="eyebrow">Showing our work</span>
+    <h2 id="method-h">How we made this page</h2>
+    <p class="section-intro">This is the short version. The <a href="methodology.html">full explanation</a> covers every step in detail.</p>
     <div class="method">
-      <p><strong>Research tools.</strong> Every web source was found with Tavily search, and the key claims were checked against the full page text with Tavily extract. That covers government, NGO, academic, news, and company sources. Company and trade evidence came from Sayari's knowledge graph, using entity records and trade relationships rather than shipment name searches, which often return unrelated records. Each source is tagged "via Tavily" or "via Sayari."</p>
-      <p><strong>Tavily queries used.</strong> Lithium-6 enrichment for fusion; ITER breeder blankets; CFS and FLiBe; Y-12 mercury; DOE lithium-6 programs; Atacama Indigenous water rights; Jujuy protests; Zimbabwe lithium labor; the DOL goods list; UFLPA and lithium; China's refining share; UKAEA LIBRTI; CFS lithium suppliers; Greenbushes community impacts; Isoflex; the scope of the OECD minerals guidance.</p>
-      <p><strong>Sayari methods used.</strong> Entity search and profiles to confirm each company's identity by registry number; upstream supply-chain traces filtered by HS product code (Isoflex USA, Commonwealth Fusion Systems); trade relationships (NCCP, Bikita, Sinomine Hainan, SQM); procurement records (NCCP's contractors); ownership trees (Xinjiang Nonferrous); and trade aggregates (lithium hydroxide exporters). Shipment searches by company name returned unrelated records, so they were not used. Sayari's own risk scores are not shown. See the "What Sayari shows" table for every link.</p>
-      <p><strong>Evidence rules.</strong> No company is rated ethical or unethical. Allegations are attributed to whoever reported them. Trade links are labeled "product not confirmed." Projections are labeled as projections.</p>
-      <p><strong>AI use.</strong> The page was coded and drafted with Claude (Anthropic) in Claude Code. Each fact traces to a source listed below. The student author reviewed the sources and owns the conclusions.</p>
-      <p><strong>Still unknown.</strong></p>
+      <p><strong>Finding facts.</strong> We used Tavily, an AI search tool, to find government reports, research papers, news stories, and company announcements. For important facts, we pulled up the full original page and checked the exact wording. Each source on this page is marked "via Tavily."</p>
+      <p><strong>Following companies.</strong> We used Sayari to look up companies by their official registration numbers, see who they ship to and buy from, and see who owns them. We didn't trust searches by company name alone, because they mixed up different companies. Each source from there is marked "via Sayari."</p>
+      <p><strong>Our rules.</strong> We don't call any company "good" or "bad." When someone makes an accusation, we say who made it. When a shipping record doesn't show what was shipped, we say so. Guesses about the future are labeled as estimates.</p>
+      <p><strong>Use of AI.</strong> This page was built and written with help from Claude, an AI assistant. Every fact links to a real source. The student who made this chose the topic, guided the research, checked the sources, and stands behind the conclusions.</p>
+      <p><strong>What we still don't know.</strong></p>
       <ul id="unknowns"></ul>
-      <p>The records behind this page are in <a href="https://github.com/jmayes14/fusion-materials-map/blob/main/research/fusion-lithium-2026-11.json" target="_blank" rel="noopener"><code>research/fusion-lithium-2026-11.json</code></a>.</p>
+      <p>All of our notes and sources are in one file you can download: <a href="https://github.com/jmayes14/fusion-materials-map/blob/main/research/fusion-lithium-2026-11.json" target="_blank" rel="noopener">research notes</a>.</p>
     </div>
     <h3>Sources</h3>
     <ol class="sources" id="sources"></ol>
   </section>
 
-  <footer>Iteration 1 for "Mapping the Human Cost of Fusion Energy Materials." Research snapshot from 9 November 2026. This page will change.</footer>
+  <footer>First draft for the class project "Mapping the Human Cost of Fusion Energy Materials." Research done 9 November 2026. This page will be updated.</footer>
 </main>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
@@ -375,99 +394,99 @@ const SOURCES = {
 };
 
 const STAGES = [
-  { id: "extract", n: 1, name: "Extract", what: "Brine from salt flats, or hard-rock spodumene", flag: "Consent, water, child labor",
-    summary: "Lithium is pumped as brine from salt flats in Chile and Argentina, or mined as hard rock in Australia, Zimbabwe, and elsewhere. No fusion company has said which mine its lithium comes from.",
+  { id: "extract", n: 1, name: "Dig", what: "Pump salty water from salt flats, or mine rock", flag: "Land, water, child labor",
+    summary: "Lithium comes from two places: salty underground water pumped up in Chile and Argentina, or rock mined in Australia, Zimbabwe, and other countries. No fusion company has said which mine its lithium comes from.",
     facts: [
-      { t: "Lithium mining in the Salar de Atacama takes place on the ancestral lands of the Lickanantay and Atacameño people.", s: "iisdChile", l: ["land"] },
-      { t: "Codelco and SQM plan to raise Atacama lithium output by up to 33% through 2060, and Indigenous groups are demanding more control.", s: "reutersAtacama", l: ["land"] },
-      { t: "Jujuy, Argentina, reformed its constitution in 2023 without the consultation owed to Indigenous peoples, easing extraction on community land.", s: "fidh", l: ["land"] },
-      { t: "Communities of Salinas Grandes protested for 15 days in 2023 after the reform vote.", s: "energyMonitor", l: ["land"] },
-      { t: "The U.S. Department of Labor lists lithium from Zimbabwe as produced with child labor.", s: "dolList", l: ["labor"], k: "U.S. government list" },
-      { t: "Workers and villagers near the Bikita lithium mine accuse the owner, Sinomine, and the government of displacements, spills, labor abuses, and a death.", s: "mongabayBikita", l: ["labor", "land"], k: "Reported allegation" },
-      { t: "At Greenbushes in Western Australia, the world's largest hard-rock lithium mine, operator Talison said dust exceeded licence limits at least eight times in 2024 and said it had underestimated its impact on the town.", s: "abcGreenbushes", l: ["land"] },
-      { t: "Sayari trade relationships show Bikita Minerals shipping to Sinomine's lithium company in Hainan, China.", s: "sayariBikita", l: [], k: "Trade link, product not confirmed" },
-      { t: "That Hainan company in turn ships to other Sinomine operations, including a smelter in Namibia and a mine in Tanzania. It works as a group trading hub, so Sayari does not show where Bikita's lithium finally goes.", s: "sayariHainan", l: [], k: "Trade link, product not confirmed" }
+      { t: "In Chile's Atacama Desert, lithium is mined on land that has belonged to Indigenous peoples for generations.", s: "iisdChile", l: ["land"] },
+      { t: "Chile's big lithium companies plan to mine up to 33% more there through 2060. Indigenous groups want more say.", s: "reutersAtacama", l: ["land"] },
+      { t: "In 2023, the Jujuy province of Argentina changed its constitution to make mining easier on community land, without properly asking Indigenous communities.", s: "fidh", l: ["land"] },
+      { t: "Communities at the Salinas Grandes salt flats protested for 15 days after that vote.", s: "energyMonitor", l: ["land"] },
+      { t: "The U.S. Department of Labor says lithium from Zimbabwe is made with child labor.", s: "dolList", l: ["labor"], k: "Government list" },
+      { t: "Workers and villagers near Zimbabwe's Bikita lithium mine say they've faced being forced off their land, chemical spills, worker abuse, and a death. They blame the Chinese owner, Sinomine, and the government.", s: "mongabayBikita", l: ["labor", "land"], k: "People's claims, reported in the news" },
+      { t: "At Greenbushes, Australia's biggest lithium mine, the mining company admitted its dust went over legal limits at least 8 times in 2024.", s: "abcGreenbushes", l: ["land"] },
+      { t: "Shipping records show the Bikita mine sending goods to a Chinese lithium company in Hainan, owned by the same parent company.", s: "sayariBikita", l: [], k: "Shipping record, contents unknown" },
+      { t: "That Hainan company then ships to its sister companies in Namibia and Tanzania. It acts as a middleman, so we can't see where Bikita's lithium finally ends up.", s: "sayariHainan", l: [], k: "Shipping record, contents unknown" }
     ],
-    unknown: ["Which mine or brine any fusion lithium comes from.", "Where Bikita's lithium goes after Sinomine's Hainan company.", "SQM's buyers in Sayari are mostly fertilizer companies, because SQM also sells fertilizer, so its lithium buyers can't be separated out."] },
-  { id: "refine", n: 2, name: "Refine", what: "Ore and brine become lithium carbonate or hydroxide", flag: "Forced labor",
-    summary: "Concentrate and brine are turned into battery-grade and nuclear-grade lithium chemicals. China dominates this step.",
+    unknown: ["Which mine any fusion company's lithium comes from.", "Where Bikita's lithium ends up after the Hainan company.", "Which buyers of Chile's SQM take lithium. SQM also sells fertilizer, and the records mix the two."] },
+  { id: "refine", n: 2, name: "Process", what: "Turn raw lithium into clean lithium chemicals", flag: "Forced labor",
+    summary: "The raw material is cleaned and turned into lithium chemicals that batteries and nuclear projects can use. China does most of this work.",
     facts: [
-      { t: "China refines 70% of the world's lithium chemicals and 95% of hard-rock ore refining.", s: "ieaGcmo2025", l: ["forced"] },
-      { t: "In August 2025 the U.S. Forced Labor Enforcement Task Force named lithium a high-priority sector for enforcement under the Uyghur Forced Labor Prevention Act.", s: "ustrUflpa2025", l: ["forced"], k: "U.S. government strategy" },
-      { t: "Sayari trade records since 2024 show 445 Chinese exporters of lithium hydroxide, more than any other country; the U.S. has 247 and South Korea 214.", s: "sayariTrade", l: [] },
-      { t: "The state-owned Xinjiang Nonferrous Metals Industry Group is on the UFLPA Entity List. Letters cited in the same source allege that battery makers CATL and Gotion source raw materials from it.", s: "millerUflpa", l: ["forced"], k: "U.S. government list" },
-      { t: "Sayari's corporate records show a \"Nonferrous Lithium Salt Plant\" (有色锂盐厂) inside that group, along with a rare-metals subsidiary.", s: "sayariXnm", l: ["forced"], k: "Company records" }
+      { t: "China processes 70% of the world's lithium chemicals, and 95% of the lithium that comes from rock.", s: "ieaGcmo2025", l: ["forced"] },
+      { t: "In August 2025, the U.S. made lithium a top priority for stopping imports made with forced labor in Xinjiang, China.", s: "ustrUflpa2025", l: ["forced"], k: "Government decision" },
+      { t: "Since 2024, shipping records show 445 Chinese companies exporting processed lithium, more than any other country. The U.S. has 247 and South Korea 214.", s: "sayariTrade", l: [] },
+      { t: "A Chinese state company, Xinjiang Nonferrous Metals, is on the U.S. forced-labor list. Letters cited by the same source say two big battery makers, CATL and Gotion, buy raw materials from it.", s: "millerUflpa", l: ["forced"], k: "Government list" },
+      { t: "Company records show this Xinjiang company owns a lithium chemical plant.", s: "sayariXnm", l: ["forced"], k: "Company records" }
     ],
-    unknown: ["Whether any lithium chemical bought for fusion research passed through Xinjiang."] },
-  { id: "enrich", n: 3, name: "Enrich", what: "Separate lithium-6 from lithium-7", flag: "Mercury, weapons, sanctions",
-    summary: "Natural lithium is 7.5% lithium-6, and blankets need 30 to 90%. This step is unique to fusion and is the bottleneck. At industrial scale it has only ever been done for nuclear weapons.",
+    unknown: ["Whether any lithium bought for fusion research passed through Xinjiang."] },
+  { id: "enrich", n: 3, name: "Sort", what: "Collect the rare lithium-6", flag: "Mercury, weapons",
+    summary: "Only about 7 out of every 100 lithium atoms are lithium-6, but fusion needs 30 to 90 out of 100. Sorting them is the step fusion adds, and it's the hardest part. On a large scale, it has only ever been done to build nuclear weapons.",
     facts: [
-      { t: "Industrial-scale enrichment has been done only for nuclear weapons. The mercury-based COLEX process is used today in China, North Korea, and Russia.", s: "wardArxiv", l: ["weapons", "toxic"] },
-      { t: "A power-plant blanket holds about 100 tonnes of lithium-6 per gigawatt (thermal), and the authors call today's global enrichment capacity near negligible.", s: "wardArxiv", l: [], k: "Projection" },
-      { t: "Oak Ridge's Y-12 plant used about 11 million kg of mercury for lithium separation from 1950 to 1963.", s: "ostiY12", l: ["toxic"] },
-      { t: "The U.S. Department of Energy estimated 330 tonnes of mercury were released, 110 into East Fork Poplar Creek, and could not account for 750 more.", s: "atsdrY12", l: ["toxic"], k: "U.S. government record" },
-      { t: "Mercury is still Y-12's top cleanup priority. A treatment plant is due in 2027.", s: "doeY12", l: ["toxic"] },
-      { t: "Russia's Novosibirsk Chemical Concentrates Plant (NCCP), part of Rosatom's fuel company TVEL, meets up to 80% of world demand for lithium-7, a by-product of lithium-6 enrichment for weapons.", s: "wnaLithium", l: ["weapons"] },
-      { t: "NCCP appears on Ukraine's national sanctions list.", s: "sayariNccp", l: ["weapons"], k: "Government list via Sayari" },
-      { t: "Russian procurement records in Sayari show NCCP working under contract for Rosatom-system bodies, including the Kurchatov Institute and the Mining and Chemical Combine at Zheleznogorsk, a former plutonium-production site.", s: "sayariNccp", l: ["weapons"], k: "Procurement records" },
-      { t: "Isoflex USA, a California-registered isotope distributor, has six suppliers in Sayari's trade records when filtered to isotope and lithium-chemical product codes. Five are in Russia's state nuclear complex: NCCP, the Electrochemical Plant in Zelenogorsk, the Siberian Chemical Combine, Elektrokhimpribor, and Rosatom's isotope exporter Isotope JSC.", s: "sayariIsoflex", l: ["weapons"], k: "Trade link, product narrowed" },
-      { t: "The Zelenogorsk Electrochemical Plant, one of those suppliers, makes low-enriched uranium and stable and radioactive isotopes inside a closed nuclear city.", s: "atommediaEcp", l: ["weapons"] },
-      { t: "Sayari shows NCCP shipping to China's state nuclear trader CNEIC, to Isoflex USA (an isotope distributor), to the Petten research reactor in the Netherlands, to Albemarle Germany, and to battery makers and nuclear plants. NCCP also makes reactor fuel, so the product in each link is not known.", s: "sayariNccp", l: ["weapons"], k: "Trade link, product not confirmed" },
-      { t: "Mercury-free methods are in development. Precision Periodic announced a chromatography process backed by a DOE grant in September 2025.", s: "precisionPeriodic", l: [] },
-      { t: "In March 2026, Molten Salt Solutions announced agreements to supply enriched lithium to Type One Energy and Gauss Fusion, using a solvent exchange process.", s: "moltenSalt", l: [], k: "Company statement" },
-      { t: "In August 2026, Marathon Fusion announced it had enriched lithium isotopes in a plasma centrifuge, a method that doesn't use mercury, with support from DOE's ARPA-E.", s: "marathon", l: [], k: "Company statement" },
-      { t: "A federal SBIR award summary for Precision Periodic says the U.S. has no domestic supply of lithium-6 or lithium-7 and is completely reliant on Russia and China.", s: "sbirLi6", l: ["weapons"], k: "Grant summary" }
+      { t: "Large-scale lithium sorting has only been done for nuclear weapons. China, North Korea, and Russia still do it with a method that uses toxic mercury.", s: "wardArxiv", l: ["weapons", "toxic"] },
+      { t: "One fusion power plant needs about 100 tonnes of lithium-6. Researchers say the world can barely make any today.", s: "wardArxiv", l: [], k: "Estimate" },
+      { t: "From 1950 to 1963, the Y-12 plant in Oak Ridge, Tennessee, used about 11 million kilograms of mercury to sort lithium.", s: "ostiY12", l: ["toxic"] },
+      { t: "The U.S. government says about 330 tonnes of mercury leaked, 110 tonnes of it into a local creek. Another 750 tonnes can't be accounted for.", s: "atsdrY12", l: ["toxic"], k: "Government record" },
+      { t: "Mercury is still the top cleanup problem at Y-12. A treatment plant is due to open in 2027.", s: "doeY12", l: ["toxic"] },
+      { t: "A Russian plant called NCCP, part of Russia's state nuclear agency, makes up to 80% of the world's lithium-7. Lithium-7 is left over when lithium-6 is sorted out for weapons.", s: "wnaLithium", l: ["weapons"] },
+      { t: "NCCP is on Ukraine's sanctions list.", s: "sayariNccp", l: ["weapons"], k: "Government list" },
+      { t: "Russian government contract records show major Russian nuclear institutes hiring NCCP, including a site that once made plutonium for bombs.", s: "sayariNccp", l: ["weapons"], k: "Government contract records" },
+      { t: "Isoflex USA, a company that sells isotopes in the U.S., buys from five suppliers run by Russia's state nuclear agency, including NCCP. The records were narrowed to isotopes and lithium chemicals.", s: "sayariIsoflex", l: ["weapons"], k: "Shipping record, contents narrowed" },
+      { t: "One of those suppliers, in the secret nuclear city of Zelenogorsk, makes nuclear fuel and isotopes.", s: "atommediaEcp", l: ["weapons"] },
+      { t: "Shipping records also show NCCP selling to China's state nuclear company, a Dutch research reactor, a German lithium company, battery makers, and nuclear power plants. NCCP also makes nuclear fuel, so we don't know what was in each shipment.", s: "sayariNccp", l: ["weapons"], k: "Shipping record, contents unknown" },
+      { t: "Cleaner methods without mercury are coming. Precision Periodic announced one in September 2025, with U.S. government funding.", s: "precisionPeriodic", l: [] },
+      { t: "In March 2026, Molten Salt Solutions said it had deals to supply lithium-6 to two fusion companies, Type One Energy and Gauss Fusion.", s: "moltenSalt", l: [], k: "Company's own claim" },
+      { t: "In August 2026, Marathon Fusion said it had sorted lithium with a spinning machine that doesn't use mercury, with U.S. government support.", s: "marathon", l: [], k: "Company's own claim" },
+      { t: "A U.S. government grant summary says America makes no lithium-6 or lithium-7 of its own and depends completely on Russia and China.", s: "sbirLi6", l: ["weapons"], k: "Grant summary" }
     ],
-    unknown: ["Current lithium-6 capacity and stockpiles in Russia, China, and the U.S.", "Sayari's ownership record for NCCP shows only a regional property office, not TVEL or Rosatom.", "Which exact product (lithium-6, lithium-7, another isotope, or lithium hydroxide) moved in each shipment to Isoflex USA. Sayari's product-code filter narrowed it to those groups, but splitting by code failed.", "Whether any of Isoflex USA's Russian-origin material reached a fusion lab."] },
-  { id: "fabricate", n: 4, name: "Fabricate", what: "Make breeder pebbles, lithium-lead, or FLiBe salt", flag: "Beryllium, worker exposure",
-    summary: "Enriched lithium becomes a breeder material: ceramic pebbles such as lithium orthosilicate, liquid lithium-lead, or molten FLiBe salt (lithium and beryllium fluoride).",
+    unknown: ["How much lithium-6 Russia, China, and the U.S. can make or have stored.", "Who owns NCCP. The records only list a local government office.", "Exactly what was in each shipment to Isoflex USA. We narrowed it to isotopes and lithium chemicals, but couldn't get more specific.", "Whether any Russian material from Isoflex USA reached a fusion lab."] },
+  { id: "fabricate", n: 4, name: "Make parts", what: "Turn lithium-6 into fuel-making parts", flag: "Toxic beryllium",
+    summary: "The sorted lithium is made into the part of the power plant that makes fuel. It can be small ceramic beads, a liquid metal mix, or a melted salt called FLiBe (made from lithium and a metal called beryllium).",
     facts: [
-      { t: "China's ITER test blanket module uses lithium orthosilicate pebbles enriched to 60% lithium-6.", s: "ornlTbm", l: [] },
-      { t: "Materion will supply beryllium fluoride from Elmore, Ohio, for the FLiBe salt in Commonwealth Fusion Systems' ARC plants. The lithium source for that salt is not published.", s: "materionCfs", l: [] }
+      { t: "China's test part for the international ITER fusion project uses tiny lithium beads that are 60% lithium-6.", s: "ornlTbm", l: [] },
+      { t: "An Ohio company, Materion, will supply the beryllium half of the FLiBe salt for Commonwealth Fusion Systems. Where the lithium half comes from hasn't been made public.", s: "materionCfs", l: [] }
     ],
-    unknown: ["Who will make breeder materials at commercial scale, and from whose lithium."] },
-  { id: "deploy", n: 5, name: "Deploy", what: "Breeder blankets go into reactors", flag: "Tritium handling",
-    summary: "Blankets surround the plasma, absorb neutrons, breed tritium, and carry heat away. Test programs are running now, and power plants are planned for the 2030s.",
+    unknown: ["Who will make these parts on a large scale, and whose lithium they'll use."] },
+  { id: "deploy", n: 5, name: "Use", what: "The parts go into fusion machines", flag: "Tritium safety",
+    summary: "The lithium layer wraps around the super-hot fusion reaction. It catches particles, makes new fuel, and carries heat away to make electricity. Tests are happening now. Power plants are planned for the 2030s.",
     facts: [
-      { t: "ITER will test four blanket concepts from Europe, Japan, China, and Korea.", s: "iterTbm", l: [] },
-      { t: "ITER's test blanket module needed about 200 kg of enriched lithium.", s: "neiEnriched", l: [] },
-      { t: "UKAEA's £220 million LIBRTI programme aims to show net tritium production. Commonwealth Fusion Systems became its first international partner in July 2026.", s: "cfsLibrti", l: [] },
-      { t: "In Sayari's trade records, Commonwealth Fusion Systems' visible suppliers make copper, steel, cryogenic, and cable products, including KME, Linde Kryotechnik, and Luvata. No lithium supplier appears yet, which fits a company that has not started buying breeder material at scale.", s: "sayariCfs", l: [] }
+      { t: "The ITER fusion project in France will test four designs from Europe, Japan, China, and Korea.", s: "iterTbm", l: [] },
+      { t: "ITER's test needed about 200 kilograms of lithium-6-rich lithium.", s: "neiEnriched", l: [] },
+      { t: "The U.K. is spending £220 million on a program to prove plants can make their own fuel. Commonwealth Fusion Systems joined it in July 2026.", s: "cfsLibrti", l: [] },
+      { t: "Shipping records show Commonwealth Fusion Systems buying copper, steel, cooling, and cable parts. No lithium supplier shows up yet. That makes sense for a company that hasn't started buying fuel materials in bulk.", s: "sayariCfs", l: [] }
     ],
-    unknown: ["Whether any fusion developer has a lithium sourcing or human-rights policy. A Tavily search found such policies from lithium and battery companies but none from a fusion developer."] },
-  { id: "after", n: 6, name: "After use", what: "Spent blankets, recycling, waste", flag: "Waste, recycling",
-    summary: "Spent blankets contain tritium and activated material. Recycling them would cut how much new enriched lithium is needed.",
+    unknown: ["Whether any fusion company has rules about where its lithium comes from. We found such rules from lithium and battery companies, but none from a fusion company."] },
+  { id: "after", n: 6, name: "Afterward", what: "Used parts, recycling, waste", flag: "Waste, recycling",
+    summary: "Used lithium parts are slightly radioactive. Recycling them would mean less new lithium-6 has to be made.",
     facts: [
-      { t: "Without recycling, replacing blankets could use up to 12 tonnes of lithium-6 per gigawatt (electric) each year. With 90% recycling it would be about 1.2 tonnes.", s: "neiEnriched", l: ["toxic"], k: "Projection" }
+      { t: "Without recycling, a large power plant could use up to 12 tonnes of lithium-6 a year. With good recycling, about 1.2 tonnes.", s: "neiEnriched", l: ["toxic"], k: "Estimate" }
     ],
-    unknown: ["Where spent blankets would be processed, and who would carry that risk."] }
+    unknown: ["Where used parts would be processed, and which communities would live near that."] }
 ];
 
 // Sites. Coordinates are approximate. "region" means a country or regional marker, not a plant.
 const SITES = [
-  { id: "atacama", stage: "extract", name: "Salar de Atacama", where: "Antofagasta, Chile", at: [-68.25, -23.5], text: "Brine operations run by SQM (with Codelco) and Albemarle on Lickanantay and Atacameño land.", s: ["iisdChile", "reutersAtacama"] },
-  { id: "jujuy", stage: "extract", name: "Jujuy salt flats", where: "Jujuy, Argentina", at: [-66.4, -23.5], text: "Includes Cauchari-Olaroz and Salinas Grandes, where communities protested the 2023 constitutional reform.", s: ["fidh", "energyMonitor"] },
-  { id: "greenbushes", stage: "extract", name: "Greenbushes", where: "Western Australia", at: [116.06, -33.86], text: "A large hard-rock lithium mine run by Talison. A state report found dust posed a health risk, and Talison said dust exceeded licence limits at least eight times in 2024.", s: ["abcGreenbushes"] },
-  { id: "bikita", stage: "extract", name: "Bikita", where: "Masvingo, Zimbabwe", at: [31.3, -20.08], text: "Owned by Sinomine since 2022. Zimbabwe's lithium is on the U.S. child-labor list, and residents have reported abuses near this mine.", s: ["dolList", "mongabayBikita", "sayariBikita"] },
-  { id: "china", stage: "refine", name: "China (country)", where: "Country-level marker", at: [112, 31], region: true, text: "Refines 70% of the world's lithium chemicals.", s: ["ieaGcmo2025"] },
-  { id: "hainan", stage: "refine", name: "Sinomine (Hainan) Lithium", where: "Yangpu, Hainan, China", at: [109.2, 19.7], text: "Receives shipments from Bikita, according to Sayari trade records.", s: ["sayariBikita"] },
-  { id: "xnm", stage: "refine", name: "Xinjiang Nonferrous Metals", where: "Ürümqi, Xinjiang, China", at: [87.6, 43.8], text: "State-owned metals group on the UFLPA Entity List. Sayari shows a lithium salt plant inside the group.", s: ["millerUflpa", "sayariXnm"] },
-  { id: "isoflex", stage: "enrich", name: "Isoflex USA", where: "California, United States", at: [-122.42, 37.77], text: "Isotope distributor. Sayari trade records, filtered to isotope and lithium-chemical codes, show five suppliers in Russia's state nuclear complex. Map position is the state, not a confirmed address.", s: ["sayariIsoflex"] },
-  { id: "ecp", stage: "enrich", name: "Electrochemical Plant", where: "Zelenogorsk, Russia", at: [94.6, 56.1], text: "Rosatom plant in a closed nuclear city making enriched uranium and stable isotopes. A supplier to Isoflex USA in Sayari.", s: ["atommediaEcp", "sayariIsoflex"] },
-  { id: "shk", stage: "enrich", name: "Siberian Chemical Combine", where: "Seversk, Russia", at: [84.9, 56.6], ly: -8, text: "Rosatom-system plant. A supplier to Isoflex USA in Sayari's filtered trade records.", s: ["sayariIsoflex"] },
-  { id: "ekhp", stage: "enrich", name: "Elektrokhimpribor", where: "Lesnoy, Russia", at: [59.8, 58.6], text: "State enterprise in a closed nuclear city. A supplier to Isoflex USA in Sayari's filtered trade records.", s: ["sayariIsoflex"] },
-  { id: "isotop", stage: "enrich", name: "Isotope JSC", where: "Moscow, Russia", at: [37.6, 55.75], text: "Rosatom's isotope exporter. A supplier to Isoflex USA in Sayari's filtered trade records.", s: ["isotopRu", "sayariIsoflex"] },
-  { id: "xinjiang", stage: "refine", name: "Xinjiang (region)", where: "Region-level marker", at: [85, 41.5], region: true, text: "Region-wide UFLPA presumption of forced labor. Lithium has been a high-priority enforcement sector since August 2025.", s: ["ustrUflpa2025"] },
-  { id: "nccp", stage: "enrich", name: "NCCP", where: "Novosibirsk, Russia", at: [82.93, 55.03], ly: 10, text: "Rosatom-group plant and the main world supplier of lithium-7, a by-product of lithium-6 enrichment. On Ukraine's sanctions list. Sayari shows it supplying Isoflex USA and working under contract for Rosatom institutes.", s: ["wnaLithium", "sayariNccp", "sayariIsoflex"] },
-  { id: "y12", stage: "enrich", name: "Y-12, Oak Ridge", where: "Tennessee, United States", at: [-84.25, 35.99], text: "Made about 442 tonnes of lithium-6 hydroxide from 1953 to 1963 using mercury. Mercury cleanup continues.", s: ["wardArxiv", "atsdrY12", "doeY12"] },
-  { id: "pp", stage: "enrich", name: "Precision Periodic", where: "Orlando, Florida", at: [-81.38, 28.54], text: "Developing mercury-free lithium-6 enrichment with a DOE grant.", s: ["precisionPeriodic"] },
-  { id: "swip", stage: "fabricate", name: "SWIP", where: "Chengdu, China", at: [104.07, 30.67], text: "Southwestern Institute of Physics, developer of China's ITER test blanket with 60% enriched lithium pebbles.", s: ["ornlTbm"] },
-  { id: "materion", stage: "fabricate", name: "Materion", where: "Elmore, Ohio", at: [-83.3, 41.48], text: "Supplies beryllium fluoride for CFS's FLiBe salt. Shown because FLiBe salt combines lithium fluoride with beryllium fluoride; Materion is not a lithium supplier.", s: ["materionCfs"] },
-  { id: "iter", stage: "deploy", name: "ITER", where: "Saint-Paul-lès-Durance, France", at: [5.76, 43.7], text: "Will test four tritium-breeding blanket designs.", s: ["iterTbm", "neiEnriched"] },
-  { id: "cfs", stage: "deploy", name: "Commonwealth Fusion Systems", where: "Devens, Massachusetts", at: [-71.61, 42.54], text: "Plans FLiBe blankets for ARC power plants. Its lithium source is not published.", s: ["materionCfs", "cfsLibrti"] },
-  { id: "ukaea", stage: "deploy", name: "UKAEA LIBRTI", where: "Culham, United Kingdom", at: [-1.23, 51.66], text: "£220 million programme to demonstrate tritium breeding.", s: ["cfsLibrti"] },
-  { id: "petten", stage: "deploy", name: "NRG Petten", where: "Petten, Netherlands", at: [4.66, 52.79], text: "Nuclear research reactor that tests materials. Sayari shows it as a trade partner of NCCP; the product is not confirmed.", s: ["sayariNccp"] },
-  { id: "cneic", stage: "refine", name: "CNEIC", where: "Beijing, China", at: [116.4, 39.9], text: "China Nuclear Energy Industry Corporation, a state nuclear trader. Sayari shows it as a trade partner of NCCP; the product is not confirmed.", s: ["sayariNccp"] }
+  { id: "atacama", stage: "extract", name: "Atacama salt flat", where: "Chile", at: [-68.25, -23.5], text: "Chilean companies pump lithium-rich water here, on Indigenous land.", s: ["iisdChile", "reutersAtacama"] },
+  { id: "jujuy", stage: "extract", name: "Jujuy salt flats", where: "Argentina", at: [-66.4, -23.5], text: "Communities protested in 2023 after a vote made mining on their land easier.", s: ["fidh", "energyMonitor"] },
+  { id: "greenbushes", stage: "extract", name: "Greenbushes mine", where: "Western Australia", at: [116.06, -33.86], text: "Australia's biggest lithium mine. Its dust went over legal limits at least 8 times in 2024, and a state report called it a health risk.", s: ["abcGreenbushes"] },
+  { id: "bikita", stage: "extract", name: "Bikita mine", where: "Zimbabwe", at: [31.3, -20.08], text: "Owned by Chinese company Sinomine since 2022. The U.S. lists Zimbabwe's lithium as made with child labor, and people nearby have reported abuses.", s: ["dolList", "mongabayBikita", "sayariBikita"] },
+  { id: "china", stage: "refine", name: "China", where: "Whole country", at: [112, 31], region: true, text: "Processes 70% of the world's lithium chemicals.", s: ["ieaGcmo2025"] },
+  { id: "hainan", stage: "refine", name: "Sinomine (Hainan)", where: "Hainan, China", at: [109.2, 19.7], text: "Gets shipments from the Bikita mine, according to shipping records.", s: ["sayariBikita"] },
+  { id: "xnm", stage: "refine", name: "Xinjiang Nonferrous Metals", where: "Xinjiang, China", at: [87.6, 43.8], text: "Chinese state company on the U.S. forced-labor list. Company records show it owns a lithium chemical plant.", s: ["millerUflpa", "sayariXnm"] },
+  { id: "isoflex", stage: "enrich", name: "Isoflex USA", where: "California, U.S.", at: [-122.42, 37.77], text: "Sells isotopes in the U.S. Shipping records show it buying from five suppliers run by Russia's state nuclear agency. The dot marks the state, not an exact address.", s: ["sayariIsoflex"] },
+  { id: "ecp", stage: "enrich", name: "Electrochemical Plant", where: "Zelenogorsk, Russia", at: [94.6, 56.1], text: "Russian state plant in a secret nuclear city. Makes nuclear fuel and isotopes. Sells to Isoflex USA.", s: ["atommediaEcp", "sayariIsoflex"] },
+  { id: "shk", stage: "enrich", name: "Siberian Chemical Combine", where: "Seversk, Russia", at: [84.9, 56.6], ly: -8, text: "Russian state nuclear plant. Sells to Isoflex USA, according to shipping records.", s: ["sayariIsoflex"] },
+  { id: "ekhp", stage: "enrich", name: "Elektrokhimpribor", where: "Lesnoy, Russia", at: [59.8, 58.6], text: "Russian state plant in a secret nuclear city. Sells to Isoflex USA, according to shipping records.", s: ["sayariIsoflex"] },
+  { id: "isotop", stage: "enrich", name: "Isotope JSC", where: "Moscow, Russia", at: [37.6, 55.75], text: "Sells isotopes abroad for Russia's state nuclear agency. Sells to Isoflex USA.", s: ["isotopRu", "sayariIsoflex"] },
+  { id: "xinjiang", stage: "refine", name: "Xinjiang", where: "Region of China", at: [85, 41.5], region: true, text: "The U.S. assumes goods from here involve forced labor. Lithium became a top priority for this in August 2025.", s: ["ustrUflpa2025"] },
+  { id: "nccp", stage: "enrich", name: "NCCP", where: "Novosibirsk, Russia", at: [82.93, 55.03], ly: 10, text: "Russian state plant that makes most of the world's lithium-7, left over from sorting lithium-6 for weapons. On Ukraine's sanctions list. Sells to Isoflex USA and works for Russia's nuclear institutes.", s: ["wnaLithium", "sayariNccp", "sayariIsoflex"] },
+  { id: "y12", stage: "enrich", name: "Y-12, Oak Ridge", where: "Tennessee, U.S.", at: [-84.25, 35.99], text: "Sorted lithium for U.S. nuclear weapons from 1953 to 1963 using mercury. Still being cleaned up.", s: ["wardArxiv", "atsdrY12", "doeY12"] },
+  { id: "pp", stage: "enrich", name: "Precision Periodic", where: "Orlando, Florida", at: [-81.38, 28.54], text: "Working on a way to make lithium-6 without mercury, with U.S. government funding.", s: ["precisionPeriodic"] },
+  { id: "swip", stage: "fabricate", name: "SWIP", where: "Chengdu, China", at: [104.07, 30.67], text: "Chinese research institute that built China's lithium test part for ITER.", s: ["ornlTbm"] },
+  { id: "materion", stage: "fabricate", name: "Materion", where: "Elmore, Ohio", at: [-83.3, 41.48], text: "Supplies beryllium for Commonwealth Fusion Systems' FLiBe salt. Shown because that salt also contains lithium. Materion doesn't supply lithium.", s: ["materionCfs"] },
+  { id: "iter", stage: "deploy", name: "ITER", where: "Southern France", at: [5.76, 43.7], text: "A huge international fusion experiment. It will test four designs for making fuel from lithium.", s: ["iterTbm", "neiEnriched"] },
+  { id: "cfs", stage: "deploy", name: "Commonwealth Fusion Systems", where: "Massachusetts, U.S.", at: [-71.61, 42.54], text: "The biggest fusion company. Plans to use FLiBe salt. Hasn't said where its lithium will come from.", s: ["materionCfs", "cfsLibrti"] },
+  { id: "ukaea", stage: "deploy", name: "U.K. fusion fuel program", where: "Culham, England", at: [-1.23, 51.66], text: "A £220 million program to prove fusion plants can make their own fuel.", s: ["cfsLibrti"] },
+  { id: "petten", stage: "deploy", name: "Petten research reactor", where: "Netherlands", at: [4.66, 52.79], text: "A Dutch nuclear research reactor that tests materials. Shipping records show it trading with NCCP. Contents unknown.", s: ["sayariNccp"] },
+  { id: "cneic", stage: "refine", name: "CNEIC", where: "Beijing, China", at: [116.4, 39.9], text: "China's state nuclear trading company. Shipping records show it trading with NCCP. Contents unknown.", s: ["sayariNccp"] }
 ];
 
 // Links. "source" = a published agreement; "sayari" = a trade relationship, product not confirmed.
@@ -506,7 +525,7 @@ function renderDetail() {
     return `<li class="${risk ? "is-risk" : ""} ${dim ? "is-dim" : ""}">${f.t}<div class="tags">${tags}<span class="src">Source: ${srcLink(f.s)}</span></div></li>`;
   }).join("");
   document.getElementById("detail").innerHTML = `<div><span class="eyebrow">Step ${s.n} of 6</span><h3>${s.name}</h3><p class="summary">${s.summary}</p><ul class="facts">${facts}</ul></div>
-    <div class="unknown"><h4>Still unknown</h4><ul>${s.unknown.map(u => `<li>${u}</li>`).join("")}</ul></div>`;
+    <div class="unknown"><h4>What we still don't know</h4><ul>${s.unknown.map(u => `<li>${u}</li>`).join("")}</ul></div>`;
   highlightGlobe();
 }
 chainEl.addEventListener("click", e => {
@@ -574,7 +593,7 @@ function showSite(d) {
   const st = STAGES.find(s => s.id === d.stage);
   document.getElementById("site-card").innerHTML = `<span class="eyebrow" style="color: var(--${d.stage})">Step ${st.n}: ${st.name}</span>
     <h3>${d.name}</h3><p class="where">${d.where}${d.region ? " · not a single plant" : ""}</p><p>${d.text}</p>
-    <p class="src">${d.s.length ? "Sources: " + d.s.map(srcLink).join(", ") : "No source reviewed yet for this site."}</p>`;
+    <p class="src">${d.s.length ? "Sources: " + d.s.map(srcLink).join(", ") : "No source checked yet for this place."}</p>`;
 }
 const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 function spinTo(sites) {
@@ -599,20 +618,20 @@ document.getElementById("globe-tools").addEventListener("click", e => {
   d3.transition().duration(1200).tween("spin", () => t => { projection.rotate(interp(t)); draw(); });
 });
 document.getElementById("legend").innerHTML = STAGES.map(s => `<span><i style="background: var(--${s.id})"></i>${s.n}. ${s.name}</span>`).join("") +
-  `<span><span class="ln"></span>Published agreement or partnership</span><span><span class="ln dash"></span>Sayari trade link, product not confirmed</span><span>Larger, lighter dots are country or region markers, not plants.</span>`;
+  `<span><span class="ln"></span>Public business deal or partnership</span><span><span class="ln dash"></span>Shipping record (contents not always known)</span><span>Bigger, lighter dots mark a whole country or region, not one place.</span>`;
 
 fetch("https://cdn.jsdelivr.net/npm/world-atlas@2.0.2/land-110m.json")
   .then(r => r.json())
   .then(world => { land = topojson.feature(world, world.objects.land); draw(); })
-  .catch(() => { draw(); document.getElementById("site-card").insertAdjacentHTML("beforeend", `<p class="map-error">The coastline file did not load. The dots still work.</p>`); });
+  .catch(() => { draw(); document.getElementById("site-card").insertAdjacentHTML("beforeend", `<p class="map-error">The map outline didn't load, but the dots still work.</p>`); });
 
 // ---- Sources and unknowns ----
 document.getElementById("sources").innerHTML = Object.entries(SOURCES).map(([k, [t, u]]) => `<li><a href="${u}" target="_blank" rel="noopener">${t}</a> <span class="via">via ${via(k)}</span></li>`).join("");
 document.getElementById("unknowns").innerHTML = [
-  "Which mine or brine any fusion company's lithium comes from. None has published it.",
-  "Current lithium-6 capacity and stockpiles in Russia, China, and the U.S.",
-  "Which product moves in each Sayari trade link shown here.",
-  "Whether any fusion developer has a human-rights policy for lithium."
+  "Which mine any fusion company's lithium comes from. None has said.",
+  "How much lithium-6 Russia, China, and the U.S. can make or have stored.",
+  "What was inside each shipment in the company records.",
+  "Whether any fusion company has rules about where its lithium comes from."
 ].map(u => `<li>${u}</li>`).join("");
 
 renderDetail();

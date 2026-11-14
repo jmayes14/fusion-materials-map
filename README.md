@@ -4,11 +4,17 @@ A class project for "Mapping the Human Cost of Fusion Energy Materials."
 Iteration 1 focuses on **lithium**. Fusion reactors breed their own tritium
 fuel from lithium-6, so they will need tonnes of enriched lithium.
 
-The site traces that lithium through six steps: extract, refine, enrich,
-fabricate, deploy, and after use. It shows who could be harmed at each step and
+The site traces that lithium through six steps: dig, process, sort, make
+parts, use, and afterward. It shows who could be harmed at each step and
 proposes policy and tech fixes.
 
 Live site: <https://jmayes14.github.io/fusion-materials-map/>
+
+## Writing style
+
+The site is written for a general reader, at about an 8th-grade reading level.
+It has a "Words to know" box, and it explains technical terms the first time
+they appear.
 
 ## What's in it
 

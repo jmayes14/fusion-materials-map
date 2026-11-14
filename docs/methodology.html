@@ -3,10 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="How the Fusion's Lithium Trail research was done: scope, sources, tools, evidence rules, AI use, and limits.">
+<meta name="description" content="How this research on fusion lithium was done, explained in plain language.">
 <meta name="theme-color" content="#f4f2ec">
 <link rel="icon" href="data:,">
-<title>Lithium Trail Methodology</title>
+<title>How We Did This</title>
 <style>
   :root {
     color-scheme: light;
@@ -63,171 +63,135 @@
 <body>
 <main>
   <div class="topline">
-    <span class="eyebrow">Fusion's Lithium Trail · Methodology</span>
-    <a href="./">Back to the map and brief</a>
+    <span class="eyebrow">Fusion needs lithium · How we did this</span>
+    <a href="./">Back to the main page</a>
   </div>
 
-  <h1>How this research was done</h1>
-  <p class="lede">This page explains the question, the scope, where every fact came from, how evidence was checked and labeled, how AI was used, and what the work can't show. It covers iteration 1, researched on 9 November 2026.</p>
+  <h1>How we did this research</h1>
+  <p class="lede">This page explains what we wanted to find out, where our facts came from, how we checked them, how we used AI, and what we still couldn't figure out. The research was done on 9 November 2026.</p>
 
   <nav class="toc" aria-label="Contents">
-    <strong>Contents</strong>
+    <strong>On this page</strong>
     <ol>
-      <li><a href="#question">Question and scope</a></li>
-      <li><a href="#why-lithium">Why lithium</a></li>
-      <li><a href="#chain">The six-step chain model</a></li>
-      <li><a href="#sources">Sources and tools</a></li>
-      <li><a href="#tavily">Web research with Tavily</a></li>
-      <li><a href="#sayari">Company and trade research with Sayari</a></li>
-      <li><a href="#evidence">Evidence rules and labels</a></li>
-      <li><a href="#risk">How risks were assessed</a></li>
-      <li><a href="#map">How the globe was built</a></li>
-      <li><a href="#policy">How the policy brief was built</a></li>
-      <li><a href="#ai">AI use and human review</a></li>
-      <li><a href="#limits">Limits</a></li>
-      <li><a href="#reproduce">How to check or repeat this</a></li>
+      <li><a href="#question">What we wanted to know</a></li>
+      <li><a href="#why-lithium">Why we picked lithium</a></li>
+      <li><a href="#chain">How we split up the supply chain</a></li>
+      <li><a href="#tavily">How we found facts (Tavily)</a></li>
+      <li><a href="#sayari">How we followed companies (Sayari)</a></li>
+      <li><a href="#evidence">Our rules for being fair</a></li>
+      <li><a href="#risk">How we judged harm</a></li>
+      <li><a href="#map">How we made the globe</a></li>
+      <li><a href="#policy">How we came up with solutions</a></li>
+      <li><a href="#ai">How we used AI</a></li>
+      <li><a href="#limits">What we couldn't figure out</a></li>
+      <li><a href="#reproduce">How to check our work</a></li>
     </ol>
   </nav>
 
-  <h2 id="question">1. Question and scope</h2>
-  <p><strong>Research question:</strong> Where does the lithium that fusion reactors will need come from, who could be harmed between the mine and the reactor, and what could reduce that harm?</p>
-  <p>This answers the class assignment "Mapping the Human Cost of Fusion Energy Materials." The deliverables are a systems map of the supply chain, an AI-coded site, and a short policy brief or tech proposal.</p>
-  <ul>
-    <li><strong>In scope:</strong> lithium as a fusion fuel material, from extraction through after use; named companies and places where sources support them; human rights risks to workers, communities, and the public.</li>
-    <li><strong>Out of scope for iteration 1:</strong> other fusion materials (beryllium, tungsten, rare-earth magnets, vanadium alloys); tritium handling in depth; cost modeling.</li>
-    <li><strong>Unit of analysis:</strong> a step in the supply chain, and the named organizations evidence places at that step.</li>
-  </ul>
+  <h2 id="question">1. What we wanted to know</h2>
+  <p>Our question: <strong>Where will the lithium for fusion power plants come from, who could get hurt along the way, and what could make it safer and fairer?</strong></p>
+  <p>This is for a class project called "Mapping the Human Cost of Fusion Energy Materials." We had to make a map of the supply chain, a website, and a short plan to fix the problems we found.</p>
+  <p>This first version looks only at lithium. Other fusion materials, like beryllium and tungsten, could come later.</p>
 
-  <h2 id="why-lithium">2. Why lithium</h2>
-  <p>Deuterium-tritium fusion needs tritium, which barely exists in nature. Reactors plan to breed it in a blanket where neutrons hit lithium-6. Natural lithium is 7.5% lithium-6, while blankets need roughly 30 to 90%. That makes lithium the one fusion material with a fuel role, a weapons-linked processing step (isotope enrichment), and an extraction footprint already tied to documented human rights concerns. It also had the most existing public evidence to build on.</p>
+  <h2 id="why-lithium">2. Why we picked lithium</h2>
+  <p>Fusion power plants run on a fuel called tritium, which barely exists in nature. Plants plan to make it from a rare kind of lithium called lithium-6. Only about 7 of every 100 lithium atoms are lithium-6, so it has to be sorted out. That sorting has mostly been done to build nuclear weapons. Lithium mining also already has known problems with water, land, and labor. That made lithium the most important material to look at first.</p>
 
-  <h2 id="chain">3. The six-step chain model</h2>
-  <p>The chain was split into steps where the material changes form or ownership, and where different people face different risks.</p>
+  <h2 id="chain">3. How we split up the supply chain</h2>
+  <p>We broke the journey into six steps. Each step is where the lithium changes form or changes hands, and where different people could be affected.</p>
   <div class="table-scroll">
     <table>
-      <thead><tr><th>Step</th><th>What happens</th><th>Why it's a separate step</th></tr></thead>
+      <thead><tr><th>Step</th><th>What happens</th><th>Who it affects</th></tr></thead>
       <tbody>
-        <tr><td>1. Extract</td><td>Brine pumped from salt flats; hard-rock ore mined</td><td>Land, water, and consent risks fall on local and Indigenous communities</td></tr>
-        <tr><td>2. Refine</td><td>Ore and brine become lithium carbonate or hydroxide</td><td>Highly concentrated in China; forced-labor enforcement applies</td></tr>
-        <tr><td>3. Enrich</td><td>Lithium-6 separated from lithium-7</td><td>The step fusion adds to the battery lithium chain; at scale it has been done only in weapons programs, with mercury</td></tr>
-        <tr><td>4. Fabricate</td><td>Breeder pebbles, lithium-lead, or FLiBe salt are made</td><td>Different suppliers and worker exposures (for example, beryllium)</td></tr>
-        <tr><td>5. Deploy</td><td>Blankets go into test reactors and future plants</td><td>Where public funding and procurement decisions sit</td></tr>
-        <tr><td>6. After use</td><td>Spent blankets are recycled or become waste</td><td>Determines how much new enriched lithium is needed</td></tr>
+        <tr><td>1. Dig</td><td>Lithium is pumped from salt flats or mined from rock</td><td>Nearby communities, Indigenous peoples, mine workers</td></tr>
+        <tr><td>2. Process</td><td>It's turned into clean lithium chemicals, mostly in China</td><td>Factory workers, including possible forced labor</td></tr>
+        <tr><td>3. Sort</td><td>The rare lithium-6 is collected, often using mercury</td><td>Neighbors of these plants, and everyone if it helps build weapons</td></tr>
+        <tr><td>4. Make parts</td><td>Lithium-6 is made into fuel-making parts</td><td>Factory workers handling toxic materials</td></tr>
+        <tr><td>5. Use</td><td>The parts go into fusion machines</td><td>Plant workers; this is where government money decides things</td></tr>
+        <tr><td>6. Afterward</td><td>Used parts are recycled or thrown away as waste</td><td>Communities near waste sites</td></tr>
       </tbody>
     </table>
   </div>
 
-  <h2 id="sources">4. Sources and tools</h2>
-  <p>The assignment specified Tavily and Sayari. They answer different questions, so the work uses both:</p>
-  <div class="card">
-    <p><strong>Tavily</strong> found and read published sources: government records, NGO and academic reports, news, and company announcements. It answers "what has been documented?" It produced 27 of the 35 sources on the site.</p>
-    <p style="margin:0"><strong>Sayari</strong> searched corporate registries, customs and trade records, procurement data, and sanctions lists. It answers "which named companies actually connect?" It produced 8 of the 35 sources, covering every company-to-company link on the site.</p>
-  </div>
-  <p>Each source on the site carries a "via Tavily" or "via Sayari" tag so readers can see where it came from.</p>
-
-  <h2 id="tavily">5. Web research with Tavily</h2>
+  <h2 id="tavily">4. How we found facts (Tavily)</h2>
+  <p>Tavily is an AI search engine. Here's how we used it:</p>
   <ol class="steps">
-    <li><strong>Search.</strong> The Tavily command-line tool (<code>tvly search --depth advanced</code>, version 0.1.8) ran focused queries, about 20 in all. Topics: lithium-6 enrichment for fusion; ITER breeder blankets; Commonwealth Fusion Systems and FLiBe; Y-12 mercury contamination; DOE lithium-6 programs; Atacama Indigenous water rights; Jujuy protests; Zimbabwe lithium labor; the U.S. Department of Labor goods list; UFLPA and lithium; China's refining share; UKAEA LIBRTI; fusion company lithium suppliers; Greenbushes community impacts; Isoflex; the OECD minerals guidance; fusion industry sourcing policies; Russian isotope plants.</li>
-    <li><strong>Select.</strong> Primary sources were preferred: government agencies (DOL, DHS and USTR, DOE, ATSDR, IEA, SBIR.gov), peer-reviewed or preprint research (arXiv, OSTI), and established NGOs and newsrooms (FIDH, IISD, Reuters, Mongabay, ABC News). Company press releases were used only for what a company says about itself, and are labeled "Company statement."</li>
-    <li><strong>Verify.</strong> For key claims, <code>tvly extract</code> pulled the full page, and the exact sentence was checked against the wording on the site. Numbers were matched to the source. One example: the site's "about 100 tonnes of lithium-6 per reactor" was checked against the arXiv paper's text.</li>
-    <li><strong>Drop what can't be verified.</strong> A ScienceDirect article on FLiBe readiness could not be extracted, so it isn't used. Two details that no source stated (a mine name and a company's city) were removed.</li>
+    <li><strong>We searched.</strong> We ran about 20 searches on topics like "who makes lithium-6 today," "mercury pollution at Oak Ridge," "Indigenous water rights in Chile," and "child labor in Zimbabwe's lithium."</li>
+    <li><strong>We picked trustworthy sources.</strong> We preferred government reports, research papers, and well-known news outlets and advocacy groups. When we used a company's own announcement, we labeled it "Company's own claim."</li>
+    <li><strong>We checked the exact wording.</strong> For important facts, we pulled up the full original page and made sure our sentence matched what it said, including the numbers.</li>
+    <li><strong>We cut what we couldn't confirm.</strong> If we couldn't open a source or prove a detail, we took it out.</li>
   </ol>
+  <p>27 of our 35 sources came from Tavily. Each one is marked "via Tavily" on the main page.</p>
 
-  <h2 id="sayari">6. Company and trade research with Sayari</h2>
+  <h2 id="sayari">5. How we followed companies (Sayari)</h2>
+  <p>Sayari is a database of company registrations, shipping records, government contracts, and sanctions lists. The web tells you what's been reported. Sayari shows which real companies actually do business together.</p>
   <ol class="steps">
-    <li><strong>Confirm identity.</strong> Each company was matched by registry identifiers, not just by name. Examples: NCCP's Russian tax number 5410114184, Isoflex USA's CAGE code 44EP7, and Commonwealth Fusion Systems' SEC CIK 0001744079. Where several records shared a name, the one with official identifiers was used.</li>
-    <li><strong>Trace relationships.</strong> Several tools were used:
-      <ul>
-        <li><strong>Trade relationships</strong> ("ships to") for NCCP, Bikita, Sinomine Hainan, and SQM.</li>
-        <li><strong>Upstream supply-chain traces</strong>, one tier deep, for Isoflex USA and Commonwealth Fusion Systems.</li>
-        <li><strong>Procurement links</strong> ("contracted by") for NCCP.</li>
-        <li><strong>Ownership trees</strong> for Xinjiang Nonferrous Metals.</li>
-        <li><strong>Aggregate trade counts</strong> for lithium hydroxide (HS 282520) exporters since 2024.</li>
-      </ul>
-    </li>
-    <li><strong>Narrow by product.</strong> Trade links were filtered by Harmonized System (HS) product codes where possible: 2845 for isotopes, 282520 for lithium hydroxide, 283691 for lithium carbonate, and 280519 for alkali metals. The Isoflex USA trace kept all its Russian suppliers under this filter. Filtering by a single code (for example 284530, lithium-6 compounds) returned errors, so the product is narrowed to that group, not to one code.</li>
-    <li><strong>Avoid known noise.</strong> Shipment searches by company name returned unrelated records (for example, battery shipments to Guinea), so they were not used as evidence. One tier deep was used for supply chains because deeper traces add mostly unrelated companies.</li>
-    <li><strong>Record everything.</strong> Every Sayari link, entity ID, filter, and method note is saved in <code>research/fusion-lithium-2026-11.json</code> under <code>sayari_findings</code>, and each row of the site's "What Sayari shows" table links to the record.</li>
+    <li><strong>We made sure we had the right company.</strong> Many companies have similar names, so we matched them by official registration numbers, not just names.</li>
+    <li><strong>We looked at who they trade with.</strong> We checked who each company ships to, who it buys from, who owns it, and who hires it.</li>
+    <li><strong>We narrowed by product.</strong> Shipping records use codes for different kinds of goods. We filtered for the codes for isotopes and lithium chemicals, so we weren't counting unrelated things like batteries.</li>
+    <li><strong>We avoided bad searches.</strong> Searching shipping records by company name alone gave wrong results, so we didn't use them.</li>
   </ol>
+  <p>8 of our 35 sources came from Sayari. Each one is marked "via Sayari." You need a Sayari account to open those links.</p>
 
-  <h2 id="evidence">7. Evidence rules and labels</h2>
-  <p>These rules were set before writing and applied to every claim:</p>
+  <h2 id="evidence">6. Our rules for being fair</h2>
   <ul>
-    <li><strong>No ratings.</strong> No company is called ethical or unethical. The site reports what sources show.</li>
-    <li><strong>Attribute allegations.</strong> Accusations are tied to whoever made them and labeled "Reported allegation."</li>
-    <li><strong>Trade is not proof of content.</strong> A Sayari trade link shows two companies traded. It is labeled "product not confirmed," or "product narrowed" when HS filters were used.</li>
-    <li><strong>Projections are labeled.</strong> Future demand figures are marked "Projection."</li>
-    <li><strong>Gaps are shown, not filled.</strong> Each step lists what is still unknown. A gap is never treated as evidence that a chain is clean or harmful.</li>
-    <li><strong>Government lists, not scores.</strong> Sanctions and forced-labor lists are cited when they name an entity. Sayari's own risk scores are not used.</li>
-  </ul>
-  <div class="table-scroll">
-    <table>
-      <thead><tr><th>Label on the site</th><th>Meaning</th></tr></thead>
-      <tbody>
-        <tr><td>U.S. government list / record / strategy</td><td>A U.S. agency published it (for example, the DOL goods list or the UFLPA strategy)</td></tr>
-        <tr><td>Government list via Sayari</td><td>A government list (for example, Ukraine's sanctions list) as held in Sayari</td></tr>
-        <tr><td>Procurement records / Company records</td><td>Official registry or procurement data in Sayari</td></tr>
-        <tr><td>Trade link, product not confirmed</td><td>Customs data shows trade; the goods are unknown</td></tr>
-        <tr><td>Trade link, product narrowed</td><td>Customs data shows trade within the filtered product codes</td></tr>
-        <tr><td>Reported allegation</td><td>Claims by affected people as reported by a news outlet or NGO</td></tr>
-        <tr><td>Company statement / Grant summary</td><td>What a company or grantee says about itself</td></tr>
-        <tr><td>Projection</td><td>An estimate of future quantities</td></tr>
-      </tbody>
-    </table>
-  </div>
-
-  <h2 id="risk">8. How risks were assessed</h2>
-  <p>For each step, the work asked who could be harmed, how, and who documented it. Risks were grouped into five types, which match the filters on the systems map: land, water, and consent; child labor; forced labor; toxic legacy; and sanctions and weapons.</p>
-  <p>Each row in the risk table carries one evidence level:</p>
-  <ul>
-    <li><span class="gov">Government</span>: documented by a government list, record, or strategy.</li>
-    <li><span class="ngo">Independent reporting</span>: documented by NGOs or journalists.</li>
-    <li><span class="struct">Structural risk</span>: follows from how the step works (for example, worker exposure to beryllium), without a documented case tied to fusion lithium.</li>
-  </ul>
-  <p>None of these are findings about a specific shipment of fusion lithium, because no fusion company has published where its lithium comes from.</p>
-
-  <h2 id="map">9. How the globe was built</h2>
-  <ul>
-    <li>The site shows 23 places, colored by step.</li>
-    <li>Coordinates are approximate: city or site level for plants and mines, and larger, lighter markers for country or region facts (China, Xinjiang). Isoflex USA is placed at its state of registration, not a confirmed address.</li>
-    <li>Lines are drawn only where a source supports a link. Solid lines are published agreements or partnerships. Dashed lines are Sayari trade links.</li>
-    <li>Coastlines come from the public <code>world-atlas</code> dataset (Natural Earth, 1:110m). The globe uses D3's orthographic projection.</li>
+    <li><strong>No labels like "good" or "bad" companies.</strong> We just report what the sources show.</li>
+    <li><strong>We say who made each accusation.</strong> These are marked "People's claims, reported in the news."</li>
+    <li><strong>A trade isn't proof of what was shipped.</strong> We say "contents unknown" when the records don't show what was in the box.</li>
+    <li><strong>Guesses about the future are marked "Estimate."</strong></li>
+    <li><strong>We show what we don't know.</strong> Every step lists open questions. Not knowing doesn't mean a company is clean or guilty.</li>
+    <li><strong>We only use official lists.</strong> We mention government sanctions and forced-labor lists, but not Sayari's own risk scores.</li>
   </ul>
 
-  <h2 id="policy">10. How the policy brief was built</h2>
-  <p>Recommendations were tied to specific findings, aimed at the actors who control the money or the rules, and limited to what could be done with existing tools:</p>
+  <h2 id="risk">7. How we judged harm</h2>
+  <p>For each step, we asked three questions: who could get hurt, how, and who reported it. We grouped the harms into five kinds: land and water, child labor, forced labor, pollution, and weapons and sanctions.</p>
+  <p>Each harm on the main page says who reported it:</p>
   <ul>
-    <li><strong>Funding conditions:</strong> most fusion buyers today are publicly funded (DOE, UKAEA, ITER), so procurement rules are the lever. The standard proposed is the OECD minerals guidance, which applies to all minerals.</li>
-    <li><strong>Mercury-free enrichment:</strong> follows from the Y-12 record, the arXiv analysis of COLEX, and the Minamata Convention. New companies (Precision Periodic, Molten Salt Solutions, Marathon Fusion) show alternatives exist.</li>
-    <li><strong>Trade rules:</strong> follow from the Sayari findings. A U.S. isotope distributor imports from Russian state nuclear plants, and a UFLPA-listed Xinjiang group has a lithium unit.</li>
-    <li><strong>Fusion Lithium Passport:</strong> generalizes this project's own method (registry checks, trade tracing, gap reporting) into a record that travels with each batch, plus a complaint channel for affected communities.</li>
-  </ul>
-  <p>The brief also states trade-offs and success measures, so the proposals can be judged, not just endorsed.</p>
-
-  <h2 id="ai">11. AI use and human review</h2>
-  <ul>
-    <li>The site and this page were coded and drafted with Claude (Anthropic) in Claude Code, which also ran the Tavily and Sayari queries.</li>
-    <li>Every factual claim links to a source, and key claims were checked against full source text. When the AI drafted a claim no source supported, it was removed.</li>
-    <li>The student author chose the material, directed the research, reviewed the sources, and owns the conclusions and their explanation.</li>
+    <li><span class="gov">Government</span>: a government list, record, or decision.</li>
+    <li><span class="ngo">Journalists and advocacy groups</span>: news stories or reports from human rights organizations.</li>
+    <li><span class="struct">Comes with the work</span>: a known danger of the job itself, like handling toxic metals, even without a specific reported case.</li>
   </ul>
 
-  <h2 id="limits">12. Limits</h2>
+  <h2 id="map">8. How we made the globe</h2>
+  <ul>
+    <li>The globe shows 23 places, colored to match the six steps.</li>
+    <li>Dots are placed at the city or site. Bigger, lighter dots mark a whole country or region. One dot (Isoflex USA) marks its state, because we don't have its exact address.</li>
+    <li>We only drew a line between two places when a source showed a connection. Solid lines are public deals. Dashed lines are shipping records.</li>
+    <li>The world map outline comes from a free public map dataset.</li>
+  </ul>
+
+  <h2 id="policy">9. How we came up with solutions</h2>
+  <p>Each idea in our plan comes straight from something we found:</p>
+  <ul>
+    <li><strong>Rules on government money:</strong> most fusion projects today are paid for by governments, so that money is the easiest way to require better sourcing.</li>
+    <li><strong>Clean lithium-6:</strong> the mercury pollution at Oak Ridge shows the old method is dangerous, and new companies show cleaner methods are possible.</li>
+    <li><strong>Import rules:</strong> shipping records show a U.S. company buying from Russian nuclear plants, and a Chinese company on the forced-labor list owning a lithium plant.</li>
+    <li><strong>The Lithium Passport:</strong> it takes what this project did by hand, checking every company in the chain, and makes it routine for every batch.</li>
+  </ul>
+
+  <h2 id="ai">10. How we used AI</h2>
+  <ul>
+    <li>Claude, an AI assistant, helped build the website, run the searches, and write the first drafts.</li>
+    <li>Every fact links to a real source, and important facts were checked against the original. When the AI wrote something we couldn't back up, we took it out.</li>
+    <li>The student chose the topic, guided the research, checked the sources, and stands behind the conclusions.</li>
+  </ul>
+
+  <h2 id="limits">11. What we couldn't figure out</h2>
   <div class="note">
-    <p><strong>No chain reaches a fusion buyer yet.</strong> Commonwealth Fusion Systems' visible suppliers are hardware makers, and no fusion developer has published its lithium source or a lithium sourcing policy.</p>
-    <p><strong>Trade data shows companies, not contents.</strong> The Isoflex USA links are narrowed to isotopes or lithium chemicals, not to lithium-6 specifically. Nothing shows this material reached a fusion lab.</p>
-    <p><strong>Records have gaps.</strong> Sayari lists only a regional property office as NCCP's owner. Bikita's lithium can't be followed past Sinomine's Hainan hub. SQM's lithium buyers can't be separated from its fertilizer buyers.</p>
-    <p><strong>Closed programs are opaque.</strong> Enrichment capacity in Russia, China, and North Korea isn't public.</p>
-    <p style="margin:0"><strong>The search wasn't exhaustive.</strong> Tavily ran without an account and hit rate limits twice, though both searches succeeded on retry. Results reflect what was found on 9 November 2026.</p>
+    <p><strong>We couldn't connect the chain to a fusion company.</strong> No fusion company has said where its lithium comes from, and the biggest one doesn't have a lithium supplier in shipping records yet.</p>
+    <p><strong>Shipping records don't show everything.</strong> We know Isoflex USA buys isotopes or lithium chemicals from Russian nuclear plants, but not exactly which ones, or whether any went to a fusion lab.</p>
+    <p><strong>Some records are incomplete.</strong> We couldn't find who owns the Russian plant NCCP. We lost track of Zimbabwe's lithium in China.</p>
+    <p><strong>Some countries keep secrets.</strong> Russia, China, and North Korea don't publish how much lithium-6 they make.</p>
+    <p style="margin:0"><strong>Our search had limits.</strong> We searched on one day, 9 November 2026, and couldn't find everything that exists.</p>
   </div>
 
-  <h2 id="reproduce">13. How to check or repeat this</h2>
+  <h2 id="reproduce">12. How to check our work</h2>
   <ul>
-    <li>Every source on the map page links to the original. Sayari rows link to the entity record.</li>
-    <li>The full research record, with every claim, source, Sayari link, and method note, is in <a href="https://github.com/jmayes14/fusion-materials-map/blob/main/research/fusion-lithium-2026-11.json">research/fusion-lithium-2026-11.json</a>.</li>
-    <li>The site's code is public in <a href="https://github.com/jmayes14/fusion-materials-map">the repository</a>, and its history shows every change.</li>
+    <li>Every fact on the main page links to its source.</li>
+    <li>All our notes, sources, and company records are in one file: <a href="https://github.com/jmayes14/fusion-materials-map/blob/main/research/fusion-lithium-2026-11.json">research notes</a>.</li>
+    <li>The website's code is public on <a href="https://github.com/jmayes14/fusion-materials-map">GitHub</a>, including every change we made.</li>
   </ul>
 
-  <footer>Methodology for iteration 1 of "Mapping the Human Cost of Fusion Energy Materials." Research snapshot from 9 November 2026. It will be updated with each iteration.</footer>
+  <footer>How we did the first draft of "Mapping the Human Cost of Fusion Energy Materials." Research done 9 November 2026. This page will be updated.</footer>
 </main>
 </body>
 </html>
