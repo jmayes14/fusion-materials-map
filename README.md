@@ -59,6 +59,7 @@ The site has one page per section, with a menu on every page:
 | Page | What it shows |
 |---|---|
 | `docs/index.html` | Home: the main idea, words to know, three findings |
+| `docs/lithium.html` | Why fusion needs lithium, how it is extracted (brine, hard rock, direct extraction), and how it becomes lithium-6 |
 | `docs/steps.html` | The six steps, with harm filters |
 | `docs/globe.html` | The map: a flat world map or a globe, one step at a time, with a place list, captions, and a step-by-step tour. `?step=` picks a step and `?view=flat` or `?view=globe` picks the style |
 | `docs/companies.html` | Company and shipping records from Sayari |

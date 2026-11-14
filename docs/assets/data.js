@@ -1,4 +1,11 @@
 const SOURCES = {
+  wilsonCenter: ["Wilson Center, Lithium Production in Chile and Argentina", "https://www.wilsoncenter.org/sites/default/files/media/uploads/documents/Lithium%20Production%20in%20Chile%20and%20Argentina_Inverted%20Roles.pdf"],
+  mdpiAtacama: ["Metals (MDPI), Salar de Atacama Lithium and Potassium Productive Process (2024)", "https://www.mdpi.com/2075-4701/14/10/1095"],
+  saltworks: ["Saltworks Technologies, Hard Rock Spodumene Lithium Processing", "https://www.saltworkstech.com/articles/hardrock-spodumene-lithium-processing"],
+  lblSpodumene: ["Lawrence Berkeley National Lab, Energy-saving, acid-free hard-rock lithium extraction", "https://als.lbl.gov/energy-saving-acid-free-hard-rock-lithium-extraction"],
+  woodmacDle: ["Wood Mackenzie, Direct lithium extraction: is the hype justified by the reality?", "https://www.woodmac.com/news/opinion/direct-lithium-extraction-is-the-hype-justified-by-the-reality"],
+  ppplBlankets: ["Princeton Plasma Physics Lab, Introduction to fusion power plant fuel cycles and tritium breeding blankets (2023)", "https://suli.pppl.gov/2023/course/SULI%202023%20presentation.pdf"],
+  pearsonFuels: ["DOE Office of Science, Fuels for Fusion: resource availability and supply (Pearson, 2022)", "https://science.osti.gov/-/media/fes/pdf/fes-presentations/2022/Pearson_resource-availability-and-supply_presentation.pdf"],
   iisdChile: ["IISD, Lithium Mining in Chile (Sept 2026)", "https://www.iisd.org/system/files/2026-09/lithium-mining-chile.pdf"],
   reutersAtacama: ["Reuters, As Chile revs up lithium plans, Indigenous people demand more control (7 Apr 2025)", "https://www.reuters.com/world/americas/chile-revs-up-lithium-plans-indigenous-people-demand-more-control-2025-04-07"],
   fidh: ["FIDH, Lithium and Human Rights in the High Andean Salt Flats", "https://www.fidh.org/IMG/pdf/lithium_and_human_rights_in_the_high_andean_salt_flats_of_argentina_bolivia_and_chile.pdf"],
