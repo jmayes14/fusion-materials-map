@@ -20,7 +20,7 @@ they appear.
 
 - **Systems map:** six clickable steps. Each shows sourced facts, open gaps,
   and filters for five kinds of harm.
-- **Globe:** 17 sites colored by step. Solid lines are published agreements;
+- **Globe:** 23 places colored by step. Solid lines are published agreements;
   dashed lines are Sayari trade links where the product is not confirmed.
 - **Risk table:** who is at risk at each step, and the evidence level.
 - **Policy brief:** puts conditions on public fusion funding, funds lithium-6
