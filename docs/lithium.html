@@ -15,47 +15,76 @@
     <a class="brand" href="index.html">Fusion's <span>Lithium</span> Trail</a>
     <ul><li><a class="navlink" href="index.html">Home</a></li><li><a class="navlink" href="lithium.html" aria-current="page">Why lithium?</a></li><li><a class="navlink" href="steps.html">The six steps</a></li><li><a class="navlink" href="globe.html">Map</a></li><li><a class="navlink" href="companies.html">Company records</a></li><li><a class="navlink" href="harm.html">Who gets hurt</a></li><li><a class="navlink" href="solutions.html">What should change</a></li><li><a class="navlink" href="methodology.html">Methodology</a></li><li><a class="navlink" href="sources.html">Sources</a></li></ul>
   </nav>
+  <svg class="icon-sprite" aria-hidden="true" focusable="false">
+    <symbol id="i-pond" viewBox="0 0 24 24"><circle cx="17" cy="6" r="2.6"/><path d="M17 1.6v.9M21.4 6h-.9M13.5 6h-.9M20.1 2.9l-.6.6M13.9 2.9l.6.6"/><path d="M2 15h20M3.5 19h17"/><path d="M4 11.5h4.5M10.5 11.5h4"/></symbol>
+    <symbol id="i-rock" viewBox="0 0 24 24"><path d="M2.5 20 9 9.5l3.6 5.2 2.6-3 6.3 8.3z"/><path d="M15.5 3.5l4.5 4.5M20 3.5l-2.2 2.2"/></symbol>
+    <symbol id="i-filter" viewBox="0 0 24 24"><path d="M2 9h5M17 9h5"/><rect x="7" y="4" width="10" height="15" rx="2"/><path d="M7 9.5h10M7 13.5h10"/><path d="M12 19v3"/></symbol>
+    <symbol id="i-flask" viewBox="0 0 24 24"><path d="M9 3h6M10 3v6.2L4.8 18.6A1.6 1.6 0 0 0 6.2 21h11.6a1.6 1.6 0 0 0 1.4-2.4L14 9.2V3"/><path d="M7.2 15h9.6"/></symbol>
+    <symbol id="i-sort" viewBox="0 0 24 24"><path d="M3 4h18l-7 8.2V18l-4 2.5v-8.3z"/></symbol>
+    <symbol id="i-pebbles" viewBox="0 0 24 24"><circle cx="7" cy="15.5" r="3.2"/><circle cx="14.5" cy="16.5" r="3.2"/><circle cx="10.5" cy="8.8" r="3.2"/><circle cx="17.8" cy="9.6" r="2.6"/></symbol>
+    <symbol id="i-atom" viewBox="0 0 24 24"><circle cx="12" cy="12" r="1.9"/><ellipse cx="12" cy="12" rx="9.5" ry="3.6"/><ellipse cx="12" cy="12" rx="9.5" ry="3.6" transform="rotate(60 12 12)"/><ellipse cx="12" cy="12" rx="9.5" ry="3.6" transform="rotate(120 12 12)"/></symbol>
+    <symbol id="i-beads" viewBox="0 0 24 24"><rect x="6" y="2.5" width="12" height="19" rx="3"/><circle cx="9.5" cy="7" r="1.3"/><circle cx="14.5" cy="8.5" r="1.3"/><circle cx="10" cy="12" r="1.3"/><circle cx="14" cy="14.5" r="1.3"/><circle cx="9.5" cy="17" r="1.3"/></symbol>
+    <symbol id="i-liquids" viewBox="0 0 24 24"><path d="M8 3.5s-4.5 5.2-4.5 8.4a4.5 4.5 0 0 0 9 0C12.5 8.7 8 3.5 8 3.5z"/><path d="M16.5 9s-4 4.6-4 7.4a4 4 0 0 0 8 0c0-2.8-4-7.4-4-7.4z"/></symbol>
+    <symbol id="i-spin" viewBox="0 0 24 24"><path d="M20 12a8 8 0 1 1-2.4-5.7"/><path d="M20.5 3.5v4h-4"/><circle cx="12" cy="12" r="2.2"/></symbol>
+    <symbol id="i-pool" viewBox="0 0 24 24"><rect x="2.5" y="6" width="19" height="12" rx="2.5"/><path d="M2.5 12.2c2.1 1.4 4.3 1.4 6.4 0s4.3-1.4 6.3 0 4.3 1.4 6.3 0"/></symbol>
+  </svg>
+
   <header class="page-head">
     <span class="eyebrow">Why lithium?</span>
     <h1 class="page-title">Why fusion needs lithium, and how it becomes lithium-6</h1>
     <p class="lede">Before following lithium around the world, it helps to know why fusion needs it at all, how it gets out of the ground, and how ordinary lithium is turned into the rare lithium-6 that fusion plants need.</p>
   </header>
 
-  <nav class="journey" aria-label="The journey on this page">
-    <a href="#why"><b>1</b>Why fusion needs it</a><span aria-hidden="true">→</span>
-    <a href="#six"><b>2</b>Why lithium-6</a><span aria-hidden="true">→</span>
-    <a href="#ground"><b>3</b>Out of the ground</a><span aria-hidden="true">→</span>
-    <a href="#sorting"><b>4</b>Turning it into lithium-6</a><span aria-hidden="true">→</span>
-    <a href="#howmuch"><b>5</b>How much it takes</a>
+  <nav class="pipeline" aria-label="The journey from the ground to fusion fuel">
+    <a href="#ground" style="--c: var(--extract)"><span class="pipe-icon"><svg><use href="#i-rock"/></svg></span><span class="pipe-text"><b>Out of the ground</b><small>Brine or rock</small></span></a>
+    <a href="#sorting" style="--c: var(--refine)"><span class="pipe-icon"><svg><use href="#i-flask"/></svg></span><span class="pipe-text"><b>Cleaned</b><small>Lithium chemicals</small></span></a>
+    <a href="#sorting" style="--c: var(--enrich)"><span class="pipe-icon"><svg><use href="#i-sort"/></svg></span><span class="pipe-text"><b>Sorted</b><small>Into lithium-6</small></span></a>
+    <a href="#sorting" style="--c: var(--fabricate)"><span class="pipe-icon"><svg><use href="#i-pebbles"/></svg></span><span class="pipe-text"><b>Made into parts</b><small>Beads, metal, or salt</small></span></a>
+    <a href="#why" style="--c: var(--deploy)"><span class="pipe-icon"><svg><use href="#i-atom"/></svg></span><span class="pipe-text"><b>Makes fuel</b><small>Tritium</small></span></a>
   </nav>
 
   <section id="why" aria-labelledby="why-h">
     <span class="eyebrow">1 · The fuel problem</span>
     <h2 id="why-h">Why fusion needs lithium</h2>
     <div class="two-col">
-      <div>
+      <div class="prose">
         <p>Fusion power plants plan to run on two kinds of hydrogen: deuterium, which is easy to get from seawater, and <b>tritium</b>, which is not.</p>
-        <p>There is very little tritium on Earth. Right now, all the tritium you can buy is a leftover from one type of nuclear power plant, called CANDU. Those plants are getting old, and experts expect the supply to shrink after 2050. <span class="cite" data-src="pearsonFuels"></span></p>
-        <p>So fusion plants will have to <b>make their own tritium</b>. They'll do it by wrapping the fusion reaction in a layer that contains lithium. When a tiny particle called a neutron flies out of the fusion reaction and hits a lithium atom, the lithium atom splits into tritium and helium. <span class="cite" data-src="iterTbm"></span></p>
-        <p>That makes lithium more than a building material. It's part of the fuel.</p>
+        <p>There is very little tritium on Earth. Right now, all the tritium you can buy is a leftover from one type of nuclear power plant, called CANDU. Those plants are getting old, and the supply is expected to shrink after 2050.<span class="cite" data-src="pearsonFuels"></span></p>
+        <p>So fusion plants will have to <b>make their own tritium</b>. They'll wrap the fusion reaction in a layer that contains lithium. When a tiny particle called a neutron flies out and hits a lithium atom, the atom splits into tritium and helium.<span class="cite" data-src="iterTbm"></span></p>
+        <p class="pull">That makes lithium more than a building material. It's part of the fuel.</p>
       </div>
-      <figure class="diagram" aria-label="Diagram: a neutron hits a lithium-6 atom, which becomes tritium and helium">
-        <svg viewBox="0 0 320 190" role="img" aria-labelledby="dg1">
-          <title id="dg1">A neutron hits lithium-6 and makes tritium and helium</title>
-          <circle cx="40" cy="95" r="14" class="dg-neutron"/><text x="40" y="99" class="dg-t">n</text>
-          <text x="40" y="132" class="dg-l">neutron</text>
-          <path d="M58,95 L102,95" class="dg-arrow" marker-end="url(#dgA)"/>
-          <circle cx="140" cy="95" r="30" class="dg-li"/><text x="140" y="100" class="dg-t big">Li-6</text>
-          <text x="140" y="144" class="dg-l">lithium-6</text>
-          <path d="M174,84 L222,52" class="dg-arrow" marker-end="url(#dgA)"/>
-          <path d="M174,106 L222,138" class="dg-arrow" marker-end="url(#dgA)"/>
-          <circle cx="252" cy="44" r="20" class="dg-tri"/><text x="252" y="48" class="dg-t">T</text>
-          <text x="252" y="80" class="dg-l">tritium (fuel)</text>
-          <circle cx="252" cy="146" r="20" class="dg-he"/><text x="252" y="150" class="dg-t">He</text>
-          <text x="252" y="182" class="dg-l">helium (harmless)</text>
-          <defs><marker id="dgA" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" class="dg-head"/></marker></defs>
+      <figure class="diagram">
+        <svg viewBox="0 0 420 230" role="img" aria-labelledby="rx-t rx-d">
+          <title id="rx-t">How lithium-6 makes fusion fuel</title>
+          <desc id="rx-d">A neutron hits a lithium-6 atom, made of 3 protons and 3 neutrons. It splits into tritium, which is fuel, and helium, plus some heat.</desc>
+          <defs>
+            <radialGradient id="gP" cx="35%" cy="30%" r="70%"><stop offset="0" style="stop-color:#fff;stop-opacity:.75"/><stop offset=".35" style="stop-color:var(--enrich)"/><stop offset="1" style="stop-color:var(--enrich);stop-opacity:.85"/></radialGradient>
+            <radialGradient id="gN" cx="35%" cy="30%" r="70%"><stop offset="0" style="stop-color:#fff;stop-opacity:.7"/><stop offset=".35" style="stop-color:#8d9a96"/><stop offset="1" style="stop-color:#6b7773"/></radialGradient>
+            <marker id="rxA" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,1 L9,5 L0,9 z" class="rx-head"/></marker>
+          </defs>
+          <g class="rx-trail"><path d="M10,104 h22M14,115 h18M10,126 h22"/></g>
+          <circle cx="48" cy="115" r="11" fill="url(#gN)"/>
+          <text x="48" y="150" class="rx-l">neutron</text>
+          <path d="M66,115 H112" class="rx-arrow" marker-end="url(#rxA)"/>
+          <circle cx="160" cy="115" r="46" class="rx-halo li"/>
+          <g>
+            <circle cx="148" cy="103" r="11" fill="url(#gP)"/><circle cx="172" cy="103" r="11" fill="url(#gN)"/>
+            <circle cx="138" cy="122" r="11" fill="url(#gN)"/><circle cx="160" cy="122" r="11" fill="url(#gP)"/><circle cx="182" cy="122" r="11" fill="url(#gN)"/>
+            <circle cx="160" cy="139" r="11" fill="url(#gP)"/>
+          </g>
+          <text x="160" y="186" class="rx-l strong">lithium-6</text>
+          <text x="160" y="202" class="rx-l small">3 protons + 3 neutrons</text>
+          <path d="M210,98 L262,62" class="rx-arrow" marker-end="url(#rxA)"/>
+          <path d="M210,132 L262,168" class="rx-arrow" marker-end="url(#rxA)"/>
+          <text x="236" y="120" class="rx-l small heat">+ heat</text>
+          <circle cx="300" cy="50" r="30" class="rx-halo tri"/>
+          <circle cx="293" cy="44" r="9" fill="url(#gP)"/><circle cx="309" cy="46" r="9" fill="url(#gN)"/><circle cx="299" cy="60" r="9" fill="url(#gN)"/>
+          <text x="340" y="46" class="rx-l start strong">tritium</text><text x="340" y="62" class="rx-l start small">the fuel</text>
+          <circle cx="300" cy="180" r="30" class="rx-halo he"/>
+          <circle cx="292" cy="173" r="9" fill="url(#gP)"/><circle cx="308" cy="173" r="9" fill="url(#gN)"/><circle cx="292" cy="189" r="9" fill="url(#gN)"/><circle cx="308" cy="189" r="9" fill="url(#gP)"/>
+          <text x="340" y="176" class="rx-l start strong">helium</text><text x="340" y="192" class="rx-l start small">harmless gas</text>
         </svg>
-        <figcaption>One neutron plus one lithium-6 atom makes one tritium atom, the fuel, plus helium.</figcaption>
+        <figcaption><span class="key p"></span> proton <span class="key n"></span> neutron. One neutron plus one lithium-6 atom makes one atom of fuel.</figcaption>
       </figure>
     </div>
   </section>
@@ -64,15 +93,22 @@
     <span class="eyebrow">2 · Two kinds of lithium</span>
     <h2 id="six-h">Why it has to be lithium-6</h2>
     <div class="two-col">
-      <div>
-        <p>Lithium comes in two natural kinds, called isotopes: <b>lithium-6</b> and <b>lithium-7</b>. They look and act the same in a battery. The difference is a tiny bit of weight inside the atom.</p>
-        <p>In nature, 92.5% of lithium is lithium-7. Only <b>7.5%</b> is lithium-6. <span class="cite" data-src="wnaLithium"></span></p>
-        <p>For making fuel, they behave very differently. Lithium-6 makes tritium easily, and it gives off heat while doing it. Lithium-7 only makes tritium when hit by very fast neutrons, and it uses up energy to do so. <span class="cite" data-src="ppplBlankets"></span></p>
-        <p>That's why most fusion designs want lithium that is 30 to 90% lithium-6, far more than nature provides. <span class="cite" data-src="wardArxiv"></span> A few designs can use natural lithium, but most can't. <span class="cite" data-src="ppplBlankets"></span></p>
+      <div class="prose">
+        <p>Lithium comes in two natural kinds, called isotopes: <b>lithium-6</b> and <b>lithium-7</b>. In a battery they act the same. The only difference is a tiny bit of weight inside the atom.</p>
+        <p>For making fuel, they behave very differently. Lithium-6 makes tritium easily and gives off heat doing it. Lithium-7 only makes tritium when hit by very fast neutrons, and it uses up energy to do so.<span class="cite" data-src="ppplBlankets"></span></p>
+        <p>The problem is how little lithium-6 nature gives us. A few designs can use natural lithium, but most can't.<span class="cite" data-src="ppplBlankets"></span></p>
       </div>
-      <figure class="diagram" aria-label="40 dots, 3 of them highlighted, showing 7.5 percent">
-        <div class="atoms" id="atoms"></div>
-        <figcaption><b>3 out of every 40</b> lithium atoms in nature are lithium-6 (highlighted). Fusion plants need most of them to be lithium-6.</figcaption>
+      <figure class="diagram iso" aria-label="Bar chart comparing natural lithium, 7.5 percent lithium-6, with what fusion needs, 30 to 90 percent">
+        <div class="iso-row">
+          <div class="iso-label"><b>Lithium from the ground</b><span class="iso-val">7.5% lithium-6</span></div>
+          <div class="iso-bar"><span class="seg li6" style="width:7.5%"></span><span class="seg li7"></span></div>
+        </div>
+        <div class="iso-row">
+          <div class="iso-label"><b>What most fusion plants need</b><span class="iso-val">30–90% lithium-6</span></div>
+          <div class="iso-bar"><span class="seg li6" style="width:30%"></span><span class="seg li6-range" style="width:60%"></span><span class="seg li7"></span></div>
+        </div>
+        <div class="iso-scale" aria-hidden="true"><span>0%</span><span>50%</span><span>100%</span></div>
+        <figcaption><span class="key li6"></span> lithium-6 <span class="key range"></span> needed range <span class="key li7"></span> lithium-7. Natural figure from the World Nuclear Association;<span class="cite" data-src="wnaLithium"></span> fusion range from Ward and others.<span class="cite" data-src="wardArxiv"></span></figcaption>
       </figure>
     </div>
   </section>
@@ -80,37 +116,40 @@
   <section id="ground" aria-labelledby="ground-h">
     <span class="eyebrow">3 · Extraction</span>
     <h2 id="ground-h">How lithium comes out of the ground</h2>
-    <p class="section-intro">Lithium is common but spread very thin. On average, Earth's crust is only about 0.007% lithium. <span class="cite" data-src="mdpiAtacama"></span> So it's taken from the few places where it's concentrated, in one of three ways.</p>
+    <p class="section-intro">Lithium is common but spread very thin. On average, Earth's crust is only about 0.007% lithium,<span class="cite" data-src="mdpiAtacama"></span> so it's taken from the few places where it's concentrated, in one of three ways.</p>
     <div class="ways">
-      <article class="way">
-        <span class="way-tag">Most of South America</span>
-        <h3>1. Salty water from salt flats</h3>
-        <ol>
-          <li>Wells pump salty underground water, called brine, up from beneath salt flats. In Chile's Atacama Desert, each liter holds about 1.8 grams of lithium. <span class="cite" data-src="mdpiAtacama"></span></li>
-          <li>The brine is spread into huge shallow ponds. The desert sun and wind dry it out.</li>
-          <li>After 6 to 18 months, what's left is a yellowish liquid that's about 6% lithium. <span class="cite" data-src="wilsonCenter"></span></li>
+      <article class="way" style="--c: var(--extract)">
+        <div class="way-top"><span class="way-icon"><svg><use href="#i-pond"/></svg></span><span class="stat"><b>6–18</b> months to dry</span></div>
+        <span class="way-tag">Chile and Argentina</span>
+        <h3>Salty water from salt flats</h3>
+        <ol class="mini-steps">
+          <li>Wells pump salty underground water, called brine, from beneath salt flats. In Chile's Atacama Desert, each liter holds about 1.8 grams of lithium.<span class="cite" data-src="mdpiAtacama"></span></li>
+          <li>The brine is spread into huge shallow ponds, and the desert sun and wind dry it out.</li>
+          <li>What's left is a yellowish liquid that's about 6% lithium.<span class="cite" data-src="wilsonCenter"></span></li>
         </ol>
-        <p class="why-care"><b>Why it matters:</b> it takes water from some of the driest places on Earth, often on Indigenous land. <a href="harm.html">See who gets hurt →</a></p>
+        <p class="why-care"><b>Why it matters:</b> it takes water from one of the driest places on Earth, often on Indigenous land. <a href="harm.html">Who gets hurt →</a></p>
       </article>
-      <article class="way">
-        <span class="way-tag">Australia, Zimbabwe</span>
-        <h3>2. Mining rock</h3>
-        <ol>
-          <li>Miners dig up rock containing a lithium mineral called spodumene. It's crushed and separated from the waste rock. <span class="cite" data-src="saltworks"></span></li>
-          <li>The rock powder is roasted at about 1,050 °C (1,920 °F), then mixed with strong sulfuric acid and roasted again. <span class="cite" data-src="saltworks"></span></li>
-          <li>That turns the lithium into a form that dissolves in water, so it can be pulled out. The process uses a lot of energy and chemicals. <span class="cite" data-src="lblSpodumene"></span></li>
+      <article class="way" style="--c: var(--extract)">
+        <div class="way-top"><span class="way-icon"><svg><use href="#i-rock"/></svg></span><span class="stat"><b>1,050 °C</b> roasting</span></div>
+        <span class="way-tag">Australia and Zimbabwe</span>
+        <h3>Mining rock</h3>
+        <ol class="mini-steps">
+          <li>Miners dig up rock containing a lithium mineral called spodumene, then crush it and separate out the waste.<span class="cite" data-src="saltworks"></span></li>
+          <li>The powder is roasted at about 1,050 °C (1,920 °F), mixed with strong sulfuric acid, and roasted again.<span class="cite" data-src="saltworks"></span></li>
+          <li>The lithium can now dissolve in water and be pulled out. It takes a lot of energy and chemicals.<span class="cite" data-src="lblSpodumene"></span></li>
         </ol>
-        <p class="why-care"><b>Why it matters:</b> open-pit mines bring dust, waste, and, in some places, child labor. <a href="steps.html?step=extract">See the Dig step →</a></p>
+        <p class="why-care"><b>Why it matters:</b> open-pit mines bring dust, waste, and in some places child labor. <a href="steps.html?step=extract">The Dig step →</a></p>
       </article>
-      <article class="way is-new">
+      <article class="way is-new" style="--c: var(--deploy)">
+        <div class="way-top"><span class="way-icon"><svg><use href="#i-filter"/></svg></span><span class="stat"><b>70–90%</b> recovered</span></div>
         <span class="way-tag">New and still growing</span>
-        <h3>3. Pulling lithium straight from brine</h3>
-        <ol>
-          <li>Brine is pumped up the same way, but instead of drying in ponds, it flows through special materials that grab only the lithium. <span class="cite" data-src="woodmacDle"></span></li>
-          <li>It doesn't need the giant ponds, and the leftover water can often be pumped back underground.</li>
-          <li>Ponds recover about 40 to 60% of the lithium. This method could recover 70 to 90%. <span class="cite" data-src="woodmacDle"></span></li>
+        <h3>Pulling lithium straight from brine</h3>
+        <ol class="mini-steps">
+          <li>Brine is pumped up the same way, but it flows through special materials that grab only the lithium.<span class="cite" data-src="woodmacDle"></span></li>
+          <li>No giant ponds are needed, and the leftover water can often go back underground.</li>
+          <li>Ponds recover about 40 to 60% of the lithium. This could recover 70 to 90%.<span class="cite" data-src="woodmacDle"></span></li>
         </ol>
-        <p class="why-care"><b>Why it matters:</b> it could mean less water lost and less land used, but it isn't widely used yet.</p>
+        <p class="why-care"><b>Why it matters:</b> less water lost and less land used, but it isn't widely used yet.</p>
       </article>
     </div>
   </section>
@@ -118,65 +157,79 @@
   <section id="sorting" aria-labelledby="sorting-h">
     <span class="eyebrow">4 · Processing and sorting</span>
     <h2 id="sorting-h">How raw lithium becomes lithium-6</h2>
-    <ol class="chain-line">
-      <li><span class="cl-num">A</span><div><h3>Clean it up</h3><p>The raw lithium from brine or rock is purified into lithium chemicals, like lithium carbonate or lithium hydroxide. These are what batteries use too. China does about 70% of this work. <span class="cite" data-src="ieaGcmo2025"></span></p></div></li>
-      <li><span class="cl-num">B</span><div><h3>Sort the atoms</h3><p>Next, lithium-6 has to be separated from lithium-7. Because the two are almost identical, this is very hard. It's called <b>enrichment</b>, the same word used for uranium.</p></div></li>
-      <li><span class="cl-num">C</span><div><h3>Make fuel parts</h3><p>The lithium-6-rich material is turned into tiny ceramic beads, a liquid metal, or a melted salt, then packed around the fusion reaction to make tritium. <a href="steps.html?step=fabricate">See the Make parts step →</a></p></div></li>
+    <ol class="process">
+      <li style="--c: var(--refine)"><span class="proc-icon"><svg><use href="#i-flask"/></svg></span><span class="proc-n">Step A</span><h3>Clean it up</h3><p>Raw lithium is purified into lithium chemicals, the same ones batteries use. China does about 70% of this work.<span class="cite" data-src="ieaGcmo2025"></span></p></li>
+      <li style="--c: var(--enrich)"><span class="proc-icon"><svg><use href="#i-sort"/></svg></span><span class="proc-n">Step B</span><h3>Sort the atoms</h3><p>Lithium-6 is separated from lithium-7. The two are almost identical, so this is very hard. It's called <b>enrichment</b>.</p></li>
+      <li style="--c: var(--fabricate)"><span class="proc-icon"><svg><use href="#i-pebbles"/></svg></span><span class="proc-n">Step C</span><h3>Make fuel parts</h3><p>The lithium-6 is made into tiny ceramic beads, a liquid metal, or a melted salt, and packed around the fusion reaction. <a href="steps.html?step=fabricate">More →</a></p></li>
     </ol>
 
-    <h3 class="sub-h">The old way: sorting with mercury</h3>
-    <div class="two-col">
-      <div>
-        <p>The method used at large scale, called COLEX, works like this <span class="cite" data-src="wnaLithium"></span>:</p>
+    <div class="two-col sort-old">
+      <div class="prose">
+        <h3 class="sub-h">The old way: sorting with mercury</h3>
+        <p>The method used at large scale is called COLEX:<span class="cite" data-src="wnaLithium"></span></p>
         <ol class="plain-steps">
           <li>Lithium is mixed into liquid <b>mercury</b>, a toxic metal.</li>
-          <li>That mercury mix flows down tall columns, while lithium dissolved in water flows up past it.</li>
-          <li>Lithium-6 "prefers" the mercury, and lithium-7 prefers the water. So each pass leaves the mercury a little richer in lithium-6.</li>
-          <li>After many passes, the lithium-6 is taken back out of the mercury.</li>
+          <li>The mercury flows down tall columns while lithium dissolved in water flows up past it.</li>
+          <li>Lithium-6 "prefers" the mercury, and lithium-7 prefers the water, so each pass sorts them a little more.</li>
+          <li>After many passes, lithium-6 is taken back out of the mercury.</li>
         </ol>
-        <p>The U.S. did this in Oak Ridge, Tennessee, in the 1950s and 1960s, and hundreds of tonnes of mercury leaked into the land and a creek. <span class="cite" data-src="atsdrY12"></span> Today only Russia and China still do it. <span class="cite" data-src="wnaLithium"></span></p>
+        <p>The U.S. did this at Oak Ridge, Tennessee, in the 1950s and 1960s, and hundreds of tonnes of mercury leaked into the land and a creek.<span class="cite" data-src="atsdrY12"></span> Today only Russia and China still do it.<span class="cite" data-src="wnaLithium"></span></p>
       </div>
-      <figure class="diagram" aria-label="Diagram of the mercury column: mercury flows down, water flows up, lithium-6 collects in the mercury">
-        <svg viewBox="0 0 320 236" role="img" aria-labelledby="dg2">
-          <title id="dg2">Mercury flows down a column and picks up lithium-6; water flows up and keeps lithium-7</title>
-          <rect x="125" y="20" width="70" height="180" rx="10" class="dg-col"/>
-          <path d="M145,30 L145,190" class="dg-hg" marker-end="url(#dgB)"/>
-          <path d="M175,190 L175,30" class="dg-water" marker-end="url(#dgC)"/>
-          <text x="115" y="96" class="dg-l end">mercury</text><text x="115" y="112" class="dg-l end">flows down</text>
-          <text x="205" y="96" class="dg-l start">water</text><text x="205" y="112" class="dg-l start">flows up</text>
-          <text x="115" y="186" class="dg-l end strong">more lithium-6</text>
-          <text x="205" y="40" class="dg-l start strong">more lithium-7</text>
-          <text x="160" y="226" class="dg-l">repeated many times</text>
+      <figure class="diagram">
+        <svg viewBox="0 0 340 270" role="img" aria-labelledby="hg-t hg-d">
+          <title id="hg-t">The mercury sorting column</title>
+          <desc id="hg-d">Mercury flows down one side and collects lithium-6 at the bottom. Water flows up the other side and carries lithium-7 to the top.</desc>
           <defs>
-            <marker id="dgB" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" class="dg-head-hg"/></marker>
-            <marker id="dgC" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" class="dg-head-w"/></marker>
+            <marker id="hgA" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" class="hg-head"/></marker>
+            <marker id="hgB" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" class="w-head"/></marker>
           </defs>
+          <rect x="128" y="18" width="84" height="214" rx="16" class="hg-col"/>
+          <path d="M152,34 V214" class="hg-lane"/>
+          <path d="M152,34 V214" class="hg-flow" marker-end="url(#hgA)"/>
+          <path d="M188,214 V34" class="w-lane"/>
+          <path d="M188,214 V34" class="w-flow" marker-end="url(#hgB)"/>
+          <g class="dots6"><circle cx="152" cy="70" r="4"/><circle cx="152" cy="120" r="4"/><circle cx="146" cy="160" r="4"/><circle cx="158" cy="168" r="4"/><circle cx="146" cy="198" r="4"/><circle cx="158" cy="204" r="4"/><circle cx="152" cy="188" r="4"/></g>
+          <g class="dots7"><circle cx="188" cy="190" r="4"/><circle cx="188" cy="140" r="4"/><circle cx="182" cy="100" r="4"/><circle cx="194" cy="92" r="4"/><circle cx="182" cy="56" r="4"/><circle cx="194" cy="50" r="4"/><circle cx="188" cy="72" r="4"/></g>
+          <text x="116" y="44" class="hg-l end strong">Mercury</text><text x="116" y="60" class="hg-l end">flows down</text>
+          <text x="224" y="214" class="hg-l start strong">Water</text><text x="224" y="230" class="hg-l start">flows up</text>
+          <path d="M116,196 H136" class="hg-tick"/><text x="112" y="192" class="hg-l end strong li6t">Lithium-6</text><text x="112" y="208" class="hg-l end">collects here</text>
+          <path d="M204,62 H224" class="hg-tick"/><text x="228" y="58" class="hg-l start strong">Lithium-7</text><text x="228" y="74" class="hg-l start">carried away</text>
+          <text x="170" y="258" class="hg-l">Repeated through many columns</text>
         </svg>
-        <figcaption>The mercury column, simplified.</figcaption>
+        <figcaption><span class="key li6"></span> lithium-6 <span class="key li7"></span> lithium-7. Simplified; real plants chain many columns together.</figcaption>
       </figure>
     </div>
 
-    <h3 class="sub-h">New ways without mercury</h3>
+    <h3 class="sub-h">New ways, without mercury</h3>
     <div class="new-ways">
-      <div><b>Filters with special beads</b><p>Lithium flows through columns of tiny beads that sort the two kinds as they pass. Precision Periodic has U.S. government funding for this. <span class="cite" data-src="precisionPeriodic"></span></p></div>
-      <div><b>Liquid-to-liquid sorting</b><p>Two liquids that don't mix trade lithium back and forth, sorting a bit more each time. Molten Salt Solutions says it has deals to supply fusion companies. <span class="cite" data-src="moltenSalt"></span></p></div>
-      <div><b>Spinning it very fast</b><p>A machine spins electrically charged lithium gas very fast to sort the two kinds by weight. Marathon Fusion says it has tested this. <span class="cite" data-src="marathon"></span></p></div>
+      <div><span class="nw-icon"><svg><use href="#i-beads"/></svg></span><b>Bead filters</b><p>Lithium flows through columns of tiny beads that sort the two kinds as they pass. Precision Periodic has U.S. government funding for this.<span class="cite" data-src="precisionPeriodic"></span></p></div>
+      <div><span class="nw-icon"><svg><use href="#i-liquids"/></svg></span><b>Liquid-to-liquid sorting</b><p>Two liquids that don't mix trade lithium back and forth, sorting a bit more each time. Molten Salt Solutions says it has deals to supply fusion companies.<span class="cite" data-src="moltenSalt"></span></p></div>
+      <div><span class="nw-icon"><svg><use href="#i-spin"/></svg></span><b>Spinning it very fast</b><p>A machine spins electrically charged lithium gas to sort the two kinds by weight. Marathon Fusion says it has tested this.<span class="cite" data-src="marathon"></span></p></div>
     </div>
-    <p class="note-line">None of these is working at full factory scale yet. That's the gap our <a href="solutions.html">plan</a> says governments should help close.</p>
+    <p class="note-line">None of these works at full factory scale yet. That's the gap our <a href="solutions.html">plan</a> says governments should help close.</p>
   </section>
 
   <section id="howmuch" aria-labelledby="howmuch-h">
     <span class="eyebrow">5 · Putting numbers on it</span>
     <h2 id="howmuch-h">How much lithium one fusion plant needs</h2>
-    <div class="mathbox">
-      <div class="math-row"><span class="math-n">100 tonnes</span><span>of lithium-6 for one large fusion power plant <span class="cite" data-src="wardArxiv"></span></span></div>
-      <div class="math-op">÷ 7.5% (the share of lithium-6 in nature)</div>
-      <div class="math-row"><span class="math-n">1,300+ tonnes</span><span>of ordinary lithium, at the very least, even if not a single lithium-6 atom were lost</span></div>
-      <div class="math-op">÷ about 1.8 kg of lithium per cubic meter of Atacama brine</div>
-      <div class="math-row"><span class="math-n">740,000+ m³</span><span>of brine pumped from under the desert, roughly <b>300 Olympic swimming pools</b>, before counting the lithium that ponds fail to recover</span></div>
+    <div class="tiles">
+      <div class="tile" style="--c: var(--enrich)"><span class="tile-n">100 t</span><span class="tile-l">of lithium-6 for one large fusion plant<span class="cite" data-src="wardArxiv"></span></span></div>
+      <div class="tile-op"><span>÷ 7.5%</span><small>share of lithium-6 in nature</small></div>
+      <div class="tile" style="--c: var(--refine)"><span class="tile-n">1,300+ t</span><span class="tile-l">of ordinary lithium, even with perfect sorting</span></div>
+      <div class="tile-op"><span>÷ 1.8 kg/m³</span><small>lithium in Atacama brine</small></div>
+      <div class="tile" style="--c: var(--extract)"><span class="tile-n">740,000+ m³</span><span class="tile-l">of brine pumped from under the desert</span></div>
     </div>
-    <p class="note-line">This is our own rough math using the sourced numbers above. Real amounts would be higher, because no sorting method is perfect and ponds recover only about half the lithium. <span class="cite" data-src="woodmacDle"></span></p>
+    <div class="pools" aria-label="About 300 Olympic swimming pools of brine, shown as 30 icons of 10 pools each">
+      <div class="pool-row" id="pools"></div>
+      <p><b>About 300 Olympic swimming pools</b> of desert brine for one plant. Each icon is 10 pools.</p>
+    </div>
+    <p class="note-line">This is our own rough math using the sourced numbers above. Real amounts would be higher, because no sorting method is perfect and ponds recover only about half the lithium.<span class="cite" data-src="woodmacDle"></span></p>
     <p>Fusion needs far less lithium than electric car batteries do. But because it needs the rare lithium-6, every plant still starts with a lot of digging, pumping, and sorting. That's why where the lithium comes from matters. <a href="steps.html">Follow the six steps →</a></p>
+  </section>
+
+  <section class="refs" aria-labelledby="refs-h">
+    <h2 id="refs-h">Sources for this page</h2>
+    <ol id="page-refs"></ol>
   </section>
 
   <nav class="pager" aria-label="Page by page"><a href="index.html"><small>Previous</small>← Home</a><a class="next" href="steps.html"><small>Next</small>The six steps →</a></nav>
@@ -184,10 +237,19 @@
 </main>
 <script src="assets/data.js"></script>
 <script>
-// Fill in each citation from the shared source list.
-document.querySelectorAll(".cite").forEach(el => { const k = el.dataset.src; if (SOURCES[k]) el.innerHTML = "(" + srcLink(k) + ")"; });
-// 40 dots, 3 highlighted: 3 / 40 = 7.5%, the share of lithium-6 in nature.
-document.getElementById("atoms").innerHTML = Array.from({ length: 40 }, (_, i) => `<span class="${[6, 21, 33].includes(i) ? "li6" : ""}"></span>`).join("");
+// Number each citation by first use and build the source list at the bottom.
+const order = [];
+document.querySelectorAll(".cite").forEach(el => {
+  const k = el.dataset.src;
+  if (!SOURCES[k]) return;
+  let n = order.indexOf(k);
+  if (n < 0) { order.push(k); n = order.length - 1; }
+  el.innerHTML = `<sup><a href="#ref-${n + 1}" aria-label="Source ${n + 1}: ${SOURCES[k][0].split(",")[0]}">${n + 1}</a></sup>`;
+});
+document.getElementById("page-refs").innerHTML = order.map((k, i) =>
+  `<li id="ref-${i + 1}"><a href="${SOURCES[k][1]}" target="_blank" rel="noopener">${SOURCES[k][0]}</a> <span class="via">via ${via(k)}</span></li>`).join("");
+// 30 pool icons, each standing for 10 Olympic pools (about 300 in all).
+document.getElementById("pools").innerHTML = Array.from({ length: 30 }, () => '<svg class="pool" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-pool"/></svg>').join("");
 </script>
 </body>
 </html>
