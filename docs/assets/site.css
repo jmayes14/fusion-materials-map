@@ -1,29 +1,12 @@
   :root {
-    color-scheme: light;
-    --page: #f4f2ec; --panel: #ffffff; --raised: #edf3ee; --line: #d6dfd9;
-    --ink: #202b29; --muted: #596a64; --accent: #216653; --accent-ink: #ffffff;
-    --extract: #a34f20; --refine: #7a4b9b; --enrich: #b23a3a; --fabricate: #1f6fa8; --deploy: #216653; --after: #6b6b6b;
-    --sea: #cfe0e6; --land: #f7f8f4; --land-line: #9db4bb;
-    --warn-bg: #fff1e7; --warn-ink: #8d481f;
-    --radius: 1.1rem; --shadow: 0 1.5rem 4rem rgb(34 52 45 / 10%);
-  }
-  @media (prefers-color-scheme: dark) {
-    :root:not([data-theme="light"]) {
-      color-scheme: dark;
-      --page: #141a19; --panel: #1c2422; --raised: #23302c; --line: #33433e;
-      --ink: #e7eeeb; --muted: #a3b4ae; --accent: #6cc3a5; --accent-ink: #0e1614;
-      --extract: #e08a5a; --refine: #b896d6; --enrich: #ec7c7c; --fabricate: #6eb2e6; --deploy: #6cc3a5; --after: #b0b0b0;
-      --sea: #1d2c31; --land: #2a3532; --land-line: #46605a;
-      --warn-bg: #3a2a1e; --warn-ink: #f0b48a;
-    }
-  }
-  :root[data-theme="dark"] {
     color-scheme: dark;
-    --page: #141a19; --panel: #1c2422; --raised: #23302c; --line: #33433e;
-    --ink: #e7eeeb; --muted: #a3b4ae; --accent: #6cc3a5; --accent-ink: #0e1614;
-    --extract: #e08a5a; --refine: #b896d6; --enrich: #ec7c7c; --fabricate: #6eb2e6; --deploy: #6cc3a5; --after: #b0b0b0;
-    --sea: #1d2c31; --land: #2a3532; --land-line: #46605a;
-    --warn-bg: #3a2a1e; --warn-ink: #f0b48a;
+    --page: #0e1c27; --panel: #152838; --raised: #1c3346; --line: #2c4253;
+    --ink: #f3f6f8; --muted: #a8b5bf; --accent: #ffcf5a; --accent-ink: #10161c;
+    --extract: #ff8a4c; --refine: #b48cff; --enrich: #ff5a6e; --fabricate: #5cb8ff; --deploy: #3fd0a0; --after: #9aa7b1;
+    --sea: #0e1c27; --land: #253a4a; --land-line: #3d5a6f;
+    --warn-bg: #33241a; --warn-ink: #ffb07a;
+    --gov: #ff7a8a; --ngo: #ffa66e; --struct: #c6a6ff;
+    --radius: 1rem; --shadow: 0 1.5rem 4rem rgb(0 0 0 / 35%);
   }
   * { box-sizing: border-box; }
   html { scroll-behavior: smooth; }
@@ -362,3 +345,14 @@
     .pool-row { grid-template-columns: repeat(10, 1fr); }
   }
   @media (prefers-reduced-motion: reduce) { .hg-flow, .w-flow { animation: none; } }
+
+  /* Shared top bar, matching the map story */
+  body { font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif; }
+  .site-nav { position: sticky; top: 0; z-index: 20; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0.5rem 1.4rem; margin: 0 0 2.2rem; padding: 0.85rem 0; background: rgb(14 28 39 / 94%); backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); }
+  .brand { color: var(--ink); font-weight: 800; text-decoration: none; font-size: 1.05rem; letter-spacing: -0.01em; }
+  .brand span { color: var(--accent); }
+  .site-nav ul { list-style: none; display: flex; flex-wrap: wrap; gap: 0.15rem 0.9rem; margin: 0; padding: 0; }
+  .site-nav a.navlink { display: inline-block; padding: 0.3rem 0; border: 0; border-radius: 0; background: none; color: var(--muted); font-size: 0.88rem; text-decoration: none; white-space: nowrap; }
+  .site-nav a.navlink:hover { color: var(--ink); border: 0; }
+  .site-nav a.navlink[aria-current="page"] { background: none; color: var(--ink); font-weight: 700; box-shadow: inset 0 -2px 0 var(--accent); }
+  @media (max-width: 52rem) { .site-nav ul { width: 100%; flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; padding-bottom: 0.2rem; } }

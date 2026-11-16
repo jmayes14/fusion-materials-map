@@ -3,68 +3,387 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Where the lithium for fusion power plants comes from, who could get hurt, and how to fix it.">
-<meta name="theme-color" content="#f4f2ec">
-<link rel="icon" href="data:,">
 <title>Fusion's Lithium Trail</title>
-<link rel="stylesheet" href="assets/site.css">
+<meta name="description" content="A map story following the lithium that fusion power plants will need, from the ground to the power plant, and who could get hurt along the way.">
+<meta name="theme-color" content="#0e1c27">
+<link rel="icon" href="data:,">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --sea: #0e1c27; --land: #253a4a; --border: #3d5a6f; --ink: #f3f6f8; --muted: #a8b5bf;
+    --card: #ffffff; --card-ink: #17212a; --card-muted: #55636e;
+    --dig: #ff8a4c; --process: #b48cff; --sort: #ff5a6e; --use: #3fd0a0; --hot: #ffcf5a;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; background: var(--sea); color: var(--ink); font-family: Inter, system-ui, sans-serif; line-height: 1.55; }
+
+  /* Top bar */
+  .bar { position: fixed; top: 0; left: 0; right: 0; z-index: 6; display: flex; justify-content: space-between; align-items: center; gap: 1rem; padding: 0.8rem 1.4rem; background: linear-gradient(180deg, rgb(14 28 39 / 96%) 60%, transparent); }
+  .bar b { font-weight: 800; } .bar b span { color: var(--hot); }
+  .bar nav { display: flex; gap: 1.1rem; font-size: 0.88rem; color: var(--muted); flex-wrap: wrap; }
+  .bar nav a { color: inherit; text-decoration: none; white-space: nowrap; } .bar nav a:hover { color: var(--ink); }
+  .bar nav a[aria-current="page"] { color: var(--ink); font-weight: 700; box-shadow: inset 0 -2px 0 var(--hot); }
+
+  /* Map */
+  #map { position: fixed; inset: 0; width: 100vw; height: 100vh; display: block; }
+  #map .sphere { fill: var(--sea); }
+  #map .land { fill: var(--land); }
+  #map .borders { fill: none; stroke: var(--border); stroke-width: 0.6; }
+  #map .country-lbl { fill: #8fa5b5; font: 600 11px Inter, sans-serif; letter-spacing: 0.08em; text-transform: uppercase; text-anchor: middle; pointer-events: none; }
+  #map .past { fill: #c9d4dc; opacity: 0.55; }
+  #map .now { stroke: #fff; stroke-width: 2.5; }
+  #map .ring { fill: none; stroke-width: 2; opacity: 0.8; animation: pulse 1.8s ease-out infinite; transform-box: fill-box; transform-origin: center; }
+  @keyframes pulse { from { transform: scale(1); opacity: 0.85; } to { transform: scale(2.6); opacity: 0; } }
+  #map .place-lbl { fill: #fff; font: 800 14px Inter, sans-serif; paint-order: stroke; stroke: var(--sea); stroke-width: 5px; stroke-linejoin: round; }
+  #map .place-sub { fill: #d0dae1; font: 500 12px Inter, sans-serif; paint-order: stroke; stroke: var(--sea); stroke-width: 4px; }
+  #map .arrow { fill: none; stroke-width: 2.6; stroke-linecap: round; }
+  #map .arrow.draw { stroke-dasharray: var(--len); stroke-dashoffset: var(--len); animation: draw 1.2s 0.6s ease-out forwards; }
+  @keyframes draw { to { stroke-dashoffset: 0; } }
+
+  /* Step tracker */
+  .rail { position: fixed; left: 1.4rem; top: 50%; transform: translateY(-50%); z-index: 5; list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 0.2rem; }
+  .rail::before { content: ""; position: absolute; left: 0.95rem; top: 1rem; bottom: 1rem; width: 2px; background: #33485a; }
+  .rail a { position: relative; display: flex; align-items: center; gap: 0.7rem; padding: 0.4rem 0; text-decoration: none; color: var(--muted); font-size: 0.88rem; font-weight: 600; }
+  .rail i { width: 1.9rem; height: 1.9rem; flex: none; border-radius: 50%; display: grid; place-items: center; font-style: normal; font-size: 0.8rem; font-weight: 800; background: var(--sea); border: 2px solid #3f5568; color: var(--muted); transition: all 200ms ease; }
+  .rail a.done i { border-color: var(--c); color: var(--c); }
+  .rail a.on { color: #fff; }
+  .rail a.on i { background: var(--c); border-color: var(--c); color: #10161c; transform: scale(1.12); box-shadow: 0 0 0 5px color-mix(in srgb, var(--c) 30%, transparent); }
+
+  /* Legend */
+  .legend { position: fixed; left: 1.4rem; bottom: 1.2rem; z-index: 5; display: flex; flex-wrap: wrap; gap: 0.4rem 1rem; font-size: 0.78rem; color: var(--muted); background: rgb(14 28 39 / 80%); padding: 0.55rem 0.8rem; border-radius: 0.6rem; border: 1px solid #2c4253; max-width: 28rem; }
+  .legend span { display: inline-flex; align-items: center; gap: 0.4rem; }
+  .legend .k-now { width: 0.8rem; height: 0.8rem; border-radius: 50%; background: var(--hot); box-shadow: 0 0 0 2px #fff inset; }
+  .legend .k-past { width: 0.55rem; height: 0.55rem; border-radius: 50%; background: #c9d4dc; opacity: 0.6; }
+  .legend .k-arrow { width: 1.4rem; height: 2px; background: var(--hot); position: relative; }
+  .legend .k-arrow::after { content: ""; position: absolute; right: -2px; top: -4px; border: 5px solid transparent; border-left-color: var(--hot); border-right: 0; }
+
+  /* Story */
+  .story { position: relative; z-index: 4; pointer-events: none; }
+  .stop { min-height: 100vh; display: flex; align-items: center; justify-content: flex-end; padding: 5rem 5vw; }
+  .card { pointer-events: auto; width: min(27rem, 100%); background: var(--card); color: var(--card-ink); border-radius: 1rem; padding: 1.5rem 1.6rem 1.4rem; box-shadow: 0 1.5rem 4rem rgb(0 0 0 / 45%); border-top: 6px solid var(--c); }
+  .crumb { display: flex; align-items: center; gap: 0.6rem; font-size: 0.78rem; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: var(--c-dark, var(--card-muted)); }
+  .crumb i { width: 1.7rem; height: 1.7rem; border-radius: 50%; display: grid; place-items: center; font-style: normal; background: var(--c); color: #10161c; letter-spacing: 0; }
+  .card h2 { margin: 0.5rem 0 0.5rem; font-size: 1.6rem; line-height: 1.15; letter-spacing: -0.02em; }
+  .card p { margin: 0 0 0.8rem; color: #2c3a45; }
+  .big { display: flex; align-items: baseline; gap: 0.7rem; margin: 0.9rem 0; padding: 0.8rem 1rem; background: color-mix(in srgb, var(--c) 12%, #fff); border-radius: 0.7rem; }
+  .big b { font-size: 2rem; font-weight: 800; letter-spacing: -0.03em; color: var(--c-dark, var(--card-ink)); white-space: nowrap; }
+  .big span { font-size: 0.9rem; color: var(--card-muted); }
+  .harm { font-size: 0.95rem; } .harm b { color: #b3261e; }
+  .look { display: flex; gap: 0.5rem; font-size: 0.85rem; color: var(--card-muted) !important; border-top: 1px solid #e6eaee; padding-top: 0.75rem; margin-bottom: 0 !important; }
+  .look::before { content: "🗺"; }
+  .src { font-size: 0.72rem; color: #8a96a0; margin-top: 0.6rem; } .src a { color: inherit; }
+
+  .intro { justify-content: center; text-align: center; }
+  .intro .card { width: min(40rem, 100%); background: rgb(14 28 39 / 88%); color: var(--ink); border: 1px solid #2c4253; border-top: 6px solid var(--hot); backdrop-filter: blur(6px); }
+  .intro h1 { font-size: clamp(2.2rem, 6vw, 3.6rem); line-height: 1.04; letter-spacing: -0.03em; margin: 0.4rem 0 1rem; }
+  .intro p { color: #d5dee4; font-size: 1.1rem; }
+  .how { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.8rem; margin: 1.4rem 0 0.4rem; text-align: left; }
+  .how div { background: rgb(255 255 255 / 6%); border-radius: 0.7rem; padding: 0.8rem; font-size: 0.88rem; color: #d5dee4; }
+  .how b { display: block; color: #fff; margin-bottom: 0.2rem; }
+  .go { display: inline-block; margin-top: 1.2rem; color: var(--hot); font-weight: 800; text-decoration: none; animation: bob 1.6s ease-in-out infinite; }
+  @keyframes bob { 50% { transform: translateY(6px); } }
+  .alt-link { font-size: 0.9rem !important; margin: 0.6rem 0 0; } .alt-link a { color: var(--hot); }
+  .end .card { width: min(34rem, 100%); }
+  .links { display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; margin-top: 1rem; }
+  .links a { display: block; padding: 0.7rem 0.9rem; border-radius: 0.6rem; background: #f1f4f7; color: var(--card-ink); text-decoration: none; font-weight: 700; font-size: 0.92rem; }
+  .links a:hover { background: #e3e9ee; }
+  .credit { font-size: 0.78rem !important; color: #8a96a0 !important; margin: 1rem 0 0 !important; } .credit a { color: inherit; }
+
+  @media (max-width: 52rem) {
+    .rail { top: 3.4rem; left: 0; right: 0; transform: none; flex-direction: row; justify-content: center; gap: 0.3rem; padding: 0.4rem; background: rgb(14 28 39 / 92%); }
+    .rail::before { display: none; }
+    .rail a span { display: none; }
+    .stop { justify-content: center; align-items: flex-end; padding: 6rem 1rem 4.5rem; }
+    .how { grid-template-columns: 1fr; }
+    .legend { left: 0.6rem; right: 0.6rem; bottom: 0.6rem; font-size: 0.72rem; }
+    .bar { flex-wrap: wrap; padding: 0.6rem 0.9rem; }
+    .bar nav { width: 100%; flex-wrap: nowrap; overflow-x: auto; gap: 0.9rem; font-size: 0.82rem; padding-bottom: 0.2rem; scrollbar-width: none; }
+    .rail { top: 5.4rem; }
+  }
+  @media (prefers-reduced-motion: reduce) { #map .ring, .go { animation: none; } #map .arrow.draw { animation: none; stroke-dashoffset: 0; } }
+</style>
 </head>
 <body>
-<main>
-  <nav class="site-nav" aria-label="Site">
-    <a class="brand" href="index.html">Fusion's <span>Lithium</span> Trail</a>
-    <ul><li><a class="navlink" href="index.html" aria-current="page">Home</a></li><li><a class="navlink" href="lithium.html">Why lithium?</a></li><li><a class="navlink" href="steps.html">The six steps</a></li><li><a class="navlink" href="globe.html">Map</a></li><li><a class="navlink" href="companies.html">Company records</a></li><li><a class="navlink" href="harm.html">Who gets hurt</a></li><li><a class="navlink" href="solutions.html">What should change</a></li><li><a class="navlink" href="methodology.html">Methodology</a></li><li><a class="navlink" href="sources.html">Sources</a></li></ul>
-  </nav>
-  <header class="hero">
-    <div>
-      <span class="eyebrow">Material: lithium</span>
-      <h1>Fusion needs <span>lithium</span>. Nobody can trace it yet.</h1>
-      <p class="lede">Fusion power plants run on a fuel called tritium, which is almost impossible to find in nature. So the plants will have to make their own, using a special kind of lithium. This site follows that lithium from the ground to the power plant, and shows who could get hurt along the way.</p>
-    </div>
-    <aside class="note">
-      <strong>How to read this site</strong>
-      <p>Every fact links to where it came from. When people accuse a company of something, we say who made the claim. A trade record shows two companies did business, but not what was in the box. When we don't know something, we say so. Not knowing doesn't mean a company is clean or guilty.</p>
-    </aside>
-  </header>
+  <div class="bar"><b>Fusion's <span>Lithium</span> Trail</b><nav aria-label="Site"><a href="index.html" aria-current="page">Story</a><a href="lithium.html">Why lithium?</a><a href="steps.html">The six steps</a><a href="globe.html">Map</a><a href="companies.html">Company records</a><a href="harm.html">Who gets hurt</a><a href="solutions.html">What should change</a><a href="methodology.html">Methodology</a><a href="sources.html">Sources</a></nav></div>
+  <svg id="map" aria-hidden="true"></svg>
 
-  <section class="glossary" aria-labelledby="words-h">
-    <h2 id="words-h">Words to know</h2>
-    <dl>
-      <div><dt>Lithium-6</dt><dd>A rare type of lithium. Only about 7 out of every 100 lithium atoms are this kind. Fusion plants need much more of it than that.</dd></div>
-      <div><dt>Tritium</dt><dd>The fuel fusion plants burn. Plants make it by hitting lithium-6 with tiny particles called neutrons.</dd></div>
-      <div><dt>Enrichment</dt><dd>Sorting lithium to collect more of the lithium-6 kind. Until now this has mostly been done to build nuclear weapons.</dd></div>
-      <div><dt>Isotope</dt><dd>A version of an element. Lithium-6 and lithium-7 are two isotopes of lithium.</dd></div>
-      <div><dt>Sanctions list</dt><dd>A government list of companies people in that country are not allowed to do business with.</dd></div>
-      <div><dt>UFLPA</dt><dd>A U.S. law that blocks imports made with forced labor in Xinjiang, a region of China.</dd></div>
-    </dl>
-  </section>
+  <ol class="rail" id="rail" aria-label="Where you are in the story">
+    <li><a href="#s-intro" data-for="intro" style="--c: var(--hot)"><i>★</i><span>Start</span></a></li>
+    <li><a href="#s-atacama" data-for="dig" style="--c: var(--dig)"><i>1</i><span>Dig</span></a></li>
+    <li><a href="#s-china" data-for="process" style="--c: var(--process)"><i>2</i><span>Process</span></a></li>
+    <li><a href="#s-russia" data-for="sort" style="--c: var(--sort)"><i>3</i><span>Sort</span></a></li>
+    <li><a href="#s-use" data-for="use" style="--c: var(--use)"><i>4</i><span>Use</span></a></li>
+    <li><a href="#s-end" data-for="end" style="--c: var(--hot)"><i>✓</i><span>The whole trail</span></a></li>
+  </ol>
 
-  <section aria-labelledby="found-h">
-    <span class="eyebrow">In short</span>
-    <h2 id="found-h">Three things we found</h2>
-    <ol class="findings">
-      <li>The step fusion needs most, sorting out the rare lithium-6, has only been done on a large scale inside nuclear weapons programs. They often use toxic mercury.</li>
-      <li>Shipping records show a U.S. company buying isotopes or lithium chemicals from five plants run by Russia's state nuclear agency.</li>
-      <li>No fusion company has said where its lithium comes from, so nobody can check whether it was mined and made fairly.</li>
-    </ol>
-  </section>
+  <div class="legend" aria-hidden="true"><span><i class="k-now"></i>Where you are now</span><span><i class="k-past"></i>Places you've passed</span><span><i class="k-arrow"></i>Shipments (seller → buyer)</span></div>
 
-  <section aria-labelledby="explore-h">
-    <span class="eyebrow">Explore</span>
-    <h2 id="explore-h">Where to go next</h2>
-    <ul class="cards">
-      <li><a href="lithium.html"><b>Why lithium? →</b><span>Why fusion needs lithium, how it comes out of the ground, and how it becomes lithium-6.</span></a></li>
-      <li><a href="steps.html"><b>The six steps →</b><span>Follow lithium from the ground to the power plant, one step at a time.</span></a></li>
-      <li><a href="globe.html"><b>Map →</b><span>Spin a globe and click the places where each step happens.</span></a></li>
-      <li><a href="companies.html"><b>Company records →</b><span>See which real companies trade with each other.</span></a></li>
-      <li><a href="harm.html"><b>Who gets hurt →</b><span>Who is at risk at each step, and who reported it.</span></a></li>
-      <li><a href="solutions.html"><b>What should change →</b><span>Our plan, including a "Lithium Passport" for every batch.</span></a></li>
-      <li><a href="methodology.html"><b>Methodology →</b><span>How we did the research: where facts came from, how we checked them, and what we couldn't find.</span></a></li>
-    </ul>
-  </section>
-  <nav class="pager" aria-label="Page by page"><a class="next" href="lithium.html"><small>Next</small>Why lithium? →</a></nav>
-  <footer>First draft for the class project "Mapping the Human Cost of Fusion Energy Materials." Research done 9 November 2026. This page will be updated.</footer>
-</main>
+  <div class="story">
+    <section class="stop intro" id="s-intro" data-stage="intro">
+      <div class="card">
+        <span class="crumb" style="color: var(--hot)">A map story · 4 minutes</span>
+        <h1>Follow the lithium that will fuel fusion</h1>
+        <p>Fusion power plants will make their own fuel from a rare kind of lithium. This story follows it from the ground to the power plant, and shows who could get hurt along the way.</p>
+        <div class="how">
+          <div><b>1. Scroll down</b>The map flies to each place the lithium passes through.</div>
+          <div><b>2. Watch the left side</b>The step tracker shows where you are: Dig, Process, Sort, Use.</div>
+          <div><b>3. Read each card</b>What happens there, one key number, and who could get hurt.</div>
+        </div>
+        <a class="go" href="#s-atacama">↓ Start the trail</a>
+        <p class="alt-link">Prefer to explore on your own? <a href="globe.html">Open the interactive map →</a></p>
+      </div>
+    </section>
 
+    <section class="stop" id="s-atacama" data-stage="dig" data-places="atacama,jujuy">
+      <div class="card" style="--c: var(--dig); --c-dark: #b9541c">
+        <span class="crumb"><i>1</i>Step 1 of 4 · Dig</span>
+        <h2>Salt flats of Chile and Argentina</h2>
+        <p>Lithium-rich salt water is pumped from under the desert and left to dry in huge ponds.</p>
+        <div class="big"><b>6–18 mo</b><span>for each batch of ponds to dry</span></div>
+        <p class="harm"><b>Who could get hurt:</b> Indigenous communities, who say they weren't asked and that their water is drying up.</p>
+        <p class="look">On the map: the two glowing dots are the Atacama salt flat (Chile) and the Jujuy salt flats (Argentina).</p>
+        <div class="src"><a href="sources.html">Sources: Wilson Center; IISD; FIDH</a></div>
+      </div>
+    </section>
+
+    <section class="stop" id="s-bikita" data-stage="dig" data-places="bikita" data-arrows="bikita>hainan">
+      <div class="card" style="--c: var(--dig); --c-dark: #b9541c">
+        <span class="crumb"><i>1</i>Step 1 of 4 · Dig</span>
+        <h2>The Bikita mine, Zimbabwe</h2>
+        <p>Here lithium comes from rock. Shipping records show this mine sending goods to a Chinese company in Hainan.</p>
+        <div class="big"><b>U.S. list</b><span>Zimbabwe's lithium is listed as made with child labor</span></div>
+        <p class="harm"><b>Who could get hurt:</b> children and mine workers, and villagers who report being moved off their land.</p>
+        <p class="look">On the map: the arrow shows shipments from Bikita to China. The trail goes cold after that.</p>
+        <div class="src"><a href="sources.html">Sources: U.S. Department of Labor; Mongabay; Sayari</a></div>
+      </div>
+    </section>
+
+    <section class="stop" id="s-china" data-stage="process" data-places="china,xinjiang,hainan">
+      <div class="card" style="--c: var(--process); --c-dark: #6d43c9">
+        <span class="crumb"><i>2</i>Step 2 of 4 · Process</span>
+        <h2>China cleans most of the world's lithium</h2>
+        <p>Raw lithium is turned into clean chemicals that batteries and fusion projects can use.</p>
+        <div class="big"><b>70%</b><span>of the world's lithium chemicals are made in China</span></div>
+        <p class="harm"><b>Who could get hurt:</b> Uyghurs and other minority groups in Xinjiang, where the U.S. says forced labor is a risk.</p>
+        <p class="look">On the map: China, the Xinjiang region in the northwest, and the Hainan company that buys from Bikita.</p>
+        <div class="src"><a href="sources.html">Sources: IEA; U.S. Forced Labor Enforcement Task Force</a></div>
+      </div>
+    </section>
+
+    <section class="stop" id="s-russia" data-stage="sort" data-places="nccp,ecp,shk,ekhp,isotop,isoflex" data-arrows="nccp>isoflex,ecp>isoflex,shk>isoflex,ekhp>isoflex,isotop>isoflex">
+      <div class="card" style="--c: var(--sort); --c-dark: #c4283c">
+        <span class="crumb"><i>3</i>Step 3 of 4 · Sort</span>
+        <h2>Russia's nuclear plants sell to a U.S. company</h2>
+        <p>Sorting out the rare lithium-6 has only been done at scale inside nuclear weapons programs. Shipping records show five Russian state nuclear plants selling isotopes or lithium chemicals to one U.S. company.</p>
+        <div class="big"><b>5 plants</b><span>in Russia's nuclear system, one U.S. buyer</span></div>
+        <p class="harm"><b>Who could get hurt:</b> neighbors of secret nuclear sites, and everyone, if fusion money ends up supporting weapons programs.</p>
+        <p class="look">On the map: the arrows run from the Russian plants to Isoflex USA in California. The five plants are NCCP (Novosibirsk), the Electrochemical Plant (Zelenogorsk), the Siberian Chemical Combine (Seversk), Elektrokhimpribor (Lesnoy), and Isotope JSC (Moscow).</p>
+        <div class="src"><a href="sources.html">Sources: Sayari; World Nuclear Association</a></div>
+      </div>
+    </section>
+
+    <section class="stop" id="s-oakridge" data-stage="sort" data-places="y12">
+      <div class="card" style="--c: var(--sort); --c-dark: #c4283c">
+        <span class="crumb"><i>3</i>Step 3 of 4 · Sort</span>
+        <h2>Oak Ridge, Tennessee: the last time the U.S. did it</h2>
+        <p>In the 1950s, the U.S. sorted lithium for nuclear weapons here, using toxic mercury.</p>
+        <div class="big"><b>330 tonnes</b><span>of mercury leaked into the land and a creek</span></div>
+        <p class="harm"><b>Who could get hurt:</b> people who live and work near Oak Ridge. The cleanup still isn't finished.</p>
+        <p class="look">On the map: the Y-12 plant in Oak Ridge, Tennessee.</p>
+        <div class="src"><a href="sources.html">Sources: ATSDR (CDC); U.S. Department of Energy</a></div>
+      </div>
+    </section>
+
+    <section class="stop" id="s-use" data-stage="use" data-places="cfs,iter,ukaea">
+      <div class="card" style="--c: var(--use); --c-dark: #138a63">
+        <span class="crumb"><i>4</i>Step 4 of 4 · Use</span>
+        <h2>The fusion projects that will need it</h2>
+        <p>Lithium-6 is made into parts that wrap around the fusion reaction and make fuel. Test projects are running now in the U.S., the U.K., and France.</p>
+        <div class="big"><b>0</b><span>fusion companies have said where their lithium comes from</span></div>
+        <p class="harm"><b>Why it matters:</b> without that, nobody can check whether the lithium was mined and made fairly.</p>
+        <p class="look">On the map: Commonwealth Fusion Systems (Massachusetts), the U.K. fusion fuel program, and ITER (France).</p>
+        <div class="src"><a href="sources.html">Sources: ITER; UKAEA; Sayari</a></div>
+      </div>
+    </section>
+
+    <section class="stop end" id="s-end" data-stage="end" data-places="all" data-arrows="all">
+      <div class="card" style="--c: var(--hot); --c-dark: #9a6a00">
+        <span class="crumb"><i>✓</i>The whole trail</span>
+        <h2>From the desert to the reactor</h2>
+        <p>Every place in this story, on one map. The arrows are real shipments from company records.</p>
+        <p>Our plan: if taxpayer money pays for fusion, companies should have to show where their lithium came from, and governments should pay for cleaner ways to make lithium-6.</p>
+        <div class="links">
+          <a href="lithium.html">Why lithium? →</a><a href="harm.html">Who gets hurt →</a><a href="solutions.html">What should change →</a><a href="companies.html">Company records →</a><a href="globe.html">Explore the map →</a><a href="methodology.html">Methodology →</a>
+        </div>
+        <p class="credit">First draft for the class project "Mapping the Human Cost of Fusion Energy Materials." Research done November 2026. <a href="sources.html">All sources</a></p>
+      </div>
+    </section>
+  </div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/topojson-client@3.1.0/dist/topojson-client.min.js"></script>
+<script>
+const P = {
+  atacama: { at: [-68.25, -23.5], name: "Atacama salt flat", sub: "Chile", stage: "dig" },
+  jujuy: { at: [-65.9, -23.2], name: "Jujuy salt flats", sub: "Argentina", stage: "dig" },
+  bikita: { at: [31.3, -20.08], name: "Bikita mine", sub: "Zimbabwe", stage: "dig" },
+  hainan: { at: [109.2, 19.7], name: "Sinomine (Hainan)", sub: "China", stage: "process" },
+  china: { at: [112, 31], name: "China", sub: "70% of lithium chemicals", stage: "process" },
+  xinjiang: { at: [86, 42.5], name: "Xinjiang", sub: "Forced-labor risk", stage: "process" },
+  nccp: { at: [82.93, 55.03], name: "NCCP", sub: "Novosibirsk", stage: "sort" },
+  ecp: { at: [94.6, 56.1], name: "Electrochemical Plant", sub: "Zelenogorsk", stage: "sort" },
+  shk: { at: [84.9, 56.6], name: "Siberian Chemical Combine", sub: "Seversk", stage: "sort" },
+  ekhp: { at: [59.8, 58.6], name: "Elektrokhimpribor", sub: "Lesnoy", stage: "sort" },
+  isotop: { at: [37.6, 55.75], name: "Isotope JSC", sub: "Moscow", stage: "sort" },
+  isoflex: { at: [-122.42, 37.77], name: "Isoflex USA", sub: "California", stage: "sort" },
+  y12: { at: [-84.25, 35.99], name: "Y-12 plant", sub: "Oak Ridge, Tennessee", stage: "sort" },
+  cfs: { at: [-71.61, 42.54], name: "Commonwealth Fusion Systems", sub: "Massachusetts", stage: "use" },
+  iter: { at: [5.76, 43.7], name: "ITER", sub: "France", stage: "use" },
+  ukaea: { at: [-1.23, 51.66], name: "U.K. fusion fuel program", sub: "England", stage: "use" }
+};
+const ALL_ARROWS = ["bikita>hainan", "nccp>isoflex", "ecp>isoflex", "shk>isoflex", "ekhp>isoflex", "isotop>isoflex"];
+const COUNTRY_LABELS = [["Chile", -71, -30], ["Argentina", -64, -36], ["Bolivia", -64.5, -17], ["Zimbabwe", 29.8, -18.5], ["South Africa", 24, -30], ["China", 104, 35], ["Russia", 95, 63], ["United States", -99, 39], ["Canada", -105, 58], ["France", 2.5, 46.5], ["Mongolia", 103, 46.5], ["Kazakhstan", 68, 48]];
+const css = n => getComputedStyle(document.documentElement).getPropertyValue("--" + n).trim();
+const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+const svg = d3.select("#map");
+const proj = d3.geoEqualEarth();
+const path = d3.geoPath(proj);
+let W, H, land, borders, view = null, current = null, visited = new Set();
+
+function size() { W = innerWidth; H = innerHeight; svg.attr("viewBox", `0 0 ${W} ${H}`); }
+// The open part of the screen, not covered by the step tracker, card, or legend.
+function freeBox(stage) {
+  if (W > 830) {
+    const cardW = Math.min(stage === "end" ? 544 : 432, W * 0.42) + W * 0.05 + 30;
+    const right = stage === "intro" ? W - 30 : W - cardW;
+    return [[stage === "intro" ? 30 : 200, 80], [right, H - 110]];
+  }
+  return [[16, 120], [W - 16, H * 0.44]];
+}
+// Work out a camera (rotation, zoom, and center) that fits the given places into the open space.
+function fitView(points, stage) {
+  const box = freeBox(stage), cx = (box[0][0] + box[1][0]) / 2, cy = (box[0][1] + box[1][1]) / 2;
+  if (!points.length) {
+    const pr = d3.geoEqualEarth().rotate([-10, 0]).fitExtent(box, { type: "Sphere" });
+    return { rot: 10, s: pr.scale(), c: pr.invert([cx, cy]), cx, cy };
+  }
+  const mp = { type: "MultiPoint", coordinates: points };
+  const cen = d3.geoCentroid(mp);
+  const pr = d3.geoEqualEarth().rotate([-cen[0], 0]).fitExtent(box, mp);
+  let s = pr.scale(), c = pr.invert([cx, cy]);
+  const maxS = Math.min(W, H) * 1.5;
+  if (!isFinite(s) || s > maxS) { s = maxS; c = cen; }
+  return { rot: cen[0], s: s * 0.82, c, cx, cy };   // 0.82 leaves room for labels
+}
+function apply(v) {
+  proj.rotate([-v.rot, 0]).scale(v.s).translate([0, 0]);
+  const p = proj(v.c);
+  proj.translate([v.cx - p[0], v.cy - p[1]]);
+}
+const wrap = d => (d > 180 ? d - 360 : d < -180 ? d + 360 : d);
+
+function arc(a, b) {
+  const p = proj(a), q = proj(b); if (!p || !q) return null;
+  const mx = (p[0] + q[0]) / 2, my = (p[1] + q[1]) / 2, dx = q[0] - p[0], dy = q[1] - p[1], len = Math.hypot(dx, dy);
+  let nx = -dy / len, ny = dx / len; if (ny > 0) { nx = -nx; ny = -ny; }
+  const bend = Math.min(140, len * 0.25);
+  return `M${p[0]},${p[1]} Q${mx + nx * bend},${my + ny * bend} ${q[0]},${q[1]}`;
+}
+
+function draw(animateArrows) {
+  svg.selectAll("*").remove();
+  const defs = svg.append("defs");
+  ["dig", "process", "sort", "use", "hot"].forEach(s => defs.append("marker").attr("id", "ah-" + s).attr("viewBox", "0 0 10 10").attr("refX", 9).attr("refY", 5)
+    .attr("markerWidth", 7).attr("markerHeight", 7).attr("orient", "auto").append("path").attr("d", "M0,0 L10,5 L0,10 z").attr("fill", css(s)));
+  svg.append("path").attr("class", "sphere").attr("d", path({ type: "Sphere" }));
+  if (land) svg.append("path").attr("class", "land").attr("d", path(land));
+  if (borders) svg.append("path").attr("class", "borders").attr("d", path(borders));
+  COUNTRY_LABELS.forEach(([n, lon, lat]) => { const p = proj([lon, lat]); if (p && p[0] > 0 && p[0] < W && p[1] > 0 && p[1] < H) svg.append("text").attr("class", "country-lbl").attr("x", p[0]).attr("y", p[1]).text(n); });
+
+  const cur = current || { places: [], arrows: [] };
+  // Places already passed
+  visited.forEach(id => { if (cur.places.includes(id)) return; const p = proj(P[id].at); svg.append("circle").attr("class", "past").attr("cx", p[0]).attr("cy", p[1]).attr("r", 4.5); });
+  // Arrows for this stop
+  cur.arrows.forEach(pair => {
+    const [a, b] = pair.split(">"); const d = arc(P[a].at, P[b].at); if (!d) return;
+    const col = cur.stage === "end" ? "hot" : P[a].stage;
+    const el = svg.append("path").attr("class", "arrow" + (animateArrows && !reduce ? " draw" : "")).attr("d", d).attr("stroke", css(col)).attr("marker-end", `url(#ah-${col})`);
+    el.style("--len", el.node().getTotalLength());
+  });
+  // Places at this stop
+  const labelled = cur.stage === "end" ? [] : cur.places;
+  cur.places.forEach(id => {
+    const p = proj(P[id].at); const col = cur.stage === "end" ? css(P[id].stage) : css(P[id].stage);
+    if (cur.stage !== "end") svg.append("circle").attr("class", "ring").attr("cx", p[0]).attr("cy", p[1]).attr("r", 9).attr("stroke", col);
+    svg.append("circle").attr("class", "now").attr("cx", p[0]).attr("cy", p[1]).attr("r", cur.stage === "end" ? 6 : 8).attr("fill", col);
+  });
+  // Labels, nudged so they don't overlap
+  const box = freeBox(cur.stage || "intro");
+  const boxes = W > 830 ? [{ x: box[1][0] + 8, y: 0, w: W, h: H }] : [{ x: 0, y: box[1][1] + 30, w: W, h: H }];
+  // Labels must not cover any dot either.
+  cur.places.forEach(id => { const q = proj(P[id].at); boxes.push({ x: q[0] - 11, y: q[1] - 11, w: 22, h: 22 }); });
+  labelled.forEach(id => {
+    const p = proj(P[id].at); const w = Math.max(P[id].name.length * 8.2, P[id].sub.length * 6.8) + 8;
+    for (const [dx, dy] of [[14, -6], [-14 - w, -6], [14, -30], [14, 22], [-14 - w, 22], [-14 - w, -30], [-w / 2, -40], [-w / 2, 26]]) {
+      const b = { x: p[0] + dx, y: p[1] + dy - 13, w, h: 32 };
+      if (b.x < 4 || b.x + w > W - 4 || boxes.some(c => !(b.x + b.w < c.x || c.x + c.w < b.x || b.y + b.h < c.y || c.y + c.h < b.y))) continue;
+      boxes.push(b);
+      svg.append("text").attr("class", "place-lbl").attr("x", b.x).attr("y", b.y + 13).text(P[id].name);
+      svg.append("text").attr("class", "place-sub").attr("x", b.x).attr("y", b.y + 28).text(P[id].sub);
+      break;
+    }
+  });
+}
+
+function fly(to, animateArrows) {
+  if (!view || reduce) { view = to; apply(view); draw(animateArrows && !reduce); return; }
+  const from = { ...view };
+  draw(false);
+  d3.select(svg.node()).transition("fly").duration(1400).ease(d3.easeCubicInOut)
+    .tween("fly", () => t => {
+      view = {
+        rot: from.rot + wrap(to.rot - from.rot) * t,
+        s: from.s + (to.s - from.s) * t,
+        c: [from.c[0] + wrap(to.c[0] - from.c[0]) * t, from.c[1] + (to.c[1] - from.c[1]) * t],
+        cx: from.cx + (to.cx - from.cx) * t, cy: from.cy + (to.cy - from.cy) * t
+      };
+      apply(view); draw(false);
+    })
+    .on("end", () => draw(animateArrows));
+}
+
+const stops = [...document.querySelectorAll(".stop")];
+function activate(s) {
+  const places = s.dataset.places === "all" ? Object.keys(P) : (s.dataset.places || "").split(",").filter(Boolean);
+  const arrows = s.dataset.arrows === "all" ? ALL_ARROWS : (s.dataset.arrows || "").split(",").filter(Boolean);
+  // Everything before this stop counts as visited.
+  visited = new Set();
+  stops.slice(0, stops.indexOf(s)).forEach(x => (x.dataset.places && x.dataset.places !== "all" ? x.dataset.places.split(",") : []).forEach(id => visited.add(id)));
+  current = { stage: s.dataset.stage, places, arrows };
+  const order = ["intro", "dig", "process", "sort", "use", "end"], i = order.indexOf(s.dataset.stage);
+  document.querySelectorAll("#rail a").forEach(a => { const j = order.indexOf(a.dataset.for); a.classList.toggle("on", j === i); a.classList.toggle("done", j < i); });
+  const pts = [...new Set([...places, ...arrows.flatMap(a => a.split(">"))])].map(id => P[id].at);
+  fly(fitView(pts, current.stage), true);
+}
+const obs = new IntersectionObserver(es => { const e = es.filter(x => x.isIntersecting).sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0]; if (e) activate(e.target); }, { threshold: [0.5, 0.75] });
+stops.forEach(s => obs.observe(s));
+
+size(); view = fitView([], "intro"); apply(view); draw(false);
+// ?stop=s-russia opens the story at that stop (handy for links from other pages).
+const startAt = document.getElementById(new URLSearchParams(location.search).get("stop") || "");
+if (startAt) { document.documentElement.style.scrollBehavior = "auto"; scrollTo(0, startAt.offsetTop); activate(startAt); document.documentElement.style.scrollBehavior = ""; }
+fetch("https://cdn.jsdelivr.net/npm/world-atlas@2.0.2/countries-110m.json").then(r => r.json()).then(w => {
+  land = topojson.feature(w, w.objects.land); borders = topojson.mesh(w, w.objects.countries, (a, b) => a !== b); draw(true);
+});
+addEventListener("resize", () => {
+  size();
+  const s = current ? stops.find(x => x.dataset.stage === current.stage) : null;
+  view = null;
+  if (s) activate(s); else { view = fitView([], "intro"); apply(view); draw(false); }
+});
+</script>
 </body>
 </html>

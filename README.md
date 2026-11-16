@@ -10,7 +10,10 @@ proposes policy and tech fixes.
 
 Live site: <https://jmayes14.github.io/fusion-materials-map/>
 
-## Writing style
+## Design and writing style
+
+The site uses one dark map-story look: navy background, white story cards, the Inter font, and one color per step (Dig orange, Process purple, Sort red, Make parts blue, Use green). Colors live once in `docs/assets/site.css`.
+
 
 The site is written for a general reader, at about an 8th-grade reading level.
 It has a "Words to know" box, and it explains technical terms the first time
@@ -58,7 +61,7 @@ The site has one page per section, with a menu on every page:
 
 | Page | What it shows |
 |---|---|
-| `docs/index.html` | Home: the main idea, words to know, three findings |
+| `docs/index.html` | The map story: 8 stops from the salt flats to the fusion plants, with a step tracker, arrows for real shipments, and a card at each stop. `?stop=s-russia` opens at a stop |
 | `docs/lithium.html` | Why fusion needs lithium, how it is extracted (brine, hard rock, direct extraction), and how it becomes lithium-6 |
 | `docs/steps.html` | The six steps, with harm filters |
 | `docs/globe.html` | The map: a flat world map or a globe, one step at a time, with a place list, captions, and a step-by-step tour. `?step=` picks a step and `?view=flat` or `?view=globe` picks the style |
