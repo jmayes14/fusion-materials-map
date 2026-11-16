@@ -23,7 +23,7 @@ const CAPTIONS = {
   enrich: "This is the step fusion adds. The arrows show five Russian nuclear plants selling to one U.S. company, and the main Russian plant selling to China and Europe. Oak Ridge, Tennessee, is where the U.S. did this in the 1950s.",
   fabricate: "Factories turn lithium-6 into the parts that make fuel. The arrow shows an Ohio company supplying the biggest U.S. fusion company.",
   deploy: "These are fusion projects testing lithium parts now, in the U.S., the U.K., France, and the Netherlands.",
-  after: "We haven't found any places for this step yet. Nobody has said where used fusion parts will be recycled or stored."
+  after: "No places are known for this step yet. Nobody has said where used fusion parts will be recycled or stored."
 };
 
 // ---- Map setup ----

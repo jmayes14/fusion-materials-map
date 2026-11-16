@@ -15,7 +15,7 @@ function renderDetail() {
     return `<li class="${risk ? "is-risk" : ""} ${dim ? "is-dim" : ""}">${f.t}<div class="tags">${tags}<span class="src">Source: ${srcLink(f.s)}</span></div></li>`;
   }).join("");
   document.getElementById("detail").innerHTML = `<div><span class="eyebrow">Step ${s.n} of 6</span><h3>${s.name}</h3><p class="summary">${s.summary}</p><ul class="facts">${facts}</ul></div>
-    <div class="unknown"><h4>What we still don't know</h4><ul>${s.unknown.map(u => `<li>${u}</li>`).join("")}</ul></div>`;
+    <div class="unknown"><h4>Still unknown</h4><ul>${s.unknown.map(u => `<li>${u}</li>`).join("")}</ul></div>`;
   const link = document.getElementById("to-map");
   if (link) { link.href = `globe.html?step=${s.id}`; link.textContent = `See the "${s.name}" places on the map →`; }
   history.replaceState(null, "", `?step=${s.id}`);

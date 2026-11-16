@@ -55,7 +55,7 @@ const STAGES = [
       { t: "Workers and villagers near Zimbabwe's Bikita lithium mine say they've faced being forced off their land, chemical spills, worker abuse, and a death. They blame the Chinese owner, Sinomine, and the government.", s: "mongabayBikita", l: ["labor", "land"], k: "People's claims, reported in the news" },
       { t: "At Greenbushes, Australia's biggest lithium mine, the mining company admitted its dust went over legal limits at least 8 times in 2024.", s: "abcGreenbushes", l: ["land"] },
       { t: "Shipping records show the Bikita mine sending goods to a Chinese lithium company in Hainan, owned by the same parent company.", s: "sayariBikita", l: [], k: "Shipping record, contents unknown" },
-      { t: "That Hainan company then ships to its sister companies in Namibia and Tanzania. It acts as a middleman, so we can't see where Bikita's lithium finally ends up.", s: "sayariHainan", l: [], k: "Shipping record, contents unknown" }
+      { t: "That Hainan company then ships to its sister companies in Namibia and Tanzania. It acts as a middleman, so the records don't show where Bikita's lithium finally ends up.", s: "sayariHainan", l: [], k: "Shipping record, contents unknown" }
     ],
     unknown: ["Which mine any fusion company's lithium comes from.", "Where Bikita's lithium ends up after the Hainan company.", "Which buyers of Chile's SQM take lithium. SQM also sells fertilizer, and the records mix the two."] },
   { id: "refine", n: 2, name: "Process", what: "Turn raw lithium into clean lithium chemicals", flag: "Forced labor",
@@ -81,13 +81,13 @@ const STAGES = [
       { t: "Russian government contract records show major Russian nuclear institutes hiring NCCP, including a site that once made plutonium for bombs.", s: "sayariNccp", l: ["weapons"], k: "Government contract records" },
       { t: "Isoflex USA, a company that sells isotopes in the U.S., buys from five suppliers run by Russia's state nuclear agency, including NCCP. The records were narrowed to isotopes and lithium chemicals.", s: "sayariIsoflex", l: ["weapons"], k: "Shipping record, contents narrowed" },
       { t: "One of those suppliers, in the secret nuclear city of Zelenogorsk, makes nuclear fuel and isotopes.", s: "atommediaEcp", l: ["weapons"] },
-      { t: "Shipping records also show NCCP selling to China's state nuclear company, a Dutch research reactor, a German lithium company, battery makers, and nuclear power plants. NCCP also makes nuclear fuel, so we don't know what was in each shipment.", s: "sayariNccp", l: ["weapons"], k: "Shipping record, contents unknown" },
+      { t: "Shipping records also show NCCP selling to China's state nuclear company, a Dutch research reactor, a German lithium company, battery makers, and nuclear power plants. NCCP also makes nuclear fuel, so what was in each shipment is unknown.", s: "sayariNccp", l: ["weapons"], k: "Shipping record, contents unknown" },
       { t: "Cleaner methods without mercury are coming. Precision Periodic announced one in September 2025, with U.S. government funding.", s: "precisionPeriodic", l: [] },
       { t: "In March 2026, Molten Salt Solutions said it had deals to supply lithium-6 to two fusion companies, Type One Energy and Gauss Fusion.", s: "moltenSalt", l: [], k: "Company's own claim" },
       { t: "In August 2026, Marathon Fusion said it had sorted lithium with a spinning machine that doesn't use mercury, with U.S. government support.", s: "marathon", l: [], k: "Company's own claim" },
       { t: "A U.S. government grant summary says America makes no lithium-6 or lithium-7 of its own and depends completely on Russia and China.", s: "sbirLi6", l: ["weapons"], k: "Grant summary" }
     ],
-    unknown: ["How much lithium-6 Russia, China, and the U.S. can make or have stored.", "Who owns NCCP. The records only list a local government office.", "Exactly what was in each shipment to Isoflex USA. We narrowed it to isotopes and lithium chemicals, but couldn't get more specific.", "Whether any Russian material from Isoflex USA reached a fusion lab."] },
+    unknown: ["How much lithium-6 Russia, China, and the U.S. can make or have stored.", "Who owns NCCP. The records only list a local government office.", "Exactly what was in each shipment to Isoflex USA. The records narrow it to isotopes and lithium chemicals, but no further.", "Whether any Russian material from Isoflex USA reached a fusion lab."] },
   { id: "fabricate", n: 4, name: "Make parts", what: "Turn lithium-6 into fuel-making parts", flag: "Toxic beryllium",
     summary: "The sorted lithium is made into the part of the power plant that makes fuel. It can be small ceramic beads, a liquid metal mix, or a melted salt called FLiBe (made from lithium and a metal called beryllium).",
     facts: [
@@ -103,7 +103,7 @@ const STAGES = [
       { t: "The U.K. is spending £220 million on a program to prove plants can make their own fuel. Commonwealth Fusion Systems joined it in July 2026.", s: "cfsLibrti", l: [] },
       { t: "Shipping records show Commonwealth Fusion Systems buying copper, steel, cooling, and cable parts. No lithium supplier shows up yet. That makes sense for a company that hasn't started buying fuel materials in bulk.", s: "sayariCfs", l: [] }
     ],
-    unknown: ["Whether any fusion company has rules about where its lithium comes from. We found such rules from lithium and battery companies, but none from a fusion company."] },
+    unknown: ["Whether any fusion company has rules about where its lithium comes from. Lithium and battery companies have such rules, but no fusion company was found with one."] },
   { id: "after", n: 6, name: "Afterward", what: "Used parts, recycling, waste", flag: "Waste, recycling",
     summary: "Used lithium parts are slightly radioactive. Recycling them would mean less new lithium-6 has to be made.",
     facts: [
